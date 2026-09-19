@@ -4,6 +4,11 @@ The service takes **already retrieved text**, selects context, and preserves the
 documents. Your current ingestion, embeddings, search, access checks, and answer model remain
 in your application. Start with shadow mode and review a representative set of questions.
 
+For a remote backend, sidecar or container service, use the
+[deployment and architecture guide](DEPLOYMENT.md). The same API works across network
+boundaries; replace local example URLs with your service's reachable address.
+The [visual research notebook](RESEARCH.md) collects every published study.
+
 ## 1. Start the playground
 
 From the project root, with `TYPESAFE_API_KEY` in `.env`:

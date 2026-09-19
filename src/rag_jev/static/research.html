@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head>
+      <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>rag-jev · Research notebook</title><link rel="stylesheet" href="/assets/style.css">
+      <meta name="description"
+        content="Every rag-jev study: retrieval, quality, cost, robustness and the tradeoffs.">
+      <link rel="stylesheet" href="/assets/notebook.css"><link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg"><meta name="theme-color" content="#253b36"><link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png"></head><body><header class="masthead"><a class="wordmark" href="/"><img src="/assets/brand/squirrel.svg" width="38" height="38" alt=""><span class="brand-name">rag<span>—</span>jev</span></a>
+      <span>THE RESEARCH NOTEBOOK</span><a href="/">Open workbench ↗</a></header>
+      <main class="notebook"><section class="notebook-intro"><div>
+      <p class="eyebrow">Evidence before enthusiasm</p>
+      <h1>Keep the useful bits.<br><em>Show all the evidence.</em></h1>
+      <p class="notebook-lede">A field notebook for context selection. Seven studies of retrieval,
+      answer quality, cost, and where things go wrong. Open methods. Visible tradeoffs.</p>
+      <a class="text-cta" href="#ecosystem">Start with the latest study ↓</a></div>
+      <img class="notebook-mascot" src="/assets/brand/squirrel.svg" alt="" width="220" height="220">
+      </section><div class="notebook-note"><strong>Read the scope with the score.</strong>
+      These are distinct experiments, not a combined leaderboard. Small samples, model-judge bias
+      and inconclusive intervals remain visible.</div>
+      <article class="study" id="ecosystem">
+          <div class="study-number">01</div><div class="study-body">
+          <p class="eyebrow">BEIR · CRAG · FlashRAG · BERGEN · RAGChecker</p><h2>Across the RAG ecosystem</h2>
+          <p>Complete FiQA, NFCorpus and SciFact corpora, two retrievers, five selection policies, and 40 CRAG test questions. Jev reranking had higher retrieval point estimates in all six settings; four comparisons with BGE had intervals crossing zero.</p>
+          <figure><img src="/assets/ecosystem-pilot.png" alt="Six sampled BEIR retrieval comparisons and CRAG accuracy versus API cost. Reranking has higher point estimates but is not uniformly cheaper." loading="lazy">
+          <figcaption>CRAG accuracy rose from 30% to 42.5% with reranking, while API cost rose 56.8%. Small samples, same-model judging, and no universal filtering win.</figcaption></figure>
+          <nav class="study-links" aria-label="Across the RAG ecosystem resources"><a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/ecosystem/RESULTS.md">Full report ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/ecosystem/README.md">Reproduce ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/ecosystem/protocol.json">Protocol ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/ecosystem/results.json">Data ↗</a> <a href="/assets/ecosystem-pilot.png">Full-size chart ↗</a></nav>
+          </div></article>
+<article class="study" id="research-v3">
+          <div class="study-number">02</div><div class="study-body">
+          <p class="eyebrow">HotpotQA + MuSiQue · 400 questions · 7,200 evaluation branches</p><h2>Repeated answers, controlled comparisons</h2>
+          <p>Isolated source components, three generations per policy and question, a cutoff/order factorial, and an Ettin neural baseline. The frozen candidate used 19.7–22.8% less normalized API cost than all context.</p>
+          <figure><img src="/assets/research-v3-results.svg" alt="Controlled HotpotQA and MuSiQue answer F1, confidence intervals, and normalized API costs." loading="lazy">
+          <figcaption>Both primary answer-F1 intervals include zero. The predeclared accuracy-and-cost superiority gate was not met. Supplied candidate sets, not corpus retrieval.</figcaption></figure>
+          <nav class="study-links" aria-label="Repeated answers, controlled comparisons resources"><a href="/assets/research-v3.html">Open dashboard →</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/research/RESULTS.md">Full report ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/research/README.md">Reproduce ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/research/protocol.json">Protocol ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/src/rag_jev/static/research-v3-results.json">Data ↗</a> <a href="/assets/research-v3-results.svg">Full-size chart ↗</a></nav>
+          </div></article>
+<article class="study" id="retrieval-v1">
+          <div class="study-number">03</div><div class="study-body">
+          <p class="eyebrow">SciFact · all 300 test queries · 5,183 documents</p><h2>Retrieve first. Then rerank.</h2>
+          <p>The same BM25 top20 candidates go to BM25, Jev and Ettin, each returning ten results. nDCG@10: 66.47, 75.13 and 72.11 respectively. No gold passages were inserted.</p>
+          <figure><img src="/assets/retrieval-overview.svg" alt="SciFact nDCG at ten: BM25 66.47, Ettin 72.11, Jev 75.13; all 300 test queries." loading="lazy">
+          <figcaption>One dataset, retrieval metrics only. Custom lexical retrieval; possible checkpoint-selection or pretraining exposure. No generated-answer or total-cost superiority claim.</figcaption></figure>
+          <nav class="study-links" aria-label="Retrieve first. Then rerank. resources"><a href="/assets/retrieval-v1.html">Open dashboard →</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/research/RETRIEVAL_RESULTS.md">Full report ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/research/README.md">Reproduce ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/research/retrieval-protocol.json">Protocol ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/src/rag_jev/static/retrieval-v1-results.json">Data ↗</a> <a href="/assets/retrieval-overview.svg">Full-size chart ↗</a></nav>
+          </div></article>
+<article class="study" id="robustness">
+          <div class="study-number">04</div><div class="study-body">
+          <p class="eyebrow">18 synthetic cases · six categories · 108 calls</p><h2>Stress the selection layer</h2>
+          <p>Independent and contextual scoring at concurrency 1, 4 and 8. All labeled relevant passages were retained, missing-evidence cases selected no context, and no requests were bypassed.</p>
+          <figure><img src="/assets/robustness-overview.svg" alt="Observed median and p95 selection latency for six strategy and concurrency conditions, with 18 cases per condition." loading="lazy">
+          <figcaption>Synthetic diagnostics, not representative answer accuracy, an SLA, or proof of prompt-injection resistance. No answer generation was evaluated.</figcaption></figure>
+          <nav class="study-links" aria-label="Stress the selection layer resources"><a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/robustness/README.md">Full report ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/robustness/README.md">Reproduce ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/robustness/protocol.json">Protocol ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/robustness/results.json">Data ↗</a> <a href="/assets/robustness-overview.svg">Full-size chart ↗</a></nav>
+          </div></article>
+<article class="study" id="research-v2">
+          <div class="study-number">05</div><div class="study-body">
+          <p class="eyebrow">HotpotQA + MuSiQue · 400 new evaluation questions</p><h2>Keep the links between passages</h2>
+          <p>A development-selected 0.20 cutoff and relevance ordering were compared with the earlier 0.35 filter and all context. MuSiQue complete evidence retention improved from 80% to 91% versus the old filter.</p>
+          <figure><img src="/assets/research-v2-results.svg" alt="Research round two: answer F1, API cost and complete support retention on HotpotQA and MuSiQue." loading="lazy">
+          <figcaption>The more conservative policy cost more than the old filter. Accuracy differences were inconclusive; the predeclared superiority gate was not met.</figcaption></figure>
+          <nav class="study-links" aria-label="Keep the links between passages resources"><a href="/assets/research-v2.html">Open dashboard →</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/public/RESEARCH_RESULTS.md">Full report ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/public/RESEARCH.md">Reproduce ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/public/research-v2-protocol.json">Protocol ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/src/rag_jev/static/research-v2-results.json">Data ↗</a> <a href="/assets/research-v2-results.svg">Full-size chart ↗</a></nav>
+          </div></article>
+<article class="study" id="public-v1">
+          <div class="study-number">06</div><div class="study-body">
+          <p class="eyebrow">HotpotQA + MuSiQue · 200 evaluation questions</p><h2>Contextual scoring, first public evaluation</h2>
+          <p>Shared-state Jev filtering at a frozen 0.35 cutoff reduced estimated API cost by 23–27% compared with all context, with higher observed answer F1 on both samples.</p>
+          <figure><img src="/assets/benchmark-results.svg" alt="Initial contextual-scoring evaluation comparing answer F1, API cost and supporting-passage recall." loading="lazy">
+          <figcaption>Both accuracy intervals include zero. MuSiQue support recall fell to 87.67%. One generation per arm; supplied candidates and no modern neural reranker baseline.</figcaption></figure>
+          <nav class="study-links" aria-label="Contextual scoring, first public evaluation resources"><a href="/benchmarks">Open dashboard →</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/public/RESULTS.md">Full report ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/public/README.md">Reproduce ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/public/protocol.json">Protocol ↗</a> <a href="/assets/benchmark-results.svg">Full-size chart ↗</a></nav>
+          </div></article>
+<article class="study" id="pilot">
+          <div class="study-number">07</div><div class="study-body">
+          <p class="eyebrow">FastAPI documentation · ten fixed questions</p><h2>The first live pipeline</h2>
+          <p>Fixed lexical retrieval, real Jev selection, and real Luna answers. Estimated passage tokens fell 60.1%, but total stage cost increased 49.7% and inspection found a factual/citation regression.</p>
+          <figure><img src="/assets/pilot-overview.svg" alt="The first ten-question pilot reduced estimated passage tokens from 4,218 to 1,682 while estimated stage cost increased from $0.002671 to $0.003998." loading="lazy">
+          <figcaption>An integration pilot, not an accuracy benchmark. Eighteen generated answers and two explicit application fallbacks; independent human grading and evidence-recall labels were absent.</figcaption></figure>
+          <nav class="study-links" aria-label="The first live pipeline resources"><a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/pilot/RESULTS.md">Full report ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/pilot/README.md">Reproduce ↗</a> <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/benchmarks/pilot/protocol.json">Protocol ↗</a> <a href="/assets/pilot-overview.svg">Full-size chart ↗</a></nav>
+          </div></article><section class="next-study"><p class="eyebrow">The next page</p>
+      <h2>From public evidence to your pipeline.</h2><p>Full-Wikipedia runs,
+      independent human review
+      and production shadow trials are still pending. Start with your own retrieved passages and
+      compare against your current reranker.</p><a href="https://github.com/EmreKaplaner/rag-jev/blob/main/docs/DEPLOYMENT.md">Remote deployment guide ↗</a>
+      <a href="https://github.com/EmreKaplaner/rag-jev/blob/main/docs/REAL_RAG.md">Integration guide ↗</a></section>
+      <footer>rag-jev · MIT-licensed integration · Powered by the external TypeSafe Jev API.
+      Studies are exploratory and not peer reviewed.</footer></main></body></html>

@@ -1,10 +1,10 @@
 @import url("/assets/fonts.css");
 :root {
-  --paper: #f6f3ec;
+  --paper: #f5f1e7;
   --ink: #253b36;
   --muted: #566d64;
   --line: #ccd4c9;
-  --accent: #b54124;
+  --accent: #b84f2d;
   --wash: #e6ecdf;
   --danger: #a83526;
   --body: "Trebuchet MS", sans-serif;
@@ -64,11 +64,16 @@ summary:focus-visible {
   text-decoration: none;
   font-weight: 700;
   letter-spacing: -1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
 }
+.wordmark .brand-name { color: var(--ink); }
 .wordmark span {
   color: var(--accent);
 }
-.masthead > a:last-child {
+.masthead > a:last-child:not(.wordmark) {
   font-size: 12px;
 }
 main {

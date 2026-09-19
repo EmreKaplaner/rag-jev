@@ -13,6 +13,33 @@ def connect(page, base_url):
     expect(page.locator("#query")).to_have_value("How many days do I have to request a refund?")
 
 
+def test_research_notebook_brand_assets_and_mobile_layout(network_service):
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch()
+        for width in [390, 1440]:
+            page = browser.new_page(viewport={"width": width, "height": 900})
+            page.goto(network_service + "/research")
+            expect(
+                page.get_by_role("heading", name="Keep the useful bits. Show all the evidence.")
+            ).to_be_visible()
+            expect(page.locator("article.study")).to_have_count(7)
+            for img in page.locator(".study img").all():
+                img.scroll_into_view_if_needed()
+                expect(img).to_be_visible()
+                page.wait_for_function(
+                    "image => image.complete && image.naturalWidth > 0", arg=img.element_handle()
+                )
+            favicon = page.locator('link[rel="icon"]').get_attribute("href")
+            response = page.request.get(network_service + favicon)
+            assert response.status == 200
+            assert "image/svg+xml" in response.headers["content-type"]
+            assert not page.evaluate("document.documentElement.scrollWidth > innerWidth")
+            page.locator(".wordmark").click()
+            expect(page.get_by_role("link", name="Research notebook")).to_be_visible()
+            page.close()
+        browser.close()
+
+
 def test_browser_score_compare_replay_export_and_import(network_service, tmp_path):
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch()

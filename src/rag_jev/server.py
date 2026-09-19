@@ -166,6 +166,14 @@ def create_app(
     async def public_benchmarks() -> FileResponse:
         return FileResponse(assets / "benchmarks.html")
 
+    @app.get("/research", include_in_schema=False)
+    async def research_index() -> FileResponse:
+        return FileResponse(assets / "research.html")
+
+    @app.get("/favicon.ico", include_in_schema=False)
+    async def favicon() -> FileResponse:
+        return FileResponse(assets / "brand/favicon.ico", media_type="image/vnd.microsoft.icon")
+
     @app.get("/review", include_in_schema=False)
     async def human_review() -> FileResponse:
         return FileResponse(assets / "review.html")

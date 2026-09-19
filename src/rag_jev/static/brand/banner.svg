@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-labelledby="title desc"><title id="title">rag-jev — Make room for useful evidence.</title><desc id="desc">An open-source context selection layer for RAG, with a russet squirrel mascot on warm cream paper.</desc><rect width="1280" height="420" rx="16" fill="#F5F1E7"/><path d="M56 64H780M56 350H1224" stroke="#CDD4C9"/><text x="56" y="46" fill="#566D64" font-family="Verdana,sans-serif" font-size="12" letter-spacing="3">OPEN SOURCE / CONTEXT SELECTION</text><text x="50" y="171" fill="#253B36" font-family="Georgia,serif" font-size="112" letter-spacing="-6">rag<tspan fill="#B84F2D">-</tspan>jev</text><text x="56" y="244" fill="#253B36" font-family="Georgia,serif" font-size="40">Make room for useful evidence.</text><text x="58" y="291" fill="#566D64" font-family="Verdana,sans-serif" font-size="17">A small layer between retrieval and generation.</text><circle cx="1050" cy="184" r="144" fill="#E6ECDF"/><g fill="none" transform="translate(933 55) scale(1.9)">  <g fill="#B84F2D">
+    <path d="M61 104C31 113 10 97 9 70C8 47 17 23 37 18C53 14 65 26 63 41C62 55 52 62 42 58C35 55 33 47 37 41C25 47 25 64 32 74C38 83 49 80 56 76L61 104Z"/>
+    <path d="M47 108C37 99 42 82 53 69C60 61 66 58 69 51C65 44 66 36 72 30L73 12C83 17 89 23 89 29C99 30 105 38 104 47L115 54C115 61 108 65 99 65L94 72L103 84L99 102L110 108C112 112 109 115 104 115H50C43 115 42 111 47 108Z"/>
+  </g>
+  <path d="M83 34L80 24L79 35" fill="#F5F1E7"/>
+  <circle cx="94" cy="45" r="3.5" fill="#F5F1E7"/>
+  <path d="M109 52L115 54L111 58" fill="#253B36"/>
+  <path d="M71 76C61 87 60 98 65 104" stroke="#F5F1E7" stroke-width="6" stroke-linecap="round"/>
+  <path d="M86 79C86 73 91 69 97 70C104 71 107 76 105 82L101 92C99 96 95 98 94 98C90 96 85 91 85 87L86 79Z" fill="#F5F1E7"/>
+  <path d="M84 80L107 83" stroke="#B84F2D" stroke-width="4" stroke-linecap="round"/>
+  <path d="M98 69L100 65" stroke="#F5F1E7" stroke-width="4" stroke-linecap="round"/>
+</g><text x="56" y="382" fill="#566D64" font-family="Verdana,sans-serif" font-size="12" letter-spacing="2">FILTER / RERANK / INSPECT / MEASURE</text><text x="1224" y="382" text-anchor="end" fill="#566D64" font-family="Verdana,sans-serif" font-size="12">Python · HTTP · TypeScript · MIT</text></svg>

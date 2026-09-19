@@ -1,4 +1,9 @@
+<p><img src="src/rag_jev/static/brand/banner.svg" alt="rag-jev — Make room for useful evidence. A squirrel mascot for context selection." width="1280"></p>
+
 # rag-jev
+
+[Get started](#try-it-without-an-api-key) · [Deploy remotely](docs/DEPLOYMENT.md) ·
+[Research notebook](docs/RESEARCH.md) · [Integrations](docs/REAL_RAG.md) · [Brand assets](docs/BRAND.md)
 
 **Filter and rerank retrieved passages before they reach your answering model.**
 
@@ -9,6 +14,10 @@ your retriever → rag-jev / Jev → your answering model
 Keep your existing ingestion, vector store and answer model. Inspect each selection,
 replay different cutoffs, preserve connected evidence, and measure the tradeoff on your data.
 Python, HTTP, TypeScript, LangChain and Dify integrations are included.
+
+Run it inside your Python worker or as a stateless HTTP service beside a remote RAG backend.
+The [container deployment guide](docs/DEPLOYMENT.md) covers service discovery, authentication,
+TLS proxies, health checks and scaling. Your answer model stays in your application.
 
 **MIT-licensed integration.** Live scoring uses the external TypeSafe Jev API and requires
 its key. Query and passage text leave your application during live scoring; arbitrary
@@ -67,6 +76,20 @@ async with Jev() as provider:
 [Independent human review](docs/HUMAN_REVIEW.md) · [Contribute](CONTRIBUTING.md)
 
 ## What the measurements show
+
+**[Explore all seven studies, with charts, methods and limitations →](docs/RESEARCH.md)**
+
+The latest [ecosystem pilot](benchmarks/ecosystem/RESULTS.md) covers complete FiQA,
+NFCorpus and SciFact corpora, lexical and dense retrieval, five selection policies,
+and CRAG through native FlashRAG. Jev reranking had higher nDCG@10 point estimates than
+BGE in all six settings; four paired intervals included zero. On 40 CRAG test questions,
+automatically judged accuracy was 42.5% versus 30% baseline, with **56.8% higher API cost**.
+Filtering sometimes increased wrong answers. This is exploratory evidence, not a
+universal accuracy-and-cost win.
+
+![Ecosystem pilot: retrieval comparisons and CRAG accuracy versus API cost](benchmarks/ecosystem/pilot.png)
+
+Earlier studies remain available with their original scopes:
 
 | Evaluation | Observed result | Scope |
 | --- | --- | --- |

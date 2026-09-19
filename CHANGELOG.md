@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- Original squirrel identity, repository banner, SVG/ICO favicon and shared app branding.
+- Visual research notebook linking all seven study tracks with methods and limitations.
+- Stateless remote-deployment guide, non-root Docker image and Compose configuration.
+- Platform-provided `PORT` and `RAG_JEV_HOST` configuration; explicit CLI flags take priority.
+- CI coverage for service-to-service container requests, auth, shadow mode and TLS forwarding.
+- Completed ecosystem pilot: full-corpus BEIR subsets, native framework integration checks,
+  CRAG answer comparison, diagnostic judges, and reconciled API-spend report.
+
 ## 0.2.0 — 2026-09-19
 
 - MIT license, contribution/security guidance and third-party notices.

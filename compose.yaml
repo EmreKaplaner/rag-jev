@@ -1,0 +1,23 @@
+services:
+  rag-jev:
+    build: .
+    image: rag-jev:local
+    environment:
+      TYPESAFE_API_KEY: ${TYPESAFE_API_KEY:?Set TYPESAFE_API_KEY}
+      RAG_JEV_API_TOKEN: ${RAG_JEV_API_TOKEN:?Set a separate service bearer token}
+      RAG_JEV_MODEL: ${RAG_JEV_MODEL:-jev-latest}
+      RAG_JEV_TIMEOUT_MS: ${RAG_JEV_TIMEOUT_MS:-5000}
+      RAG_JEV_MAX_CONCURRENCY: ${RAG_JEV_MAX_CONCURRENCY:-8}
+      RAG_JEV_ON_ERROR: ${RAG_JEV_ON_ERROR:-passthrough}
+      FORWARDED_ALLOW_IPS: ${FORWARDED_ALLOW_IPS:-127.0.0.1}
+    ports:
+      - "127.0.0.1:${RAG_JEV_PUBLISHED_PORT:-8000}:8000"
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    stop_grace_period: 35s

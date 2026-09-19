@@ -109,8 +109,8 @@ def main() -> None:
     review.add_argument("--key", help="Unblind only after independent review")
     review.add_argument("--output")
     serve = commands.add_parser("serve", help="Start the real Jev selection service")
-    serve.add_argument("--host", default="127.0.0.1")
-    serve.add_argument("--port", type=int, default=8000)
+    serve.add_argument("--host", default=None, help="Defaults to RAG_JEV_HOST or 127.0.0.1")
+    serve.add_argument("--port", type=int, default=None, help="Defaults to PORT or 8000")
     serve.add_argument(
         "--replay-only",
         action="store_true",
@@ -161,6 +161,11 @@ def main() -> None:
             import uvicorn
 
             from rag_jev.server import create_app
+
+            args.host = args.host or os.getenv("RAG_JEV_HOST", "127.0.0.1")
+            args.port = args.port if args.port is not None else int(os.getenv("PORT", "8000"))
+            if not 1 <= args.port <= 65535:
+                parser.error("port must be between 1 and 65535")
 
             if not args.replay_only and not os.getenv("TYPESAFE_API_KEY", "").strip():
                 parser.error("set TYPESAFE_API_KEY in the environment or .env before serving")

@@ -23,3 +23,12 @@ jobs:
       - run: make check-all
       - run: make schema && git diff --exit-code -- openapi.json clients/typescript/src/schema.ts
       - run: uv build
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: docker build -t rag-jev:ci .
+      - run: python scripts/container_smoke.py --image rag-jev:ci
