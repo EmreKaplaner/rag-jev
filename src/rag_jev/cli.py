@@ -37,6 +37,35 @@ def live_selector(provider: Jev, args: argparse.Namespace) -> ContextSelector:
 
 
 async def run(args: argparse.Namespace) -> None:
+    if args.command == "compare-rankings":
+        from rag_jev.comparison import RankingRequest, compare_rankings, generate_rankings
+        from rag_jev.generation import Generator
+        from rag_jev.workbench import Price
+
+        raw = json.loads(await asyncio.to_thread(Path(args.input).read_text))
+        body = RankingRequest(
+            record=raw.get("record", raw),
+            top_n=args.top_n,
+            max_context_tokens=args.max_context_tokens,
+        )
+        price = Price.from_env("RAG_JEV_SCORING")
+        if args.generate:
+            generator = Generator.from_env()
+            if generator is None:
+                raise ValueError("generation not configured")
+            try:
+                ranking_report = await generate_rankings(
+                    body,
+                    generator,
+                    selection_price=price,
+                    generation_price=Price.from_env("RAG_JEV_GENERATION"),
+                )
+            finally:
+                await generator.aclose()
+        else:
+            ranking_report = compare_rankings(body, selection_price=price)
+        emit(ranking_report.model_dump(mode="json"), args.output)
+        return
     if args.command == "review-results":
         from rag_jev.review import summarize_review
 
@@ -101,6 +130,16 @@ def main() -> None:
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("demo", help="Offline, hand-authored fixture demonstration")
     commands.add_parser("schema", help="Print the service OpenAPI schema")
+    ranking = commands.add_parser(
+        "compare-rankings", help="Compare original, Jev, and fusion from a scored replay"
+    )
+    ranking.add_argument("input", help="Exported replay bundle, RunView, or ScoredRun JSON")
+    ranking.add_argument("--top-n", type=int, default=10)
+    ranking.add_argument("--max-context-tokens", type=int)
+    ranking.add_argument(
+        "--generate", action="store_true", help="Make up to three generation calls"
+    )
+    ranking.add_argument("--output")
     review = commands.add_parser(
         "review-results", help="Validate supplied human labels and report completeness"
     )

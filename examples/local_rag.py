@@ -62,7 +62,14 @@ def main() -> None:
     parser.add_argument("--base-url", default="http://127.0.0.1:8000")
     parser.add_argument("--top-k", type=int, default=20)
     parser.add_argument(
-        "--min-relevance", type=float, required=True, help="Use a cutoff calibrated on your data"
+        "--mode", choices=["filter", "rerank", "filter_and_rerank", "fusion"], default="filter"
+    )
+    parser.add_argument("--top-n", type=int)
+    parser.add_argument(
+        "--scoring-strategy", choices=["independent", "contextual"], default="independent"
+    )
+    parser.add_argument(
+        "--min-relevance", type=float, help="Required for filtering; omit for rerank/fusion"
     )
     parser.add_argument("--shadow", action="store_true")
     parser.add_argument("--compare", action="store_true", help="Call your configured answer model")
@@ -73,7 +80,13 @@ def main() -> None:
     load_dotenv(override=False)
     candidates = retrieve(args.documents, args.query, args.top_k)
     request = SelectRequest(
-        query=args.query, documents=candidates, min_relevance=args.min_relevance, shadow=args.shadow
+        query=args.query,
+        documents=candidates,
+        min_relevance=args.min_relevance,
+        shadow=args.shadow,
+        mode=args.mode,
+        top_n=args.top_n,
+        scoring_strategy=args.scoring_strategy,
     )
     token = os.getenv("RAG_JEV_API_TOKEN", "")
     with httpx.Client(

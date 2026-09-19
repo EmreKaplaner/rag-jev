@@ -1,8 +1,21 @@
 [
   {
+    "id": "fusion",
+    "title": "Does combining rankings help?",
+    "scope": "Fixed RRF \u00b7 600 cached query/retriever cases \u00b7 six settings",
+    "summary": "Fusion exceeded original retrieval in all six settings, but was below Jev-only reranking in five. The sixth was nearly tied. All scores and query-level results can be reproduced without API calls.",
+    "caveat": "Post-hoc replay of previously exposed BEIR samples. Different retrievers and scoring rubric from the independent catalog study. No generated-answer or total-cost superiority claim.",
+    "report": "benchmarks/fusion/RESULTS.md",
+    "methods": "docs/FUSION.md",
+    "protocol": "benchmarks/fusion/protocol.json",
+    "data": "benchmarks/fusion/results.json",
+    "visual": "fusion-results.svg",
+    "visual_alt": "Original, BGE reranker, Jev and fusion nDCG at ten across FiQA, NFCorpus and SciFact with lexical and dense retrieval."
+  },
+  {
     "id": "ecosystem",
     "title": "Across the RAG ecosystem",
-    "scope": "BEIR · CRAG · FlashRAG · BERGEN · RAGChecker",
+    "scope": "BEIR \u00b7 CRAG \u00b7 FlashRAG \u00b7 BERGEN \u00b7 RAGChecker",
     "summary": "Complete FiQA, NFCorpus and SciFact corpora, two retrievers, five selection policies, and 40 CRAG test questions. Jev reranking had higher retrieval point estimates in all six settings; four comparisons with BGE had intervals crossing zero.",
     "caveat": "CRAG accuracy rose from 30% to 42.5% with reranking, while API cost rose 56.8%. Small samples, same-model judging, and no universal filtering win.",
     "report": "benchmarks/ecosystem/RESULTS.md",
@@ -15,8 +28,8 @@
   {
     "id": "research-v3",
     "title": "Repeated answers, controlled comparisons",
-    "scope": "HotpotQA + MuSiQue · 400 questions · 7,200 evaluation branches",
-    "summary": "Isolated source components, three generations per policy and question, a cutoff/order factorial, and an Ettin neural baseline. The frozen candidate used 19.7–22.8% less normalized API cost than all context.",
+    "scope": "HotpotQA + MuSiQue \u00b7 400 questions \u00b7 7,200 evaluation branches",
+    "summary": "Isolated source components, three generations per policy and question, a cutoff/order factorial, and an Ettin neural baseline. The frozen candidate used 19.7\u201322.8% less normalized API cost than all context.",
     "caveat": "Both primary answer-F1 intervals include zero. The predeclared accuracy-and-cost superiority gate was not met. Supplied candidate sets, not corpus retrieval.",
     "report": "benchmarks/research/RESULTS.md",
     "methods": "benchmarks/research/README.md",
@@ -29,7 +42,7 @@
   {
     "id": "retrieval-v1",
     "title": "Retrieve first. Then rerank.",
-    "scope": "SciFact · all 300 test queries · 5,183 documents",
+    "scope": "SciFact \u00b7 all 300 test queries \u00b7 5,183 documents",
     "summary": "The same BM25 top20 candidates go to BM25, Jev and Ettin, each returning ten results. nDCG@10: 66.47, 75.13 and 72.11 respectively. No gold passages were inserted.",
     "caveat": "One dataset, retrieval metrics only. Custom lexical retrieval; possible checkpoint-selection or pretraining exposure. No generated-answer or total-cost superiority claim.",
     "report": "benchmarks/research/RETRIEVAL_RESULTS.md",
@@ -43,7 +56,7 @@
   {
     "id": "robustness",
     "title": "Stress the selection layer",
-    "scope": "18 synthetic cases · six categories · 108 calls",
+    "scope": "18 synthetic cases \u00b7 six categories \u00b7 108 calls",
     "summary": "Independent and contextual scoring at concurrency 1, 4 and 8. All labeled relevant passages were retained, missing-evidence cases selected no context, and no requests were bypassed.",
     "caveat": "Synthetic diagnostics, not representative answer accuracy, an SLA, or proof of prompt-injection resistance. No answer generation was evaluated.",
     "report": "benchmarks/robustness/README.md",
@@ -56,7 +69,7 @@
   {
     "id": "research-v2",
     "title": "Keep the links between passages",
-    "scope": "HotpotQA + MuSiQue · 400 new evaluation questions",
+    "scope": "HotpotQA + MuSiQue \u00b7 400 new evaluation questions",
     "summary": "A development-selected 0.20 cutoff and relevance ordering were compared with the earlier 0.35 filter and all context. MuSiQue complete evidence retention improved from 80% to 91% versus the old filter.",
     "caveat": "The more conservative policy cost more than the old filter. Accuracy differences were inconclusive; the predeclared superiority gate was not met.",
     "report": "benchmarks/public/RESEARCH_RESULTS.md",
@@ -70,8 +83,8 @@
   {
     "id": "public-v1",
     "title": "Contextual scoring, first public evaluation",
-    "scope": "HotpotQA + MuSiQue · 200 evaluation questions",
-    "summary": "Shared-state Jev filtering at a frozen 0.35 cutoff reduced estimated API cost by 23–27% compared with all context, with higher observed answer F1 on both samples.",
+    "scope": "HotpotQA + MuSiQue \u00b7 200 evaluation questions",
+    "summary": "Shared-state Jev filtering at a frozen 0.35 cutoff reduced estimated API cost by 23\u201327% compared with all context, with higher observed answer F1 on both samples.",
     "caveat": "Both accuracy intervals include zero. MuSiQue support recall fell to 87.67%. One generation per arm; supplied candidates and no modern neural reranker baseline.",
     "report": "benchmarks/public/RESULTS.md",
     "methods": "benchmarks/public/README.md",
@@ -83,7 +96,7 @@
   {
     "id": "pilot",
     "title": "The first live pipeline",
-    "scope": "FastAPI documentation · ten fixed questions",
+    "scope": "FastAPI documentation \u00b7 ten fixed questions",
     "summary": "Fixed lexical retrieval, real Jev selection, and real Luna answers. Estimated passage tokens fell 60.1%, but total stage cost increased 49.7% and inspection found a factual/citation regression.",
     "caveat": "An integration pilot, not an accuracy benchmark. Eighteen generated answers and two explicit application fallbacks; independent human grading and evidence-recall labels were absent.",
     "report": "benchmarks/pilot/RESULTS.md",

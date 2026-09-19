@@ -90,6 +90,10 @@ def test_langchain_real_documents_lcel_and_metadata(network_service):
     assert result[0] is docs[1] and result[1] is docs[2]
     assert result[0].metadata["original"] is sentinel
     assert compressor.last_result.status == "applied"
+    compressor.policy = Policy(mode="fusion", top_n=1)
+    fused = compressor.as_runnable().invoke({"query": CASES[0].query, "documents": docs})
+    assert len(fused) == 1 and fused[0] is docs[1]
+    assert compressor.last_result.decisions[1].fusion_score > 0
 
 
 async def test_langchain_async_shadow_and_grouping(network_service):

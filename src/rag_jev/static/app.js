@@ -9,6 +9,7 @@ const state = {
   imported: false,
   replayOnly: false,
   recordings: [],
+  rankingReport: null,
 };
 function node(tag, text, className) {
   const el = document.createElement(tag);
@@ -26,7 +27,10 @@ function updateActions() {
   $("compare").disabled =
     state.busy || !state.view || state.dirty || !state.generation;
   $("export").disabled = state.busy || !state.view || state.dirty;
-  $("threshold").disabled = state.busy || $("mode").value === "rerank";
+  $("threshold").disabled = state.busy || ["rerank", "fusion"].includes($("mode").value);
+  $("rankings").disabled = state.busy || !state.view || state.dirty;
+  $("compare-rankings").disabled = state.busy || !state.view || state.dirty || !state.generation;
+  $("export-rankings").disabled = state.busy || !state.rankingReport || state.dirty;
 }
 function busy(value) {
   state.busy = value;
@@ -80,7 +84,7 @@ function policy() {
   return {
     mode: $("mode").value,
     min_relevance:
-      $("mode").value === "rerank" ? null : Number($("threshold").value),
+      ["rerank", "fusion"].includes($("mode").value) ? null : Number($("threshold").value),
     top_n: $("top-n").value ? Number($("top-n").value) : null,
     max_context_tokens: $("token-budget").value ? Number($("token-budget").value) : null,
     shadow: $("shadow").checked,
@@ -104,6 +108,8 @@ function replayBody() {
   return { record: state.view.record, policy: policy() };
 }
 function clearAnswers() {
+  state.rankingReport = null;
+  $("ranking-results").replaceChildren();
   state.comparison = null;
   $("answers").replaceChildren(
     node(
@@ -237,6 +243,11 @@ function render(view) {
       ),
     );
     row.append(top, node("p", d.text));
+    if (decision.fusion_score != null) {
+      row.append(node("p",
+        `Original #${decision.original_rank} · Jev #${decision.jev_rank} · RRF ${decision.fusion_score.toFixed(6)} · Selected #${kept ? s.selected_ids.indexOf(d.id) + 1 : "—"}`,
+        "hint"));
+    }
     const source = [
       d.metadata?.source,
       d.group_id ? `group: ${d.group_id}` : "",
@@ -418,15 +429,20 @@ for (const id of ["threshold", "mode", "top-n", "token-budget", "shadow"]) {
   $(id).addEventListener("input", () => {
     $("threshold-value").textContent = Number($("threshold").value).toFixed(2);
     clearAnswers();
+    updateActions();
   });
-  $(id).addEventListener("change", () =>
-    task(async () => {
+  $(id).addEventListener("change", () => {
+    // A native blur can repeat an already-applied change. Avoid disabling the
+    // button the user is clicking when the policy is already current.
+    const next = policy();
+    if (state.view && !state.dirty && Object.entries(next).every(([key, value]) => state.view.policy[key] === value)) return;
+    return task(async () => {
       if (!state.view || state.dirty) return;
       const view = await api("/v1/replay", replayBody());
       render(view);
       status("Policy applied to saved judgments. No Jev call made.");
-    }),
-  );
+    });
+  });
 }
 $("compare").onclick = () =>
   task(async () => {
@@ -479,3 +495,51 @@ $("import").onchange = () =>
     $("import").value = "";
   });
 task(initialize);
+
+function rankingBody() {
+  return {record: state.view.record, top_n: Number($("top-n").value || 10),
+    max_context_tokens: $("token-budget").value ? Number($("token-budget").value) : null};
+}
+function renderRankings(report) {
+  state.rankingReport = report;
+  const area = $("ranking-results");
+  area.replaceChildren();
+  area.append(node("p", report.source === "fixture"
+    ? "HAND-AUTHORED FIXTURE · These rankings are not live Jev predictions."
+    : "RECORDED SCORES · No new Jev calls. Answer quality requires review.", "hint"));
+  const grid = node("div", undefined, "ranking-grid");
+  area.append(grid);
+  const titles = {original: "Original retrieval", jev: "Jev reranking", fusion: "Fusion · original + Jev"};
+  const money = (v) => v == null ? "unavailable" : `$${v.toFixed(6)}`;
+  for (const arm of report.arms) {
+    const panel = node("section", undefined, "answer");
+    panel.append(node("h3", titles[arm.name]));
+    panel.append(node("p", `Order: ${arm.selection.selected_ids.join(" → ") || "Empty"}`));
+    panel.append(node("p", `Evidence recall: ${arm.evidence_recall == null ? "unlabeled" : (arm.evidence_recall * 100).toFixed(1) + "%"} · nDCG@${report.top_n}: ${arm.ndcg == null ? "unlabeled" : arm.ndcg.toFixed(3)} · Context tokens ≈ ${arm.selection.selected_context_tokens}`));
+    panel.append(node("p", `Estimated API cost: ${money(arm.total_cost_usd)} · Stage: ${Math.round(arm.stage_elapsed_ms)} ms${arm.answer ? " · With generation" : " · Selection only"}`));
+    if (arm.answer) {
+      panel.append(node("p", arm.answer.text), node("small", `${arm.answer.model || "Application fallback"} · ${arm.answer.status}${arm.answer_reused_from ? " · Answer reused from " + titles[arm.answer_reused_from] : ""}`));
+      if (arm.answer.unknown_citations.length) panel.append(node("p", "Unrecognized citations: " + arm.answer.unknown_citations.join(", ")));
+    }
+    grid.append(panel);
+  }
+  const details = node("details");
+  details.append(node("summary", "Measurement details"));
+  for (const note of [report.selection_basis, report.quality_basis, report.cost_basis, report.timing_basis]) details.append(node("p", note, "hint"));
+  area.append(details);
+  updateActions();
+}
+for (const [id, endpoint] of [["rankings", "/v1/rankings"], ["compare-rankings", "/v1/compare-rankings"]]) {
+  $(id).onclick = () => task(async () => {
+    status(id === "rankings" ? "Comparing saved rankings…" : "Generating the three-way comparison…");
+    const report = await api(endpoint, rankingBody());
+    renderRankings(report);
+    const failed = report.arms.some(a => a.answer?.status === "error");
+    status(`Three-way comparison complete. ${report.scoring_calls} new Jev calls; ${report.generation_calls} generation calls.${failed ? " Generation errors are shown; inspect each arm." : ""}`, failed);
+  });
+}
+$("export-rankings").onclick = () => {
+  const blob = new Blob([JSON.stringify(state.rankingReport, null, 2)], {type: "application/json"});
+  const a = node("a"); a.href = URL.createObjectURL(blob); a.download = "rag-jev-rankings.json";
+  a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+};

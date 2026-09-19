@@ -37,6 +37,19 @@ provider_credential_schema:
         - value: contextual
           label:
             en_US: Passages together (up to 32)
+    - variable: ranking_mode
+      type: select
+      required: false
+      default: rerank
+      label:
+        en_US: Ranking mode (fusion requires best-first input and no score threshold)
+      options:
+        - value: rerank
+          label:
+            en_US: Jev reranking
+        - value: fusion
+          label:
+            en_US: Fusion (original ranking + Jev, RRF k=60)
     - variable: max_context_tokens
       type: text-input
       required: false

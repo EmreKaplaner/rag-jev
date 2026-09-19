@@ -9,7 +9,7 @@ from typing import Annotated, Literal, Self
 from pydantic import BaseModel, ConfigDict, Field, JsonValue, model_validator
 
 Probability = Annotated[float, Field(ge=0, le=1, allow_inf_nan=False)]
-Mode = Literal["filter", "rerank", "filter_and_rerank"]
+Mode = Literal["filter", "rerank", "filter_and_rerank", "fusion"]
 PROMPT_VERSION = "useful-evidence-v1"
 CONTEXTUAL_PROMPT_VERSION = "contextual-evidence-v1"
 ScoringStrategy = Literal["independent", "contextual"]
@@ -37,10 +37,12 @@ class Policy(Contract):
 
     @model_validator(mode="after")
     def validate_threshold(self) -> Self:
-        if self.mode != "rerank" and self.min_relevance is None:
+        if self.mode not in {"rerank", "fusion"} and self.min_relevance is None:
             raise ValueError("min_relevance is required for filtering; calibrate on your data")
         if self.mode == "rerank" and self.min_relevance is not None:
             raise ValueError("use filter_and_rerank when combining a threshold with reranking")
+        if self.mode == "fusion" and self.min_relevance is not None:
+            raise ValueError("fusion combines ranks without a relevance threshold")
         return self
 
     @property
@@ -108,6 +110,9 @@ class Decision(Contract):
     output_tokens: int | None
     selected: bool | None
     returned: bool
+    original_rank: int | None = Field(default=None, ge=1)
+    jev_rank: int | None = Field(default=None, ge=1)
+    fusion_score: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     reason: Literal[
         "retained",
         "below_threshold",

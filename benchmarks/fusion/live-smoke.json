@@ -1,0 +1,718 @@
+{
+  "scope": "One public example question over SQLite FTS5/BM25 retrieval; live HTTP Jev and configured generation. Integration smoke only, no quality benchmark or independent grading.",
+  "record": {
+    "request": {
+      "mode": "fusion",
+      "min_relevance": null,
+      "top_n": 2,
+      "max_context_tokens": null,
+      "shadow": false,
+      "relevance_guidance": null,
+      "scoring_strategy": "contextual",
+      "query": "How many days do I have to request a refund, and what do I need?",
+      "retrieval_query": null,
+      "documents": [
+        {
+          "id": "eff6ba131679644d",
+          "text": "Customers may request a refund within 30 days of purchase. A purchase receipt is required when submitting the refund request.",
+          "metadata": {
+            "source": "refunds.md",
+            "paragraph": 2
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "f5440d227fb0348e",
+          "text": "# Refund policy",
+          "metadata": {
+            "source": "refunds.md",
+            "paragraph": 1
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "8d51f8967ed0a572",
+          "text": "# Shipping and delivery",
+          "metadata": {
+            "source": "shipping.md",
+            "paragraph": 1
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "e218c4caf0884cb3",
+          "text": "Orders usually ship within 5 business days. Delivery estimates start when a package leaves the warehouse.",
+          "metadata": {
+            "source": "shipping.md",
+            "paragraph": 2
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "798d7a70f8a9d759",
+          "text": "Refunds are returned to the original payment method after the returned item has been inspected.",
+          "metadata": {
+            "source": "refunds.md",
+            "paragraph": 3
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "e8b2791e8882aa22",
+          "text": "The order tracking page shows the carrier, tracking number, and expected delivery date.",
+          "metadata": {
+            "source": "shipping.md",
+            "paragraph": 3
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "ddfbe4978410ff13",
+          "text": "Subscriptions renew annually, not every 30 days. Renewal is automatic unless the subscription is canceled before the renewal date.",
+          "metadata": {
+            "source": "subscriptions.md",
+            "paragraph": 2
+          },
+          "group_id": null,
+          "pinned": false
+        }
+      ]
+    },
+    "relevant_ids": null,
+    "baseline_ids": null,
+    "schema_version": 1,
+    "created_at": "2026-09-19T10:55:45.156332Z",
+    "source": "live",
+    "prompt_version": "contextual-evidence-v1",
+    "input_hash": "482df7c1d12d9d26eef5c24a2b1315108794026b3b8f4f969527d5bfb4866801",
+    "judgments": [
+      {
+        "relevance": 0.98,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.21,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.06,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.03,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.16,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.03,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.04,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      }
+    ],
+    "scoring_elapsed_ms": 1656.408,
+    "scoring_usage": {
+      "input_tokens": 1403,
+      "output_tokens": 116,
+      "completed_documents": 7,
+      "complete": true
+    }
+  },
+  "comparison": {
+    "input_hash": "482df7c1d12d9d26eef5c24a2b1315108794026b3b8f4f969527d5bfb4866801",
+    "source": "live",
+    "top_n": 2,
+    "arms": [
+      {
+        "name": "original",
+        "selection": {
+          "documents": [
+            {
+              "id": "eff6ba131679644d",
+              "text": "Customers may request a refund within 30 days of purchase. A purchase receipt is required when submitting the refund request.",
+              "metadata": {
+                "source": "refunds.md",
+                "paragraph": 2
+              },
+              "group_id": null,
+              "pinned": false
+            },
+            {
+              "id": "f5440d227fb0348e",
+              "text": "# Refund policy",
+              "metadata": {
+                "source": "refunds.md",
+                "paragraph": 1
+              },
+              "group_id": null,
+              "pinned": false
+            }
+          ],
+          "selected_ids": [
+            "eff6ba131679644d",
+            "f5440d227fb0348e"
+          ],
+          "decisions": [
+            {
+              "id": "eff6ba131679644d",
+              "input_index": 0,
+              "relevance": 0.98,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": true,
+              "returned": true,
+              "original_rank": 1,
+              "jev_rank": 1,
+              "fusion_score": null,
+              "reason": "retained"
+            },
+            {
+              "id": "f5440d227fb0348e",
+              "input_index": 1,
+              "relevance": 0.21,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": true,
+              "returned": true,
+              "original_rank": 2,
+              "jev_rank": 2,
+              "fusion_score": null,
+              "reason": "retained"
+            },
+            {
+              "id": "8d51f8967ed0a572",
+              "input_index": 2,
+              "relevance": 0.06,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 3,
+              "jev_rank": 4,
+              "fusion_score": null,
+              "reason": "beyond_top_n"
+            },
+            {
+              "id": "e218c4caf0884cb3",
+              "input_index": 3,
+              "relevance": 0.03,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 4,
+              "jev_rank": 6,
+              "fusion_score": null,
+              "reason": "beyond_top_n"
+            },
+            {
+              "id": "798d7a70f8a9d759",
+              "input_index": 4,
+              "relevance": 0.16,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 5,
+              "jev_rank": 3,
+              "fusion_score": null,
+              "reason": "beyond_top_n"
+            },
+            {
+              "id": "e8b2791e8882aa22",
+              "input_index": 5,
+              "relevance": 0.03,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 6,
+              "jev_rank": 7,
+              "fusion_score": null,
+              "reason": "beyond_top_n"
+            },
+            {
+              "id": "ddfbe4978410ff13",
+              "input_index": 6,
+              "relevance": 0.04,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 7,
+              "jev_rank": 5,
+              "fusion_score": null,
+              "reason": "beyond_top_n"
+            }
+          ],
+          "status": "applied",
+          "error_code": null,
+          "models": [
+            "jev-1.13.0"
+          ],
+          "prompt_version": "contextual-evidence-v1",
+          "policy_version": "42cc08226e7adc5f",
+          "usage": {
+            "input_tokens": 1403,
+            "output_tokens": 116,
+            "completed_documents": 7,
+            "complete": true
+          },
+          "elapsed_ms": 1656.408,
+          "input_characters": 580,
+          "selected_characters": 140,
+          "returned_characters": 140,
+          "outcome": "context_selected",
+          "top_n_exceeded": false,
+          "selected_context_tokens": 27,
+          "context_token_budget_exceeded": false,
+          "token_estimator": "cl100k_base passage-text estimate; excludes prompts, separators and output"
+        },
+        "evidence_recall": null,
+        "ndcg": null,
+        "policy_elapsed_ms": 0.39704100345261395,
+        "stage_elapsed_ms": 2223.1730410034525,
+        "selector_cost_usd": 0.0,
+        "total_cost_usd": 6.7e-05,
+        "answer": {
+          "text": "You have **30 days from the date of purchase** to request a refund, and you need to provide your **purchase receipt** [S1].",
+          "status": "generated",
+          "model": "gpt-5.6-luna",
+          "elapsed_ms": 2222.776,
+          "input_tokens": 137,
+          "output_tokens": 33,
+          "cached_input_tokens": 0,
+          "citations": [
+            "eff6ba131679644d"
+          ],
+          "unknown_citations": [],
+          "source_map": {
+            "S1": "eff6ba131679644d",
+            "S2": "f5440d227fb0348e"
+          },
+          "error_code": null,
+          "finish_reason": "stop",
+          "settings": {
+            "max_completion_tokens": 2000,
+            "reasoning_effort": "low"
+          }
+        },
+        "answer_reused_from": null
+      },
+      {
+        "name": "jev",
+        "selection": {
+          "documents": [
+            {
+              "id": "eff6ba131679644d",
+              "text": "Customers may request a refund within 30 days of purchase. A purchase receipt is required when submitting the refund request.",
+              "metadata": {
+                "source": "refunds.md",
+                "paragraph": 2
+              },
+              "group_id": null,
+              "pinned": false
+            },
+            {
+              "id": "f5440d227fb0348e",
+              "text": "# Refund policy",
+              "metadata": {
+                "source": "refunds.md",
+                "paragraph": 1
+              },
+              "group_id": null,
+              "pinned": false
+            }
+          ],
+          "selected_ids": [
+            "eff6ba131679644d",
+            "f5440d227fb0348e"
+          ],
+          "decisions": [
+            {
+              "id": "eff6ba131679644d",
+              "input_index": 0,
+              "relevance": 0.98,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": true,
+              "returned": true,
+              "original_rank": 1,
+              "jev_rank": 1,
+              "fusion_score": null,
+              "reason": "retained"
+            },
+            {
+              "id": "f5440d227fb0348e",
+              "input_index": 1,
+              "relevance": 0.21,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": true,
+              "returned": true,
+              "original_rank": 2,
+              "jev_rank": 2,
+              "fusion_score": null,
+              "reason": "retained"
+            },
+            {
+              "id": "8d51f8967ed0a572",
+              "input_index": 2,
+              "relevance": 0.06,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 3,
+              "jev_rank": 4,
+              "fusion_score": null,
+              "reason": "beyond_top_n"
+            },
+            {
+              "id": "e218c4caf0884cb3",
+              "input_index": 3,
+              "relevance": 0.03,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 4,
+              "jev_rank": 6,
+              "fusion_score": null,
+              "reason": "beyond_top_n"
+            },
+            {
+              "id": "798d7a70f8a9d759",
+              "input_index": 4,
+              "relevance": 0.16,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 5,
+              "jev_rank": 3,
+              "fusion_score": null,
+              "reason": "beyond_top_n"
+            },
+            {
+              "id": "e8b2791e8882aa22",
+              "input_index": 5,
+              "relevance": 0.03,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 6,
+              "jev_rank": 7,
+              "fusion_score": null,
+              "reason": "beyond_top_n"
+            },
+            {
+              "id": "ddfbe4978410ff13",
+              "input_index": 6,
+              "relevance": 0.04,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 7,
+              "jev_rank": 5,
+              "fusion_score": null,
+              "reason": "beyond_top_n"
+            }
+          ],
+          "status": "applied",
+          "error_code": null,
+          "models": [
+            "jev-1.13.0"
+          ],
+          "prompt_version": "contextual-evidence-v1",
+          "policy_version": "7e15fa4ec672c504",
+          "usage": {
+            "input_tokens": 1403,
+            "output_tokens": 116,
+            "completed_documents": 7,
+            "complete": true
+          },
+          "elapsed_ms": 1656.408,
+          "input_characters": 580,
+          "selected_characters": 140,
+          "returned_characters": 140,
+          "outcome": "context_selected",
+          "top_n_exceeded": false,
+          "selected_context_tokens": 27,
+          "context_token_budget_exceeded": false,
+          "token_estimator": "cl100k_base passage-text estimate; excludes prompts, separators and output"
+        },
+        "evidence_recall": null,
+        "ndcg": null,
+        "policy_elapsed_ms": 0.24929200299084187,
+        "stage_elapsed_ms": 3879.4332920029906,
+        "selector_cost_usd": 5.8926000000000005e-05,
+        "total_cost_usd": 0.000125926,
+        "answer": {
+          "text": "You have **30 days from the date of purchase** to request a refund, and you need to provide your **purchase receipt** [S1].",
+          "status": "generated",
+          "model": "gpt-5.6-luna",
+          "elapsed_ms": 2222.776,
+          "input_tokens": 137,
+          "output_tokens": 33,
+          "cached_input_tokens": 0,
+          "citations": [
+            "eff6ba131679644d"
+          ],
+          "unknown_citations": [],
+          "source_map": {
+            "S1": "eff6ba131679644d",
+            "S2": "f5440d227fb0348e"
+          },
+          "error_code": null,
+          "finish_reason": "stop",
+          "settings": {
+            "max_completion_tokens": 2000,
+            "reasoning_effort": "low"
+          }
+        },
+        "answer_reused_from": "original"
+      },
+      {
+        "name": "fusion",
+        "selection": {
+          "documents": [
+            {
+              "id": "eff6ba131679644d",
+              "text": "Customers may request a refund within 30 days of purchase. A purchase receipt is required when submitting the refund request.",
+              "metadata": {
+                "source": "refunds.md",
+                "paragraph": 2
+              },
+              "group_id": null,
+              "pinned": false
+            },
+            {
+              "id": "f5440d227fb0348e",
+              "text": "# Refund policy",
+              "metadata": {
+                "source": "refunds.md",
+                "paragraph": 1
+              },
+              "group_id": null,
+              "pinned": false
+            }
+          ],
+          "selected_ids": [
+            "eff6ba131679644d",
+            "f5440d227fb0348e"
+          ],
+          "decisions": [
+            {
+              "id": "eff6ba131679644d",
+              "input_index": 0,
+              "relevance": 0.98,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": true,
+              "returned": true,
+              "original_rank": 1,
+              "jev_rank": 1,
+              "fusion_score": 0.03278688524590164,
+              "reason": "retained"
+            },
+            {
+              "id": "f5440d227fb0348e",
+              "input_index": 1,
+              "relevance": 0.21,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": true,
+              "returned": true,
+              "original_rank": 2,
+              "jev_rank": 2,
+              "fusion_score": 0.03225806451612903,
+              "reason": "retained"
+            },
+            {
+              "id": "8d51f8967ed0a572",
+              "input_index": 2,
+              "relevance": 0.06,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 3,
+              "jev_rank": 4,
+              "fusion_score": 0.03149801587301587,
+              "reason": "beyond_top_n"
+            },
+            {
+              "id": "e218c4caf0884cb3",
+              "input_index": 3,
+              "relevance": 0.03,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 4,
+              "jev_rank": 6,
+              "fusion_score": 0.030776515151515152,
+              "reason": "beyond_top_n"
+            },
+            {
+              "id": "798d7a70f8a9d759",
+              "input_index": 4,
+              "relevance": 0.16,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 5,
+              "jev_rank": 3,
+              "fusion_score": 0.03125763125763126,
+              "reason": "beyond_top_n"
+            },
+            {
+              "id": "e8b2791e8882aa22",
+              "input_index": 5,
+              "relevance": 0.03,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 6,
+              "jev_rank": 7,
+              "fusion_score": 0.03007688828584351,
+              "reason": "beyond_top_n"
+            },
+            {
+              "id": "ddfbe4978410ff13",
+              "input_index": 6,
+              "relevance": 0.04,
+              "model": "jev-1.13.0",
+              "input_tokens": null,
+              "output_tokens": null,
+              "selected": false,
+              "returned": false,
+              "original_rank": 7,
+              "jev_rank": 5,
+              "fusion_score": 0.030309988518943745,
+              "reason": "beyond_top_n"
+            }
+          ],
+          "status": "applied",
+          "error_code": null,
+          "models": [
+            "jev-1.13.0"
+          ],
+          "prompt_version": "contextual-evidence-v1",
+          "policy_version": "03da0e710ff70999",
+          "usage": {
+            "input_tokens": 1403,
+            "output_tokens": 116,
+            "completed_documents": 7,
+            "complete": true
+          },
+          "elapsed_ms": 1656.408,
+          "input_characters": 580,
+          "selected_characters": 140,
+          "returned_characters": 140,
+          "outcome": "context_selected",
+          "top_n_exceeded": false,
+          "selected_context_tokens": 27,
+          "context_token_budget_exceeded": false,
+          "token_estimator": "cl100k_base passage-text estimate; excludes prompts, separators and output"
+        },
+        "evidence_recall": null,
+        "ndcg": null,
+        "policy_elapsed_ms": 0.21312499302439392,
+        "stage_elapsed_ms": 3879.397124993024,
+        "selector_cost_usd": 5.8926000000000005e-05,
+        "total_cost_usd": 0.000125926,
+        "answer": {
+          "text": "You have **30 days from the date of purchase** to request a refund, and you need to provide your **purchase receipt** [S1].",
+          "status": "generated",
+          "model": "gpt-5.6-luna",
+          "elapsed_ms": 2222.776,
+          "input_tokens": 137,
+          "output_tokens": 33,
+          "cached_input_tokens": 0,
+          "citations": [
+            "eff6ba131679644d"
+          ],
+          "unknown_citations": [],
+          "source_map": {
+            "S1": "eff6ba131679644d",
+            "S2": "f5440d227fb0348e"
+          },
+          "error_code": null,
+          "finish_reason": "stop",
+          "settings": {
+            "max_completion_tokens": 2000,
+            "reasoning_effort": "low"
+          }
+        },
+        "answer_reused_from": "original"
+      }
+    ],
+    "scoring_calls": 0,
+    "generation_calls": 1,
+    "quality_basis": "Binary relevance labels supplied by the caller; candidate evidence recall and nDCG at actual selected depth. Answer correctness and factual support require review.",
+    "cost_basis": "Configured API rates: Jev plus generation per deployed arm. Unknown rates/usage stay null. Retrieval, local compute, cache discounts excluded. Shared Jev scoring paid once in this comparison, not once per arm.",
+    "timing_basis": "Recorded Jev time plus measured policy and generation time; retrieval excluded. This replay is not a fresh latency benchmark. Identical contexts reuse one answer.",
+    "selection_basis": "Original input order versus Jev ordering versus equal-weight RRF (k=60), same candidate set and top-N/token limits. Pins/groups preserved in all arms. Recorded baseline_ids are not used; original means input-order selection here."
+  },
+  "new_usage_cost_usd": 0.000125926,
+  "pilot_budget_after_smoke": {
+    "ceiling_usd": 25,
+    "known_usage_cost_usd": 0.654725328,
+    "unreconciled_requests": 0,
+    "reserved_unknown_usd": 0,
+    "remaining_after_reservations_usd": 24.345274672,
+    "requests": 1991
+  },
+  "price_basis": "Original pilot rates; returned token usage with cached inputs accounted for. Not invoice verified."
+}

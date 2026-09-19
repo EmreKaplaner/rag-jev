@@ -5,7 +5,7 @@
 [Get started](#try-it-without-an-api-key) · [Deploy remotely](docs/DEPLOYMENT.md) ·
 [Research notebook](docs/RESEARCH.md) · [Integrations](docs/REAL_RAG.md) · [Brand assets](docs/BRAND.md)
 
-**Filter and rerank retrieved passages before they reach your answering model.**
+**Filter, rerank, or fuse retrieval rankings before passages reach your answering model.**
 
 ```text
 your retriever → rag-jev / Jev → your answering model
@@ -77,7 +77,15 @@ async with Jev() as provider:
 
 ## What the measurements show
 
-**[Explore all seven studies, with charts, methods and limitations →](docs/RESEARCH.md)**
+**[Explore all eight studies, with charts, methods and limitations →](docs/RESEARCH.md)**
+
+**New on main: [fusion and a three-way comparison](docs/FUSION.md).** Combine your original
+ranking with Jev using equal-weight reciprocal rank fusion (k=60). Compare original, Jev,
+and fusion from one scoring run, optionally generate answers, and export the report.
+Install this checkout to use the new feature; previously published 0.2.0 packages lack it.
+Our [600-case cached replay](benchmarks/fusion/RESULTS.md) found fusion above original
+retrieval in all six settings, but below Jev-only reranking in five. It is an option to
+evaluate, not a recommended universal replacement. Defaults are unchanged.
 
 The latest [ecosystem pilot](benchmarks/ecosystem/RESULTS.md) covers complete FiQA,
 NFCorpus and SciFact corpora, lexical and dense retrieval, five selection policies,
@@ -174,8 +182,8 @@ supports caller cancellation, and has no runtime dependencies. Use it server-sid
 | --- | --- |
 | `query` | Required nonblank text, up to 8,000 characters |
 | `documents` | Up to 256 documents with unique nonblank string IDs |
-| `mode` | `filter` (default), `rerank`, or `filter_and_rerank` |
-| `min_relevance` | Required for filtering, in `[0,1]`; rejected in rerank-only mode |
+| `mode` | `filter` (default), `rerank`, `filter_and_rerank`, or `fusion` |
+| `min_relevance` | Required for filtering, in `[0,1]`; rejected in rerank and fusion modes |
 | `top_n` | Optional positive target after thresholding; pins and whole groups may exceed it |
 | `max_context_tokens` | Optional passage-text token budget; preserves pins and whole groups, reports pinned overruns |
 | `scoring_strategy` | `independent` (default) or `contextual` shared-candidate scoring |

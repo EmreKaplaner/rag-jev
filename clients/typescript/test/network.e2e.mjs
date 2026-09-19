@@ -20,6 +20,13 @@ test("TypeScript -> HTTP -> Python -> official SDK -> controlled upstream", asyn
     query: request.query, documents: request.documents, mode: "rerank", top_n: 1,
   });
   assert.deepEqual(reranked.selected_ids, ["refund"]);
+  const fused = await client.select({
+    query: request.query, documents: request.documents, mode: "fusion", top_n: 1,
+  });
+  assert.deepEqual(fused.selected_ids, ["refund"]);
+  assert.equal(fused.decisions[1].original_rank, 2);
+  assert.equal(fused.decisions[1].jev_rank, 1);
+  assert.ok(fused.decisions[1].fusion_score > 0);
   const shadow = await client.select({ ...request, shadow: true });
   assert.deepEqual(shadow.documents, request.documents);
   assert.equal(shadow.status, "shadow");

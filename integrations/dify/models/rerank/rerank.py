@@ -30,11 +30,20 @@ class RagJevRerankModel(RerankModel):
         ):
             raise InvokeServerUnavailableError("Invalid rag-jev service URL")
         token = credentials.get("api_token", "")
+        fusion = credentials.get("ranking_mode") == "fusion"
+        if fusion and score_threshold is not None:
+            raise InvokeServerUnavailableError(
+                "Disable the score threshold for fusion; RRF scores are not relevance probabilities"
+            )
         payload = {
             "query": query,
             "scoring_strategy": credentials.get("scoring_strategy") or "independent",
             "documents": [{"id": str(i), "text": text} for i, text in enumerate(docs)],
-            "mode": "rerank" if score_threshold is None else "filter_and_rerank",
+            "mode": "fusion"
+            if fusion
+            else "rerank"
+            if score_threshold is None
+            else "filter_and_rerank",
             "min_relevance": score_threshold,
             "top_n": top_n,
         }
@@ -53,7 +62,9 @@ class RagJevRerankModel(RerankModel):
             result = response.json()
             if result["status"] != "applied":
                 raise ValueError("service bypassed; no trustworthy rerank scores")
-            scores = {x["id"]: x["relevance"] for x in result["decisions"]}
+            scores = {
+                x["id"]: x["fusion_score" if fusion else "relevance"] for x in result["decisions"]
+            }
             output = []
             seen = set()
             for document in result["documents"]:

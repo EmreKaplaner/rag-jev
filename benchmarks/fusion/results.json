@@ -1,0 +1,415 @@
+{
+  "protocol": {
+    "name": "fusion-v1",
+    "source_commit": "3cb06c7a8d04ebe54b126137573febfc0c87dad6",
+    "input_sha256": "bc8ce44d517d3c76704c46de19c8d70ba1ee95d60715fe0a64a6eef274b6778e",
+    "arms": [
+      "original",
+      "bge",
+      "jev",
+      "fusion"
+    ],
+    "rrf_k": 60,
+    "weights": [
+      1,
+      1
+    ],
+    "top_n": 10,
+    "ties": "Jev ties and fused ties preserve original input order.",
+    "scope": "Post-hoc replay of all 600 evaluation query/retriever cases from ecosystem-v1. Fixed k=60, equal weights; no weight or cutoff search. No new model calls. Existing test outcomes previously examined: exploratory replication, not a new holdout.",
+    "statistics": "10,000 paired bootstrap resamples of connected query clusters sharing positive qrels. Descriptive 95% intervals; no multiplicity correction or SOTA claim.",
+    "metrics": "Graded linear-gain nDCG@10, positive-qrel recall@10, passage token estimates. Full qrels define ideal ranking, including documents absent from candidates. All queries included.",
+    "cost": "Recorded Jev API cost per replayed deployment, zero new benchmark spend. Original and local BGE API costs are zero; compute is unknown, not free. Retrieval/generation excluded. Latency is historical stage timing, not fresh deployment latency."
+  },
+  "groups": {
+    "fiqa/bm25": {
+      "queries": 100,
+      "clusters": 100,
+      "largest_cluster": 1,
+      "summary": {
+        "original": {
+          "ndcg10": 0.19844336168316157,
+          "recall10": 0.24654578754578754,
+          "passage_tokens": 2287.38,
+          "selector_api_usd": 0,
+          "recorded_selector_ms": 0
+        },
+        "bge": {
+          "ndcg10": 0.27936826000945386,
+          "recall10": 0.2903150183150183,
+          "passage_tokens": 2711.08,
+          "selector_api_usd": 0,
+          "recorded_selector_ms": 8144.486749989592
+        },
+        "jev": {
+          "ndcg10": 0.28227903834772805,
+          "recall10": 0.2870457875457875,
+          "passage_tokens": 2563.18,
+          "selector_api_usd": 0.0003305148,
+          "recorded_selector_ms": 548.1097420299193
+        },
+        "fusion": {
+          "ndcg10": 0.2588181161809246,
+          "recall10": 0.2870457875457875,
+          "passage_tokens": 2437.69,
+          "selector_api_usd": 0.0003305148,
+          "recorded_selector_ms": 548.1097420299193
+        }
+      },
+      "fusion_minus": {
+        "original": {
+          "delta": 0.06037475449776302,
+          "ci95": [
+            0.03634068387568352,
+            0.08617271798467276
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "bge": {
+          "delta": -0.02055014382852927,
+          "ci95": [
+            -0.05233928370229817,
+            0.010134037048593227
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "jev": {
+          "delta": -0.023460922166803445,
+          "ci95": [
+            -0.040621390488330446,
+            -0.008200308946282472
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        }
+      }
+    },
+    "fiqa/dense": {
+      "queries": 100,
+      "clusters": 100,
+      "largest_cluster": 1,
+      "summary": {
+        "original": {
+          "ndcg10": 0.35234439450191457,
+          "recall10": 0.43508150183150185,
+          "passage_tokens": 2085.28,
+          "selector_api_usd": 0,
+          "recorded_selector_ms": 0
+        },
+        "bge": {
+          "ndcg10": 0.42901437089882277,
+          "recall10": 0.47910531135531137,
+          "passage_tokens": 2423.61,
+          "selector_api_usd": 0,
+          "recorded_selector_ms": 3956.7855787006556
+        },
+        "jev": {
+          "ndcg10": 0.4360916026397598,
+          "recall10": 0.4863360805860806,
+          "passage_tokens": 2214.11,
+          "selector_api_usd": 0.00031092432000000004,
+          "recorded_selector_ms": 547.906246639468
+        },
+        "fusion": {
+          "ndcg10": 0.4045714408077747,
+          "recall10": 0.4756767399267399,
+          "passage_tokens": 2107.18,
+          "selector_api_usd": 0.00031092432000000004,
+          "recorded_selector_ms": 547.906246639468
+        }
+      },
+      "fusion_minus": {
+        "original": {
+          "delta": 0.05222704630586015,
+          "ci95": [
+            0.031922821954635944,
+            0.07380362459970205
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "bge": {
+          "delta": -0.024442930091048067,
+          "ci95": [
+            -0.05977272544835644,
+            0.009653855946670085
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "jev": {
+          "delta": -0.03152016183198511,
+          "ci95": [
+            -0.050409840360388855,
+            -0.013351665832658748
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        }
+      }
+    },
+    "nfcorpus/bm25": {
+      "queries": 100,
+      "clusters": 10,
+      "largest_cluster": 91,
+      "summary": {
+        "original": {
+          "ndcg10": 0.33205980786176315,
+          "recall10": 0.15605156712777216,
+          "passage_tokens": 3501.88,
+          "selector_api_usd": 0,
+          "recorded_selector_ms": 0
+        },
+        "bge": {
+          "ndcg10": 0.3526853851494158,
+          "recall10": 0.16764215674046218,
+          "passage_tokens": 3835.15,
+          "selector_api_usd": 0,
+          "recorded_selector_ms": 6558.086047951074
+        },
+        "jev": {
+          "ndcg10": 0.37527911846901996,
+          "recall10": 0.16999374656356114,
+          "passage_tokens": 3542.17,
+          "selector_api_usd": 0.00044790060000000003,
+          "recorded_selector_ms": 612.8443416899245
+        },
+        "fusion": {
+          "ndcg10": 0.36303793906529985,
+          "recall10": 0.16426226314882197,
+          "passage_tokens": 3515.57,
+          "selector_api_usd": 0.00044790060000000003,
+          "recorded_selector_ms": 612.8443416899245
+        }
+      },
+      "fusion_minus": {
+        "original": {
+          "delta": 0.030978131203536742,
+          "ci95": [
+            0.022884739052591273,
+            0.12891043416313785
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "bge": {
+          "delta": 0.010352553915884093,
+          "ci95": [
+            -0.10685975826744856,
+            0.016292620718971442
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "jev": {
+          "delta": -0.012241179403720095,
+          "ci95": [
+            -0.11605377295742283,
+            -0.006809244782740439
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        }
+      }
+    },
+    "nfcorpus/dense": {
+      "queries": 100,
+      "clusters": 10,
+      "largest_cluster": 91,
+      "summary": {
+        "original": {
+          "ndcg10": 0.3596491951572734,
+          "recall10": 0.17467981928812645,
+          "passage_tokens": 3310.82,
+          "selector_api_usd": 0,
+          "recorded_selector_ms": 0
+        },
+        "bge": {
+          "ndcg10": 0.36313717747822066,
+          "recall10": 0.16930560666294597,
+          "passage_tokens": 3618.23,
+          "selector_api_usd": 0,
+          "recorded_selector_ms": 6126.727023751009
+        },
+        "jev": {
+          "ndcg10": 0.38419493840463664,
+          "recall10": 0.17823165790657253,
+          "passage_tokens": 3404.46,
+          "selector_api_usd": 0.00043058736000000004,
+          "recorded_selector_ms": 746.6615471603291
+        },
+        "fusion": {
+          "ndcg10": 0.3846323255661444,
+          "recall10": 0.18326223642783196,
+          "passage_tokens": 3363.45,
+          "selector_api_usd": 0.00043058736000000004,
+          "recorded_selector_ms": 746.6615471603291
+        }
+      },
+      "fusion_minus": {
+        "original": {
+          "delta": 0.024983130408871,
+          "ci95": [
+            -0.038832507468643813,
+            0.03688270636302162
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "bge": {
+          "delta": 0.021495148087923743,
+          "ci95": [
+            -0.030106345335692387,
+            0.02501702498755826
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "jev": {
+          "delta": 0.00043738716150772627,
+          "ci95": [
+            -0.0018276436750448855,
+            0.060632203950164255
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        }
+      }
+    },
+    "scifact/bm25": {
+      "queries": 100,
+      "clusters": 96,
+      "largest_cluster": 2,
+      "summary": {
+        "original": {
+          "ndcg10": 0.7034783291356009,
+          "recall10": 0.824,
+          "passage_tokens": 3402.93,
+          "selector_api_usd": 0,
+          "recorded_selector_ms": 0
+        },
+        "bge": {
+          "ndcg10": 0.7307150028965265,
+          "recall10": 0.8345,
+          "passage_tokens": 3740.08,
+          "selector_api_usd": 0,
+          "recorded_selector_ms": 6521.69290208898
+        },
+        "jev": {
+          "ndcg10": 0.765721839538553,
+          "recall10": 0.8315,
+          "passage_tokens": 3548.04,
+          "selector_api_usd": 0.00044271024000000004,
+          "recorded_selector_ms": 654.1750212899933
+        },
+        "fusion": {
+          "ndcg10": 0.7343412929514976,
+          "recall10": 0.8365,
+          "passage_tokens": 3456.22,
+          "selector_api_usd": 0.00044271024000000004,
+          "recorded_selector_ms": 654.1750212899933
+        }
+      },
+      "fusion_minus": {
+        "original": {
+          "delta": 0.030862963815896705,
+          "ci95": [
+            0.01447732179989,
+            0.04989385410940247
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "bge": {
+          "delta": 0.003626290054971115,
+          "ci95": [
+            -0.027605158071583653,
+            0.03432291546385882
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "jev": {
+          "delta": -0.031380546587055365,
+          "ci95": [
+            -0.06108948625169804,
+            -0.0037419574657784594
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        }
+      }
+    },
+    "scifact/dense": {
+      "queries": 100,
+      "clusters": 96,
+      "largest_cluster": 2,
+      "summary": {
+        "original": {
+          "ndcg10": 0.6911619170752974,
+          "recall10": 0.808,
+          "passage_tokens": 3362.42,
+          "selector_api_usd": 0,
+          "recorded_selector_ms": 0
+        },
+        "bge": {
+          "ndcg10": 0.7387435767535978,
+          "recall10": 0.843,
+          "passage_tokens": 3710.01,
+          "selector_api_usd": 0,
+          "recorded_selector_ms": 6592.764895411237
+        },
+        "jev": {
+          "ndcg10": 0.7946181571716066,
+          "recall10": 0.8616666666666667,
+          "passage_tokens": 3447.89,
+          "selector_api_usd": 0.00044284758,
+          "recorded_selector_ms": 536.5871170608443
+        },
+        "fusion": {
+          "ndcg10": 0.7634376916621566,
+          "recall10": 0.865,
+          "passage_tokens": 3438.04,
+          "selector_api_usd": 0.00044284758,
+          "recorded_selector_ms": 536.5871170608443
+        }
+      },
+      "fusion_minus": {
+        "original": {
+          "delta": 0.07227577458685917,
+          "ci95": [
+            0.04323741467159983,
+            0.10354518340836211
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "bge": {
+          "delta": 0.024694114908558804,
+          "ci95": [
+            -0.02085199110410795,
+            0.07543766641576245
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "jev": {
+          "delta": -0.031180465509449973,
+          "ci95": [
+            -0.06098127718640186,
+            -0.004785370765922961
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        }
+      }
+    }
+  },
+  "new_api_spend_usd": 0,
+  "code_sha256": {
+    "benchmarks/fusion/evaluate.py": "6f5522462997f97b03d8c42d5f60c17f2988db2bd6ac37d305e342366979636d",
+    "src/rag_jev/fusion.py": "e476d487de14490f4e9d79ad2062361919e1fb1239f02bc6a86cbe70ac42ab28"
+  }
+}

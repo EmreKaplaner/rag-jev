@@ -17,6 +17,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
+from rag_jev.comparison import RankingReport, RankingRequest, compare_rankings, generate_rankings
 from rag_jev.generation import Generator
 from rag_jev.models import SelectionResult, SelectRequest
 from rag_jev.provider import Jev, ProviderError
@@ -257,5 +258,22 @@ def create_app(
         except ProviderError as exc:
             status = 504 if exc.code == "deadline_exceeded" else 502
             raise HTTPException(status_code=status, detail=exc.code) from None
+
+    @app.post("/v1/rankings", response_model=RankingReport, dependencies=[Depends(authorize)])
+    async def rankings(body: RankingRequest, request: Request) -> RankingReport:
+        return compare_rankings(body, selection_price=request.app.state.selection_price)
+
+    @app.post(
+        "/v1/compare-rankings", response_model=RankingReport, dependencies=[Depends(authorize)]
+    )
+    async def ranking_answers(body: RankingRequest, request: Request) -> RankingReport:
+        if request.app.state.generator is None:
+            raise HTTPException(503, "generation_not_configured")
+        return await generate_rankings(
+            body,
+            request.app.state.generator,
+            generation_price=request.app.state.generation_price,
+            selection_price=request.app.state.selection_price,
+        )
 
     return app

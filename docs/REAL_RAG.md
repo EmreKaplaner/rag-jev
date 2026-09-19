@@ -9,6 +9,10 @@ For a remote backend, sidecar or container service, use the
 boundaries; replace local example URLs with your service's reachable address.
 The [visual research notebook](RESEARCH.md) collects every published study.
 
+For **fusion**, use `mode="fusion"`, omit `min_relevance`, and keep chunks in retriever
+order. The [fusion guide](FUSION.md) covers Python/HTTP/TypeScript/LangChain/Dify and the
+three-way original/Jev/fusion comparison, including offline replay and optional generation.
+
 ## 1. Start the playground
 
 From the project root, with `TYPESAFE_API_KEY` in `.env`:

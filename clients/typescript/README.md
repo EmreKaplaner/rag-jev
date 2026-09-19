@@ -39,3 +39,22 @@ silently turn network/authentication errors into empty context.
 
 The service currently has no browser CORS configuration; use this client server-side.
 `apiToken` is the selection service token, never `TYPESAFE_API_KEY`.
+
+## Fusion (source checkout)
+
+Build the current client and use it with the matching service from this checkout:
+
+```ts
+const result = await client.select({
+  query: question,
+  documents: retrievedChunks, // Best-first original ranking.
+  mode: "fusion",
+  scoring_strategy: "contextual",
+  top_n: 10,
+  shadow: true,
+});
+```
+
+Omit `min_relevance`. Fusion uses equal-weight RRF with k=60. The decision rows expose
+`original_rank`, `jev_rank`, and `fusion_score`; relevance remains the Jev score.
+See the [comparison guide](../../docs/FUSION.md) for measuring all three modes.

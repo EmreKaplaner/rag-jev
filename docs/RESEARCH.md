@@ -4,7 +4,19 @@ Every study, including regressions and inconclusive results. These studies use d
 
 Start the app and open `/research` for the visual notebook. [Deploy the service](DEPLOYMENT.md) · [Try your pipeline](REAL_RAG.md)
 
-## 01 · Across the RAG ecosystem
+## 01 · Does combining rankings help?
+
+**Fixed RRF · 600 cached query/retriever cases · six settings**
+
+Fusion exceeded original retrieval in all six settings, but was below Jev-only reranking in five. The sixth was nearly tied. All scores and query-level results can be reproduced without API calls.
+
+![Original, BGE reranker, Jev and fusion nDCG at ten across FiQA, NFCorpus and SciFact with lexical and dense retrieval.](../src/rag_jev/static/fusion-results.svg)
+
+Post-hoc replay of previously exposed BEIR samples. Different retrievers and scoring rubric from the independent catalog study. No generated-answer or total-cost superiority claim.
+
+[Report](../benchmarks/fusion/RESULTS.md) · [Methods](../docs/FUSION.md) · [Protocol](../benchmarks/fusion/protocol.json) · [Data](../benchmarks/fusion/results.json)
+
+## 02 · Across the RAG ecosystem
 
 **BEIR · CRAG · FlashRAG · BERGEN · RAGChecker**
 
@@ -16,7 +28,7 @@ CRAG accuracy rose from 30% to 42.5% with reranking, while API cost rose 56.8%. 
 
 [Report](../benchmarks/ecosystem/RESULTS.md) · [Methods](../benchmarks/ecosystem/README.md) · [Protocol](../benchmarks/ecosystem/protocol.json) · [Data](../benchmarks/ecosystem/results.json)
 
-## 02 · Repeated answers, controlled comparisons
+## 03 · Repeated answers, controlled comparisons
 
 **HotpotQA + MuSiQue · 400 questions · 7,200 evaluation branches**
 
@@ -28,7 +40,7 @@ Both primary answer-F1 intervals include zero. The predeclared accuracy-and-cost
 
 [Report](../benchmarks/research/RESULTS.md) · [Methods](../benchmarks/research/README.md) · [Protocol](../benchmarks/research/protocol.json) · [Data](../src/rag_jev/static/research-v3-results.json)
 
-## 03 · Retrieve first. Then rerank.
+## 04 · Retrieve first. Then rerank.
 
 **SciFact · all 300 test queries · 5,183 documents**
 
@@ -40,7 +52,7 @@ One dataset, retrieval metrics only. Custom lexical retrieval; possible checkpoi
 
 [Report](../benchmarks/research/RETRIEVAL_RESULTS.md) · [Methods](../benchmarks/research/README.md) · [Protocol](../benchmarks/research/retrieval-protocol.json) · [Data](../src/rag_jev/static/retrieval-v1-results.json)
 
-## 04 · Stress the selection layer
+## 05 · Stress the selection layer
 
 **18 synthetic cases · six categories · 108 calls**
 
@@ -52,7 +64,7 @@ Synthetic diagnostics, not representative answer accuracy, an SLA, or proof of p
 
 [Report](../benchmarks/robustness/README.md) · [Methods](../benchmarks/robustness/README.md) · [Protocol](../benchmarks/robustness/protocol.json) · [Data](../benchmarks/robustness/results.json)
 
-## 05 · Keep the links between passages
+## 06 · Keep the links between passages
 
 **HotpotQA + MuSiQue · 400 new evaluation questions**
 
@@ -64,7 +76,7 @@ The more conservative policy cost more than the old filter. Accuracy differences
 
 [Report](../benchmarks/public/RESEARCH_RESULTS.md) · [Methods](../benchmarks/public/RESEARCH.md) · [Protocol](../benchmarks/public/research-v2-protocol.json) · [Data](../src/rag_jev/static/research-v2-results.json)
 
-## 06 · Contextual scoring, first public evaluation
+## 07 · Contextual scoring, first public evaluation
 
 **HotpotQA + MuSiQue · 200 evaluation questions**
 
@@ -76,7 +88,7 @@ Both accuracy intervals include zero. MuSiQue support recall fell to 87.67%. One
 
 [Report](../benchmarks/public/RESULTS.md) · [Methods](../benchmarks/public/README.md) · [Protocol](../benchmarks/public/protocol.json)
 
-## 07 · The first live pipeline
+## 08 · The first live pipeline
 
 **FastAPI documentation · ten fixed questions**
 

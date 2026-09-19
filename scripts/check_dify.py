@@ -37,6 +37,25 @@ contextual = model.invoke(
     top_n=2,
 )
 assert [d.index for d in contextual.docs] == [1, 2], contextual
+fused = model.invoke(
+    "jev",
+    {**credentials, "ranking_mode": "fusion"},
+    "What is the refund deadline?",
+    docs,
+    top_n=1,
+)
+assert [d.index for d in fused.docs] == [1], fused
+assert abs(fused.docs[0].score - (1 / 62 + 1 / 61)) < 1e-6
+try:
+    # The installed SDK leaves its per-instance timer set after an exception.
+    # Isolate intentional failure checks from subsequent successful calls.
+    type(model)(model.model_schemas).invoke(
+        "jev", {**credentials, "ranking_mode": "fusion"}, "q", docs, score_threshold=0.2
+    )
+except InvokeError:
+    pass
+else:
+    raise AssertionError("fusion accepted a relevance threshold")
 empty = model.invoke("jev", credentials, "What is the refund deadline?", docs, score_threshold=1)
 assert empty.docs == []
 try:

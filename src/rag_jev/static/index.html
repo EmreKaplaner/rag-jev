@@ -141,6 +141,7 @@
               ><select id="mode" data-lock>
                 <option value="filter">Filter · preserve order</option>
                 <option value="rerank">Rerank</option>
+                <option value="fusion">Fusion · original + Jev</option>
                 <option value="filter_and_rerank">Filter &amp; rerank</option>
               </select>
             </div>
@@ -179,6 +180,7 @@
           <p id="status" role="status" aria-live="polite">
             Choose an example or paste your retrieval results to begin.
           </p>
+          <p class="hint">Fusion combines the input order with Jev’s ranking using equal-weight RRF (k=60). Supply chunks in your retriever’s best-first order. Fusion scores are not relevance probabilities.</p>
           <div class="metrics" id="metrics" hidden></div>
           <p class="hint" id="policy-note">
             Threshold changes reuse saved scores. Editing query, chunks, or
@@ -194,6 +196,16 @@
               </p>
             </div>
           </div>
+          <section aria-label="Three-way ranking comparison">
+            <h2>Original · Jev · Fusion</h2>
+            <p class="hint">Compare all three using the same candidates and limits. Top N defaults to 10 here. Existing baseline IDs and relevance cutoffs are not used. Ranking comparison makes no API calls; answer comparison makes up to three generation calls.</p>
+            <div class="replay-actions">
+              <button id="rankings" class="quiet" disabled>Compare rankings</button>
+              <button id="compare-rankings" class="primary" disabled>Generate three-way answers</button>
+              <button id="export-rankings" class="quiet" disabled>Export comparison ↓</button>
+            </div>
+            <div id="ranking-results"></div>
+          </section>
           <div class="answer-header">
             <div>
               <h2>Answer comparison</h2>

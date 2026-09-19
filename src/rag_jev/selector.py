@@ -6,6 +6,7 @@ from collections.abc import Mapping, Sequence
 from time import perf_counter
 from typing import Any, Literal, Required, TypedDict, Unpack
 
+from rag_jev.fusion import ranking_signals
 from rag_jev.models import (
     Decision,
     Document,
@@ -45,10 +46,11 @@ def apply_policy(
         raise ValueError("expected exactly one judgment per document")
     if request.scoring_strategy == "contextual" and usage is None:
         raise ValueError("contextual judgments require shared usage")
+    jev_ranks, fused_scores = ranking_signals([j.relevance for j in judgments])
     direct = {
         i
         for i, j in enumerate(judgments)
-        if request.mode == "rerank" or j.relevance >= request.min_relevance  # type: ignore[operator]
+        if request.mode in {"rerank", "fusion"} or j.relevance >= request.min_relevance  # type: ignore[operator]
     }
     groups: dict[tuple[str, str], list[int]] = {}
     for i, document in enumerate(request.documents):
@@ -59,7 +61,9 @@ def apply_policy(
     eligible_set = {
         i for unit in units if any(j in direct or j in pinned for j in unit) for i in unit
     }
-    if request.mode != "filter":
+    if request.mode == "fusion":
+        units.sort(key=lambda unit: -max(fused_scores[i] for i in unit))
+    elif request.mode != "filter":
         units.sort(key=lambda unit: -max(judgments[i].relevance for i in unit))
     chosen_set = set(pinned)
     tokens = [count_tokens(d.text) for d in request.documents]
@@ -96,6 +100,9 @@ def apply_policy(
                 output_tokens=judgments[i].output_tokens if usage is None else None,
                 selected=i in chosen_set,
                 returned=request.shadow or i in chosen_set,
+                original_rank=i + 1,
+                jev_rank=jev_ranks[i],
+                fusion_score=fused_scores[i] if request.mode == "fusion" else None,
                 reason=(
                     "pinned"
                     if i in chosen_set and d.pinned
@@ -234,6 +241,7 @@ class ContextSelector:
                     output_tokens=completed[i].output_tokens if i in completed else None,
                     selected=None,
                     returned=True,
+                    original_rank=i + 1,
                     reason="bypassed",
                 )
                 for i, d in enumerate(request.documents)

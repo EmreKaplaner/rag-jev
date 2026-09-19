@@ -174,6 +174,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/rankings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Rankings */
+        post: operations["rankings_v1_rankings_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/compare-rankings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Ranking Answers */
+        post: operations["ranking_answers_v1_compare_rankings_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -280,6 +314,12 @@ export interface components {
             selected: boolean | null;
             /** Returned */
             returned: boolean;
+            /** Original Rank */
+            original_rank?: number | null;
+            /** Jev Rank */
+            jev_rank?: number | null;
+            /** Fusion Score */
+            fusion_score?: number | null;
             /**
              * Reason
              * @enum {string}
@@ -339,7 +379,7 @@ export interface components {
              * @default filter
              * @enum {string}
              */
-            mode: "filter" | "rerank" | "filter_and_rerank";
+            mode: "filter" | "rerank" | "filter_and_rerank" | "fusion";
             /** Min Relevance */
             min_relevance?: number | null;
             /** Top N */
@@ -353,6 +393,85 @@ export interface components {
             shadow: boolean;
             /** Relevance Guidance */
             relevance_guidance?: string | null;
+        };
+        /** RankingArm */
+        RankingArm: {
+            /**
+             * Name
+             * @enum {string}
+             */
+            name: "original" | "jev" | "fusion";
+            selection: components["schemas"]["SelectionResult"];
+            /** Evidence Recall */
+            evidence_recall: number | null;
+            /** Ndcg */
+            ndcg: number | null;
+            /** Policy Elapsed Ms */
+            policy_elapsed_ms: number;
+            /** Stage Elapsed Ms */
+            stage_elapsed_ms: number;
+            /** Selector Cost Usd */
+            selector_cost_usd: number | null;
+            /** Total Cost Usd */
+            total_cost_usd: number | null;
+            answer?: components["schemas"]["Answer"] | null;
+            /** Answer Reused From */
+            answer_reused_from?: ("original" | "jev" | "fusion") | null;
+        };
+        /** RankingReport */
+        RankingReport: {
+            /** Input Hash */
+            input_hash: string;
+            /**
+             * Source
+             * @enum {string}
+             */
+            source: "live" | "fixture";
+            /** Top N */
+            top_n: number;
+            /** Arms */
+            arms: components["schemas"]["RankingArm"][];
+            /**
+             * Scoring Calls
+             * @default 0
+             */
+            scoring_calls: number;
+            /**
+             * Generation Calls
+             * @default 0
+             */
+            generation_calls: number;
+            /**
+             * Quality Basis
+             * @default Binary relevance labels supplied by the caller; candidate evidence recall and nDCG at the shared top-N cutoff (short outputs padded with zero gain). Answer correctness and factual support require review.
+             */
+            quality_basis: string;
+            /**
+             * Cost Basis
+             * @default Configured API rates: Jev plus generation per deployed arm. Unknown rates/usage stay null. Retrieval, local compute, cache discounts excluded. Shared Jev scoring paid once in this comparison, not once per arm.
+             */
+            cost_basis: string;
+            /**
+             * Timing Basis
+             * @default Recorded Jev time plus measured policy and generation time; retrieval excluded. This replay is not a fresh latency benchmark. Identical contexts reuse one answer.
+             */
+            timing_basis: string;
+            /**
+             * Selection Basis
+             * @default Original input order versus Jev ordering versus equal-weight RRF (k=60), same candidate set and top-N/token limits. Pins/groups preserved in all arms. Recorded baseline_ids are not used; original means input-order selection here.
+             */
+            selection_basis: string;
+        };
+        /** RankingRequest */
+        RankingRequest: {
+            record: components["schemas"]["ScoredRun"];
+            /**
+             * Top N
+             * @default 10
+             */
+            top_n: number;
+            /** Max Context Tokens */
+            max_context_tokens?: number | null;
         };
         /** ReplayBundle */
         ReplayBundle: {
@@ -431,7 +550,7 @@ export interface components {
              * @default filter
              * @enum {string}
              */
-            mode: "filter" | "rerank" | "filter_and_rerank";
+            mode: "filter" | "rerank" | "filter_and_rerank" | "fusion";
             /** Min Relevance */
             min_relevance?: number | null;
             /** Top N */
@@ -881,6 +1000,76 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SelectionResult"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    rankings_v1_rankings_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                authorization?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RankingRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RankingReport"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    ranking_answers_v1_compare_rankings_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                authorization?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RankingRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RankingReport"];
                 };
             };
             /** @description Validation Error */

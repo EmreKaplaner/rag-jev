@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Optional equal-weight RRF fusion (k=60), original/Jev rank diagnostics, and unchanged defaults.
+- Three-way ranking/answer comparison in the workbench, HTTP API and CLI; cached scores,
+  identical-context answer reuse, explicit unknown costs and exportable reports.
+- Fusion in Python, TypeScript, LangChain, Dify and the local-files retrieval example.
+- Reproducible 600-case fusion replay and visual: above original retrieval in six settings,
+  below Jev-only in five; previously exposed data, no answer-quality or SOTA claim.
 - Original squirrel identity, repository banner, SVG/ICO favicon and shared app branding.
 - Visual research notebook linking all seven study tracks with methods and limitations.
 - Stateless remote-deployment guide, non-root Docker image and Compose configuration.

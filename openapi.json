@@ -512,6 +512,118 @@
           }
         }
       }
+    },
+    "/v1/rankings": {
+      "post": {
+        "summary": "Rankings",
+        "operationId": "rankings_v1_rankings_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RankingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RankingReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/compare-rankings": {
+      "post": {
+        "summary": "Ranking Answers",
+        "operationId": "ranking_answers_v1_compare_rankings_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RankingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RankingReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -838,6 +950,42 @@
             "type": "boolean",
             "title": "Returned"
           },
+          "original_rank": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Original Rank"
+          },
+          "jev_rank": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Jev Rank"
+          },
+          "fusion_score": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fusion Score"
+          },
           "reason": {
             "type": "string",
             "enum": [
@@ -993,7 +1141,8 @@
             "enum": [
               "filter",
               "rerank",
-              "filter_and_rerank"
+              "filter_and_rerank",
+              "fusion"
             ],
             "title": "Mode",
             "default": "filter"
@@ -1059,6 +1208,212 @@
         "additionalProperties": false,
         "type": "object",
         "title": "Policy"
+      },
+      "RankingArm": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "original",
+              "jev",
+              "fusion"
+            ],
+            "title": "Name"
+          },
+          "selection": {
+            "$ref": "#/components/schemas/SelectionResult"
+          },
+          "evidence_recall": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence Recall"
+          },
+          "ndcg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ndcg"
+          },
+          "policy_elapsed_ms": {
+            "type": "number",
+            "title": "Policy Elapsed Ms"
+          },
+          "stage_elapsed_ms": {
+            "type": "number",
+            "title": "Stage Elapsed Ms"
+          },
+          "selector_cost_usd": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Selector Cost Usd"
+          },
+          "total_cost_usd": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Cost Usd"
+          },
+          "answer": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Answer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "answer_reused_from": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "original",
+                  "jev",
+                  "fusion"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Answer Reused From"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name",
+          "selection",
+          "evidence_recall",
+          "ndcg",
+          "policy_elapsed_ms",
+          "stage_elapsed_ms",
+          "selector_cost_usd",
+          "total_cost_usd"
+        ],
+        "title": "RankingArm"
+      },
+      "RankingReport": {
+        "properties": {
+          "input_hash": {
+            "type": "string",
+            "title": "Input Hash"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "live",
+              "fixture"
+            ],
+            "title": "Source"
+          },
+          "top_n": {
+            "type": "integer",
+            "title": "Top N"
+          },
+          "arms": {
+            "items": {
+              "$ref": "#/components/schemas/RankingArm"
+            },
+            "type": "array",
+            "title": "Arms"
+          },
+          "scoring_calls": {
+            "type": "integer",
+            "title": "Scoring Calls",
+            "default": 0
+          },
+          "generation_calls": {
+            "type": "integer",
+            "title": "Generation Calls",
+            "default": 0
+          },
+          "quality_basis": {
+            "type": "string",
+            "title": "Quality Basis",
+            "default": "Binary relevance labels supplied by the caller; candidate evidence recall and nDCG at the shared top-N cutoff (short outputs padded with zero gain). Answer correctness and factual support require review."
+          },
+          "cost_basis": {
+            "type": "string",
+            "title": "Cost Basis",
+            "default": "Configured API rates: Jev plus generation per deployed arm. Unknown rates/usage stay null. Retrieval, local compute, cache discounts excluded. Shared Jev scoring paid once in this comparison, not once per arm."
+          },
+          "timing_basis": {
+            "type": "string",
+            "title": "Timing Basis",
+            "default": "Recorded Jev time plus measured policy and generation time; retrieval excluded. This replay is not a fresh latency benchmark. Identical contexts reuse one answer."
+          },
+          "selection_basis": {
+            "type": "string",
+            "title": "Selection Basis",
+            "default": "Original input order versus Jev ordering versus equal-weight RRF (k=60), same candidate set and top-N/token limits. Pins/groups preserved in all arms. Recorded baseline_ids are not used; original means input-order selection here."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "input_hash",
+          "source",
+          "top_n",
+          "arms"
+        ],
+        "title": "RankingReport"
+      },
+      "RankingRequest": {
+        "properties": {
+          "record": {
+            "$ref": "#/components/schemas/ScoredRun"
+          },
+          "top_n": {
+            "type": "integer",
+            "maximum": 256.0,
+            "minimum": 1.0,
+            "title": "Top N",
+            "default": 10
+          },
+          "max_context_tokens": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 1000000.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Context Tokens"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "record"
+        ],
+        "title": "RankingRequest"
       },
       "ReplayBundle": {
         "properties": {
@@ -1291,7 +1646,8 @@
             "enum": [
               "filter",
               "rerank",
-              "filter_and_rerank"
+              "filter_and_rerank",
+              "fusion"
             ],
             "title": "Mode",
             "default": "filter"

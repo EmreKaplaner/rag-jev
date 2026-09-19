@@ -541,3 +541,12 @@ footer {
     transition: none !important;
   }
 }
+.ranking-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.ranking-grid .answer { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 1100px) {
+  .ranking-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "fusion-v1",
+  "source_commit": "3cb06c7a8d04ebe54b126137573febfc0c87dad6",
+  "input_sha256": "bc8ce44d517d3c76704c46de19c8d70ba1ee95d60715fe0a64a6eef274b6778e",
+  "arms": [
+    "original",
+    "bge",
+    "jev",
+    "fusion"
+  ],
+  "rrf_k": 60,
+  "weights": [
+    1,
+    1
+  ],
+  "top_n": 10,
+  "ties": "Jev ties and fused ties preserve original input order.",
+  "scope": "Post-hoc replay of all 600 evaluation query/retriever cases from ecosystem-v1. Fixed k=60, equal weights; no weight or cutoff search. No new model calls. Existing test outcomes previously examined: exploratory replication, not a new holdout.",
+  "statistics": "10,000 paired bootstrap resamples of connected query clusters sharing positive qrels. Descriptive 95% intervals; no multiplicity correction or SOTA claim.",
+  "metrics": "Graded linear-gain nDCG@10, positive-qrel recall@10, passage token estimates. Full qrels define ideal ranking, including documents absent from candidates. All queries included.",
+  "cost": "Recorded Jev API cost per replayed deployment, zero new benchmark spend. Original and local BGE API costs are zero; compute is unknown, not free. Retrieval/generation excluded. Latency is historical stage timing, not fresh deployment latency."
+}

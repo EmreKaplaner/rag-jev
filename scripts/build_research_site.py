@@ -172,9 +172,9 @@ def main():
       <main class="notebook"><section class="notebook-intro"><div>
       <p class="eyebrow">Evidence before enthusiasm</p>
       <h1>Keep the useful bits.<br><em>Show all the evidence.</em></h1>
-      <p class="notebook-lede">A field notebook for context selection. Seven studies of retrieval,
+      <p class="notebook-lede">A field notebook for context selection. Eight studies of retrieval,
       answer quality, cost, and where things go wrong. Open methods. Visible tradeoffs.</p>
-      <a class="text-cta" href="#ecosystem">Start with the latest study ↓</a></div>
+      <a class="text-cta" href="#fusion">Start with the latest study ↓</a></div>
       <img class="notebook-mascot" src="/assets/brand/squirrel.svg" alt="" width="220" height="220">
       </section><div class="notebook-note"><strong>Read the scope with the score.</strong>
       These are distinct experiments, not a combined leaderboard. Small samples, model-judge bias
@@ -229,8 +229,9 @@ def main():
             text = text.replace(
                 "</header>",
                 '</header><nav class="research-nav" aria-label="Research navigation">'
-                '<a href="/research">← All seven studies</a><a href="/">Workbench</a></nav>',
+                '<a href="/research">← All eight studies</a><a href="/">Workbench</a></nav>',
             )
+        text = text.replace("All seven studies", "All eight studies")
         path.write_text(text)
 
 

@@ -13,6 +13,43 @@ def connect(page, base_url):
     expect(page.locator("#query")).to_have_value("How many days do I have to request a refund?")
 
 
+def test_browser_fusion_three_way_comparison_and_export(network_service, tmp_path):
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch()
+        page = browser.new_page(viewport={"width": 390, "height": 900})
+        errors = []
+        page.on("pageerror", lambda error: errors.append(str(error)))
+        connect(page, network_service)
+        page.get_by_role("button", name="Explore hand-authored fixture").click()
+        expect(page.locator("#status")).to_contain_text("fixture loaded")
+        page.locator("#mode").select_option("fusion")
+        expect(page.locator("#threshold")).to_be_disabled()
+        expect(page.locator("#evidence")).to_contain_text("RRF")
+        page.locator("#top-n").fill("1")
+        page.locator("#top-n").dispatch_event("change")
+        expect(page.locator(".passage.kept")).to_have_count(1)
+        page.get_by_role("button", name="Compare rankings", exact=True).click()
+        expect(page.locator("#ranking-results .answer")).to_have_count(3)
+        expect(page.locator("#status")).to_contain_text("0 new Jev calls; 0 generation calls")
+        expect(page.locator("#ranking-results .answer").first).to_contain_text("shipping")
+        expect(page.locator("#ranking-results .answer").last).to_contain_text("refund")
+        page.get_by_role("button", name="Generate three-way answers").click()
+        expect(page.locator("#status")).to_contain_text("0 new Jev calls; 2 generation calls")
+        with page.expect_download() as download:
+            page.get_by_role("button", name="Export comparison").click()
+        path = tmp_path / "comparison.json"
+        download.value.save_as(path)
+        result = json.loads(path.read_text())
+        assert result["arms"][2]["answer_reused_from"] == "jev"
+        assert "integration-test-token" not in path.read_text()
+        assert not page.evaluate("document.documentElement.scrollWidth > innerWidth")
+        page.locator("#query").fill("changed")
+        expect(page.locator("#export-rankings")).to_be_disabled()
+        expect(page.locator("#ranking-results .answer")).to_have_count(0)
+        assert errors == []
+        browser.close()
+
+
 def test_research_notebook_brand_assets_and_mobile_layout(network_service):
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch()
@@ -22,7 +59,7 @@ def test_research_notebook_brand_assets_and_mobile_layout(network_service):
             expect(
                 page.get_by_role("heading", name="Keep the useful bits. Show all the evidence.")
             ).to_be_visible()
-            expect(page.locator("article.study")).to_have_count(7)
+            expect(page.locator("article.study")).to_have_count(8)
             for img in page.locator(".study img").all():
                 img.scroll_into_view_if_needed()
                 expect(img).to_be_visible()

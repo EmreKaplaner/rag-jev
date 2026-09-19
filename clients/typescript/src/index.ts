@@ -6,7 +6,7 @@ type WireRequest = components["schemas"]["SelectRequest"];
 type BaseRequest = Omit<WireRequest, "mode" | "min_relevance">;
 export type SelectRequest = BaseRequest & (
   | { mode?: "filter" | "filter_and_rerank"; min_relevance: number }
-  | { mode: "rerank"; min_relevance?: never }
+  | { mode: "rerank" | "fusion"; min_relevance?: never }
 );
 
 export class SelectionError extends Error {
@@ -103,6 +103,15 @@ function validateResponse(value: unknown, request: SelectRequest): SelectionResu
         || (decision.relevance !== null && (typeof decision.relevance !== "number"
           || !Number.isFinite(decision.relevance) || decision.relevance < 0 || decision.relevance > 1))) {
       throw new SelectionError("Invalid selection decision");
+    }
+    if ((decision.original_rank != null && decision.original_rank !== i + 1)
+        || (decision.jev_rank != null && (!Number.isInteger(decision.jev_rank)
+          || Number(decision.jev_rank) < 1 || Number(decision.jev_rank) > request.documents.length))
+        || (decision.fusion_score != null && (typeof decision.fusion_score !== "number"
+          || !Number.isFinite(decision.fusion_score) || decision.fusion_score < 0))
+        || (request.mode === "fusion" && !bypassed
+          && (decision.original_rank == null || decision.jev_rank == null || decision.fusion_score == null))) {
+      throw new SelectionError("Invalid fusion diagnostics");
     }
   });
   return value as unknown as SelectionResult;

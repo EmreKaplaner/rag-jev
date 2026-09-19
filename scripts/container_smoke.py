@@ -46,6 +46,15 @@ with httpx.Client(base_url=base, timeout=10) as client:
     assert contextual['status'] == 'applied'
     assert contextual['selected_ids'] == ['refund', 'receipt']
     assert contextual['usage']['input_tokens'] == 60
+    fusion = {**body, 'mode': 'fusion', 'min_relevance': None, 'top_n': 1}
+    fused = client.post('/v1/select', json=fusion).json()
+    assert fused['selected_ids'] == ['refund']
+    assert fused['decisions'][1]['jev_rank'] == 1
+    run = client.post('/v1/runs', json={'request': fusion}).json()
+    comparison = client.post('/v1/rankings', json={'record': run['record'], 'top_n': 1}).json()
+    assert [a['selection']['selected_ids'] for a in comparison['arms']] == [
+        ['shipping'], ['refund'], ['refund']]
+    assert comparison['scoring_calls'] == 0
     body['shadow'] = True
     shadow = client.post('/v1/select', json=body).json()
     assert shadow['status'] == 'shadow'
