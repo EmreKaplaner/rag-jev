@@ -1,0 +1,80 @@
+[
+  {
+    "id": "refund",
+    "query": "How many days do I have to request a refund?",
+    "documents": [
+      {
+        "id": "shipping",
+        "text": "Orders ship within 5 business days.",
+        "metadata": {
+          "source": "shipping.md"
+        }
+      },
+      {
+        "id": "refund",
+        "text": "You may request a refund within 30 days of purchase.",
+        "metadata": {
+          "source": "refunds.md",
+          "page": 2
+        }
+      },
+      {
+        "id": "receipt",
+        "text": "Keep your receipt; it is required for refund requests.",
+        "metadata": {
+          "source": "refunds.md",
+          "page": 3
+        }
+      }
+    ],
+    "relevant_ids": [
+      "refund",
+      "receipt"
+    ],
+    "reference_answer": "30 days"
+  },
+  {
+    "id": "correction",
+    "query": "How do I renew my subscription every 30 days?",
+    "documents": [
+      {
+        "id": "annual",
+        "text": "Subscriptions renew annually, not every 30 days.",
+        "metadata": {}
+      },
+      {
+        "id": "renew",
+        "text": "Annual subscriptions renew automatically unless canceled.",
+        "metadata": {}
+      },
+      {
+        "id": "returns",
+        "text": "Return physical products within 30 days.",
+        "metadata": {}
+      }
+    ],
+    "relevant_ids": [
+      "annual",
+      "renew"
+    ],
+    "reference_answer": "annually"
+  },
+  {
+    "id": "no-answer",
+    "query": "What is the office Wi-Fi password?",
+    "documents": [
+      {
+        "id": "hours",
+        "text": "The office opens at 9 AM.",
+        "metadata": {}
+      },
+      {
+        "id": "wifi",
+        "text": "Wi-Fi is available in the office lobby.",
+        "metadata": {}
+      }
+    ],
+    "relevant_ids": [],
+    "reference_answer": "insufficient evidence"
+  }
+]

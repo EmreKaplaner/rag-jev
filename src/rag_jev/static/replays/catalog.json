@@ -1,0 +1,14 @@
+[
+  {
+    "id": "improvement",
+    "label": "Recorded improvement \u00b7 MuSiQue",
+    "path": "/assets/replays/improvement.json",
+    "note": "Selected illustrative case from the first public study, not representative proof. Saved short-answer outputs; no citation prompt."
+  },
+  {
+    "id": "regression",
+    "label": "Recorded regression \u00b7 MuSiQue",
+    "path": "/assets/replays/regression.json",
+    "note": "Selected illustrative case from the first public study, not representative proof. Saved short-answer outputs; no citation prompt."
+  }
+]

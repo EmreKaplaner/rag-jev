@@ -1,0 +1,679 @@
+{
+  "protocol_hash": "f8ddfd23b9e202c7f153769e2571c0fd20c1cafe02721084039ae1a307952dad",
+  "scope": "18 synthetic, hand-labeled stress cases; no answer generation. Quality is diagnostic, not representative accuracy. No tuning from these results.",
+  "latency": "Per-call selection duration includes the selector semaphore queue; client queue+stage includes waiting for the workload concurrency slot. Cold first call included. p95 is nearest rank on 18 cases per condition; not a production SLA or hardware-neutral comparison.",
+  "conditions": [
+    {
+      "strategy": "independent",
+      "concurrency": 1,
+      "calls": 18,
+      "bypassed": 0,
+      "unknown_usage": 0,
+      "p50_ms": 421.3625,
+      "p95_ms": 1192.18,
+      "mean_client_queue_plus_stage_ms": 4964.238291670174,
+      "known_scoring_api_usd": 0.001119468,
+      "categories": {
+        "conversation": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "conversation-0": [
+              "0"
+            ],
+            "conversation-1": [
+              "0"
+            ],
+            "conversation-2": [
+              "0"
+            ]
+          }
+        },
+        "duplicates": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "duplicates-0": [
+              "1",
+              "0"
+            ],
+            "duplicates-1": [
+              "0",
+              "1"
+            ],
+            "duplicates-2": [
+              "0",
+              "1"
+            ]
+          }
+        },
+        "embedded-instructions": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "embedded-instructions-0": [
+              "0"
+            ],
+            "embedded-instructions-1": [
+              "0"
+            ],
+            "embedded-instructions-2": [
+              "0"
+            ]
+          }
+        },
+        "long-head": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "long-head-0": [
+              "0"
+            ],
+            "long-head-1": [
+              "0"
+            ],
+            "long-head-2": [
+              "0"
+            ]
+          }
+        },
+        "long-tail": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "long-tail-0": [
+              "0"
+            ],
+            "long-tail-1": [
+              "0"
+            ],
+            "long-tail-2": [
+              "0"
+            ]
+          }
+        },
+        "missing": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": null,
+          "correctly_empty": 1,
+          "selected_ids": {
+            "missing-0": [],
+            "missing-1": [],
+            "missing-2": []
+          }
+        }
+      }
+    },
+    {
+      "strategy": "independent",
+      "concurrency": 4,
+      "calls": 18,
+      "bypassed": 0,
+      "unknown_usage": 0,
+      "p50_ms": 340.2075,
+      "p95_ms": 828.329,
+      "mean_client_queue_plus_stage_ms": 1301.756902719919,
+      "known_scoring_api_usd": 0.001119468,
+      "categories": {
+        "conversation": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "conversation-0": [
+              "0"
+            ],
+            "conversation-1": [
+              "0"
+            ],
+            "conversation-2": [
+              "0"
+            ]
+          }
+        },
+        "duplicates": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "duplicates-0": [
+              "0",
+              "1"
+            ],
+            "duplicates-1": [
+              "0",
+              "1"
+            ],
+            "duplicates-2": [
+              "0",
+              "1"
+            ]
+          }
+        },
+        "embedded-instructions": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "embedded-instructions-0": [
+              "0"
+            ],
+            "embedded-instructions-1": [
+              "0"
+            ],
+            "embedded-instructions-2": [
+              "0"
+            ]
+          }
+        },
+        "long-head": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "long-head-0": [
+              "0"
+            ],
+            "long-head-1": [
+              "0"
+            ],
+            "long-head-2": [
+              "0"
+            ]
+          }
+        },
+        "long-tail": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "long-tail-0": [
+              "0"
+            ],
+            "long-tail-1": [
+              "0"
+            ],
+            "long-tail-2": [
+              "0"
+            ]
+          }
+        },
+        "missing": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": null,
+          "correctly_empty": 1,
+          "selected_ids": {
+            "missing-0": [],
+            "missing-1": [],
+            "missing-2": []
+          }
+        }
+      }
+    },
+    {
+      "strategy": "independent",
+      "concurrency": 8,
+      "calls": 18,
+      "bypassed": 0,
+      "unknown_usage": 0,
+      "p50_ms": 667.4555,
+      "p95_ms": 847.419,
+      "mean_client_queue_plus_stage_ms": 976.344085554754,
+      "known_scoring_api_usd": 0.001119468,
+      "categories": {
+        "conversation": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "conversation-0": [
+              "0"
+            ],
+            "conversation-1": [
+              "0"
+            ],
+            "conversation-2": [
+              "0"
+            ]
+          }
+        },
+        "duplicates": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "duplicates-0": [
+              "0",
+              "1"
+            ],
+            "duplicates-1": [
+              "0",
+              "1"
+            ],
+            "duplicates-2": [
+              "0",
+              "1"
+            ]
+          }
+        },
+        "embedded-instructions": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "embedded-instructions-0": [
+              "0"
+            ],
+            "embedded-instructions-1": [
+              "0"
+            ],
+            "embedded-instructions-2": [
+              "0"
+            ]
+          }
+        },
+        "long-head": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "long-head-0": [
+              "0"
+            ],
+            "long-head-1": [
+              "0"
+            ],
+            "long-head-2": [
+              "0"
+            ]
+          }
+        },
+        "long-tail": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "long-tail-0": [
+              "0"
+            ],
+            "long-tail-1": [
+              "0"
+            ],
+            "long-tail-2": [
+              "0"
+            ]
+          }
+        },
+        "missing": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": null,
+          "correctly_empty": 1,
+          "selected_ids": {
+            "missing-0": [],
+            "missing-1": [],
+            "missing-2": []
+          }
+        }
+      }
+    },
+    {
+      "strategy": "contextual",
+      "concurrency": 1,
+      "calls": 18,
+      "bypassed": 0,
+      "unknown_usage": 0,
+      "p50_ms": 331.26099999999997,
+      "p95_ms": 518.485,
+      "mean_client_queue_plus_stage_ms": 3300.973481390328,
+      "known_scoring_api_usd": 0.000910518,
+      "categories": {
+        "conversation": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "conversation-0": [
+              "0"
+            ],
+            "conversation-1": [
+              "0"
+            ],
+            "conversation-2": [
+              "0"
+            ]
+          }
+        },
+        "duplicates": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "duplicates-0": [
+              "0",
+              "1"
+            ],
+            "duplicates-1": [
+              "0",
+              "1"
+            ],
+            "duplicates-2": [
+              "0",
+              "1"
+            ]
+          }
+        },
+        "embedded-instructions": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "embedded-instructions-0": [
+              "0"
+            ],
+            "embedded-instructions-1": [
+              "0"
+            ],
+            "embedded-instructions-2": [
+              "0"
+            ]
+          }
+        },
+        "long-head": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "long-head-0": [
+              "0"
+            ],
+            "long-head-1": [
+              "0"
+            ],
+            "long-head-2": [
+              "0"
+            ]
+          }
+        },
+        "long-tail": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "long-tail-0": [
+              "0"
+            ],
+            "long-tail-1": [
+              "0"
+            ],
+            "long-tail-2": [
+              "0"
+            ]
+          }
+        },
+        "missing": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": null,
+          "correctly_empty": 1,
+          "selected_ids": {
+            "missing-0": [],
+            "missing-1": [],
+            "missing-2": []
+          }
+        }
+      }
+    },
+    {
+      "strategy": "contextual",
+      "concurrency": 4,
+      "calls": 18,
+      "bypassed": 0,
+      "unknown_usage": 0,
+      "p50_ms": 378.7765,
+      "p95_ms": 1047.34,
+      "mean_client_queue_plus_stage_ms": 1465.5497893901256,
+      "known_scoring_api_usd": 0.000910518,
+      "categories": {
+        "conversation": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "conversation-0": [
+              "0"
+            ],
+            "conversation-1": [
+              "0"
+            ],
+            "conversation-2": [
+              "0"
+            ]
+          }
+        },
+        "duplicates": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "duplicates-0": [
+              "0",
+              "1"
+            ],
+            "duplicates-1": [
+              "0",
+              "1"
+            ],
+            "duplicates-2": [
+              "0",
+              "1"
+            ]
+          }
+        },
+        "embedded-instructions": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "embedded-instructions-0": [
+              "0"
+            ],
+            "embedded-instructions-1": [
+              "0"
+            ],
+            "embedded-instructions-2": [
+              "0"
+            ]
+          }
+        },
+        "long-head": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "long-head-0": [
+              "0"
+            ],
+            "long-head-1": [
+              "0"
+            ],
+            "long-head-2": [
+              "0"
+            ]
+          }
+        },
+        "long-tail": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "long-tail-0": [
+              "0"
+            ],
+            "long-tail-1": [
+              "0"
+            ],
+            "long-tail-2": [
+              "0"
+            ]
+          }
+        },
+        "missing": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": null,
+          "correctly_empty": 1,
+          "selected_ids": {
+            "missing-0": [],
+            "missing-1": [],
+            "missing-2": []
+          }
+        }
+      }
+    },
+    {
+      "strategy": "contextual",
+      "concurrency": 8,
+      "calls": 18,
+      "bypassed": 0,
+      "unknown_usage": 0,
+      "p50_ms": 339.5095,
+      "p95_ms": 838.321,
+      "mean_client_queue_plus_stage_ms": 743.2439213338916,
+      "known_scoring_api_usd": 0.000910518,
+      "categories": {
+        "conversation": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "conversation-0": [
+              "0"
+            ],
+            "conversation-1": [
+              "0"
+            ],
+            "conversation-2": [
+              "0"
+            ]
+          }
+        },
+        "duplicates": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "duplicates-0": [
+              "0",
+              "1"
+            ],
+            "duplicates-1": [
+              "0",
+              "1"
+            ],
+            "duplicates-2": [
+              "0",
+              "1"
+            ]
+          }
+        },
+        "embedded-instructions": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "embedded-instructions-0": [
+              "0"
+            ],
+            "embedded-instructions-1": [
+              "0"
+            ],
+            "embedded-instructions-2": [
+              "0"
+            ]
+          }
+        },
+        "long-head": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "long-head-0": [
+              "0"
+            ],
+            "long-head-1": [
+              "0"
+            ],
+            "long-head-2": [
+              "0"
+            ]
+          }
+        },
+        "long-tail": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": 1.0,
+          "correctly_empty": null,
+          "selected_ids": {
+            "long-tail-0": [
+              "0"
+            ],
+            "long-tail-1": [
+              "0"
+            ],
+            "long-tail-2": [
+              "0"
+            ]
+          }
+        },
+        "missing": {
+          "cases": 3,
+          "bypassed": 0,
+          "evidence_recall": null,
+          "correctly_empty": 1,
+          "selected_ids": {
+            "missing-0": [],
+            "missing-1": [],
+            "missing-2": []
+          }
+        }
+      }
+    }
+  ]
+}

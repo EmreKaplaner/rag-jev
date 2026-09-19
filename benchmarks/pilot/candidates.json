@@ -1,0 +1,1312 @@
+[
+  {
+    "id": "cors",
+    "request": {
+      "query": "Can I use wildcard allow_origins with allow_credentials=True for cookies in FastAPI?",
+      "documents": [
+        {
+          "id": "a6aa0d197c97adda",
+          "text": "* Credentials (Authorization headers, Cookies, etc).\n* Specific HTTP methods (`POST`, `PUT`) or all of them with the wildcard `\"*\"`.\n* Specific HTTP headers or all of them with the wildcard `\"*\"`.",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 21
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "788ac9d7010ed132",
+          "text": "None of `allow_origins`, `allow_methods` and `allow_headers` can be set to `['*']` if `allow_credentials` is set to `True`. All of them must be [explicitly specified](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#credentialed_requests_and_wildcards).",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 26
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "1b4711f47dae7652",
+          "text": "You can also use `File()` with `UploadFile`, for example, to set additional metadata:",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 63
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "2a7ca6eef9bd3c8a",
+          "text": "Then we can use the dependency with:",
+          "metadata": {
+            "source": "dependencies__sub-dependencies.md",
+            "paragraph": 16
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "88750678f69b05b3",
+          "text": "You can use the convenience variables from `fastapi.status`.",
+          "metadata": {
+            "source": "response-status-code.md",
+            "paragraph": 35
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "2144bcbf41a154d5",
+          "text": "When you use the `async` methods, **FastAPI** runs the file methods in a threadpool and awaits for them.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 42
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "d06a270da7889f42",
+          "text": "You can configure it in your **FastAPI** application using the `CORSMiddleware`.",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 18
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "afaba22a8ffea19a",
+          "text": "* `allow_origins` - A list of origins that should be permitted to make cross-origin requests. E.g. `['https://example.org', 'https://www.example.org']`. You can use `['*']` to allow any origin.\n* `allow_origin_regex` - A regex string to match against origins that should be permitted to make cross-origin requests. e.g. `'https://.*\\.example\\.org'`.\n* `allow_methods` - A list of HTTP methods that should be allowed for cross-origin requests. Defaults to `['GET']`. You can use `['*']` to allow all standard methods.\n* `allow_headers` - A list of HTTP request headers that should be supported for cross-origin requests. Defaults to `[]`. You can use `['*']` to allow all headers. The `Accept`, `Accept-Language`, `Content-Language` and `Content-Type` headers are always allowed for [simple CORS requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests).\n* `allow_credentials` - Indicate that cookies should be supported for cross-origin requests. Defaults to `False`.",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 25
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "e48ad5cc3ca87b03",
+          "text": "For example, inside of an `async` *path operation function* you can get the contents with:",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 37
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "b545df39bbb4f5a9",
+          "text": "or any other case variation (uppercase, first letter in uppercase, etc), your function will see the parameter `short` with a `bool` value of `True`. Otherwise as `False`.",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 44
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "4b5161b94698284a",
+          "text": "The same way you can specify a response model, you can also declare the HTTP status code used for the response with the parameter `status_code` in any of the *path operations*:",
+          "metadata": {
+            "source": "response-status-code.md",
+            "paragraph": 2
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "9205aaab4dde1fbf",
+          "text": "Import and use `BackgroundTasks` with parameters in *path operation functions* and dependencies to add background tasks.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 40
+          },
+          "group_id": null,
+          "pinned": false
+        }
+      ],
+      "mode": "filter",
+      "min_relevance": 0.2,
+      "shadow": false
+    }
+  },
+  {
+    "id": "background",
+    "request": {
+      "query": "Should I use FastAPI BackgroundTasks for heavy computation across multiple servers?",
+      "documents": [
+        {
+          "id": "5a713cb5ebdf4b34",
+          "text": "**FastAPI** will create the object of type `BackgroundTasks` for you and pass it as that parameter.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 9
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "938cb4ef6153a210",
+          "text": "If one of your dependencies is declared multiple times for the same *path operation*, for example, multiple dependencies have a common sub-dependency, **FastAPI** will know to call that sub-dependency only once per request.",
+          "metadata": {
+            "source": "dependencies__sub-dependencies.md",
+            "paragraph": 27
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "713a16e4598ad6be",
+          "text": "If you need to perform heavy background computation and you don't necessarily need it to be run by the same process (for example, you don't need to share memory, variables, etc), you might benefit from using other bigger tools like [Celery](https://docs.celeryq.dev).",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 36
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "c0d3b11bdf8805d4",
+          "text": "They tend to require more complex configurations, a message/job queue manager, like RabbitMQ or Redis, but they allow you to run background tasks in multiple processes, and especially, in multiple servers.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 37
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "673ea983e8899dd5",
+          "text": "## Using `BackgroundTasks` { #using-backgroundtasks }",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 6
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "a245806ea0cf24f1",
+          "text": "By only using `BackgroundTasks` (and not `BackgroundTask`), it's then possible to use it as a *path operation function* parameter and have **FastAPI** handle the rest for you, just like when using the `Request` object directly.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 32
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "2144bcbf41a154d5",
+          "text": "When you use the `async` methods, **FastAPI** runs the file methods in a threadpool and awaits for them.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 42
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "afaba22a8ffea19a",
+          "text": "* `allow_origins` - A list of origins that should be permitted to make cross-origin requests. E.g. `['https://example.org', 'https://www.example.org']`. You can use `['*']` to allow any origin.\n* `allow_origin_regex` - A regex string to match against origins that should be permitted to make cross-origin requests. e.g. `'https://.*\\.example\\.org'`.\n* `allow_methods` - A list of HTTP methods that should be allowed for cross-origin requests. Defaults to `['GET']`. You can use `['*']` to allow all standard methods.\n* `allow_headers` - A list of HTTP request headers that should be supported for cross-origin requests. Defaults to `[]`. You can use `['*']` to allow all headers. The `Accept`, `Accept-Language`, `Content-Language` and `Content-Type` headers are always allowed for [simple CORS requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests).\n* `allow_credentials` - Indicate that cookies should be supported for cross-origin requests. Defaults to `False`.",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 25
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "4275de7cc442478e",
+          "text": "Using `BackgroundTasks` also works with the dependency injection system, you can declare a parameter of type `BackgroundTasks` at multiple levels: in a *path operation function*, in a dependency (dependable), in a sub-dependency, etc.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 23
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "9205aaab4dde1fbf",
+          "text": "Import and use `BackgroundTasks` with parameters in *path operation functions* and dependencies to add background tasks.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 40
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "bfc2f18db4544005",
+          "text": "## Multiple File Uploads { #multiple-file-uploads }",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 65
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "88750678f69b05b3",
+          "text": "You can use the convenience variables from `fastapi.status`.",
+          "metadata": {
+            "source": "response-status-code.md",
+            "paragraph": 35
+          },
+          "group_id": null,
+          "pinned": false
+        }
+      ],
+      "mode": "filter",
+      "min_relevance": 0.2,
+      "shadow": false
+    }
+  },
+  {
+    "id": "upload",
+    "request": {
+      "query": "Does FastAPI UploadFile keep an entire large uploaded file in memory?",
+      "documents": [
+        {
+          "id": "8ae4656bd5b4f560",
+          "text": "Import `File` and `UploadFile` from `fastapi`:",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 10
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "734a0d32d07b6d5b",
+          "text": "Keep in mind that this means that the whole contents will be stored in memory. This will work well for small files.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 24
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "5ac754099b9b2d90",
+          "text": "Use `File`, `bytes`, and `UploadFile` to declare files to be uploaded in the request, sent as form data.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 79
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "8ea45c770f2bed69",
+          "text": "* You don't have to use `File()` in the default value of the parameter.\n* It uses a \"spooled\" file:\n    * A file stored in memory up to a maximum size limit, and after passing this limit it will be stored on disk.\n* This means that it will work well for large files like images, videos, large binaries, etc. without consuming all the memory.\n* You can get metadata from the uploaded file.\n* It has a [file-like](https://docs.python.org/3/glossary.html#term-file-like-object) `async` interface.\n* It exposes an actual Python [`SpooledTemporaryFile`](https://docs.python.org/3/library/tempfile.html#tempfile.SpooledTemporaryFile) object that you can pass directly to other libraries that expect a file-like object.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 30
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "e226d26126a292b8",
+          "text": "## File Parameters with `UploadFile` { #file-parameters-with-uploadfile }",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 26
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "0a3bf038a0d65408",
+          "text": "You can define files to be uploaded by the client using `File`.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 2
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "6d9a68f4a53e7382",
+          "text": "Define a file parameter with a type of `UploadFile`:",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 27
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "51739aefad2ecdfe",
+          "text": "In this case, the task function will write to a file (simulating sending an email).",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 14
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "df8bc5d911af44a1",
+          "text": "**FastAPI**'s `UploadFile` inherits directly from **Starlette**'s `UploadFile`, but adds some necessary parts to make it compatible with **Pydantic** and the other parts of FastAPI.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 45
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "2144bcbf41a154d5",
+          "text": "When you use the `async` methods, **FastAPI** runs the file methods in a threadpool and awaits for them.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 42
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "1b4711f47dae7652",
+          "text": "You can also use `File()` with `UploadFile`, for example, to set additional metadata:",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 63
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "e98fe78ca0990953",
+          "text": "### `UploadFile` { #uploadfile }",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 31
+          },
+          "group_id": null,
+          "pinned": false
+        }
+      ],
+      "mode": "filter",
+      "min_relevance": 0.2,
+      "shadow": false
+    }
+  },
+  {
+    "id": "204",
+    "request": {
+      "query": "Can an HTTP 204 response include a JSON body in FastAPI?",
+      "documents": [
+        {
+          "id": "e6fe52b9f660838a",
+          "text": "You can declare multiple `File` and `Form` parameters in a *path operation*, but you can't also declare `Body` fields that you expect to receive as JSON, as the request will have the body encoded using `multipart/form-data` instead of `application/json`.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 56
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "ecbc4c4ccd5df3a0",
+          "text": "You can declare multiple `Form` parameters in a *path operation*, but you can't also declare `Body` fields that you expect to receive as JSON, as the request will have the body encoded using `application/x-www-form-urlencoded` instead of `application/json`.",
+          "metadata": {
+            "source": "request-forms.md",
+            "paragraph": 32
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "4b5161b94698284a",
+          "text": "The same way you can specify a response model, you can also declare the HTTP status code used for the response with the parameter `status_code` in any of the *path operations*:",
+          "metadata": {
+            "source": "response-status-code.md",
+            "paragraph": 2
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "cb179a6dffeb3273",
+          "text": "FastAPI knows this, and will produce OpenAPI docs that state there is no response body.",
+          "metadata": {
+            "source": "response-status-code.md",
+            "paragraph": 17
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "c4f06d48d386f815",
+          "text": "Any request with an `Origin` header. In this case the middleware will pass the request through as normal, but will include appropriate CORS headers on the response.",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 33
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "ae08a0ca57c32331",
+          "text": "Some response codes (see the next section) indicate that the response does not have a body.",
+          "metadata": {
+            "source": "response-status-code.md",
+            "paragraph": 16
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "94454ee3ab791b5a",
+          "text": "* Email notifications sent after performing an action:\n    * As connecting to an email server and sending an email tends to be \"slow\" (several seconds), you can return the response right away and send the email notification in the background.\n* Processing data:\n    * For example, let's say you receive a file that must go through a slow process, you can return a response of \"Accepted\" (HTTP 202) and process the file in the background.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 5
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "3e20eb45ea63cce8",
+          "text": "In HTTP, you send a numeric status code of 3 digits as part of the response.",
+          "metadata": {
+            "source": "response-status-code.md",
+            "paragraph": 23
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "d3433699cdf9ae4f",
+          "text": "In this case, the list would have to include `http://localhost:8080` for the `:8080`-frontend to work correctly.",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 12
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "d06a270da7889f42",
+          "text": "You can configure it in your **FastAPI** application using the `CORSMiddleware`.",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 18
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "7da82e55e27364f5",
+          "text": "It's still possible to use `BackgroundTask` alone in FastAPI, but you have to create the object in your code and return a Starlette `Response` including it.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 33
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "0417cde5872f7285",
+          "text": "You can define background tasks to be run *after* returning a response.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 2
+          },
+          "group_id": null,
+          "pinned": false
+        }
+      ],
+      "mode": "filter",
+      "min_relevance": 0.2,
+      "shadow": false
+    }
+  },
+  {
+    "id": "headers",
+    "request": {
+      "query": "How does FastAPI Header map the Python parameter user_agent to the User-Agent HTTP header?",
+      "documents": [
+        {
+          "id": "d83791d7952da108",
+          "text": "But a variable like `user-agent` is invalid in Python.",
+          "metadata": {
+            "source": "header-params.md",
+            "paragraph": 20
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "e2ffb767cfe186db",
+          "text": "So, you can use `user_agent` as you normally would in Python code, instead of needing to capitalize the first letters as `User_Agent` or something similar.",
+          "metadata": {
+            "source": "header-params.md",
+            "paragraph": 23
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "df46e69fd2cab237",
+          "text": "# Header Parameters { #header-parameters }",
+          "metadata": {
+            "source": "header-params.md",
+            "paragraph": 1
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "f6d7c31360aad86e",
+          "text": "## Import `Header` { #import-header }",
+          "metadata": {
+            "source": "header-params.md",
+            "paragraph": 3
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "63678390b7f825ed",
+          "text": "## Declare `Header` parameters { #declare-header-parameters }",
+          "metadata": {
+            "source": "header-params.md",
+            "paragraph": 6
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "565bfae0a0c24b4e",
+          "text": "You will receive all the values from the duplicate header as a Python `list`.",
+          "metadata": {
+            "source": "header-params.md",
+            "paragraph": 32
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "9c011821cd37db2f",
+          "text": "So, by default, `Header` will convert the parameter names characters from underscore (`_`) to hyphen (`-`) to extract and document the headers.",
+          "metadata": {
+            "source": "header-params.md",
+            "paragraph": 21
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "bb99265ea94ed239",
+          "text": "If for some reason you need to disable automatic conversion of underscores to hyphens, set the parameter `convert_underscores` of `Header` to `False`:",
+          "metadata": {
+            "source": "header-params.md",
+            "paragraph": 24
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "2d35920cba6539d8",
+          "text": "First import `Header`:",
+          "metadata": {
+            "source": "header-params.md",
+            "paragraph": 4
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "a138de9e571241d8",
+          "text": "It is possible to receive duplicate headers. That means, the same header with multiple values.",
+          "metadata": {
+            "source": "header-params.md",
+            "paragraph": 30
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "73d17ff05152788a",
+          "text": "Later, in the [Advanced User Guide](../advanced/response-change-status-code.md), you will see how to return a different status code than the default you are declaring here.",
+          "metadata": {
+            "source": "response-status-code.md",
+            "paragraph": 44
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "e5f9c45385ee2c2a",
+          "text": "To declare headers, you need to use `Header`, because otherwise the parameters would be interpreted as query parameters.",
+          "metadata": {
+            "source": "header-params.md",
+            "paragraph": 15
+          },
+          "group_id": null,
+          "pinned": false
+        }
+      ],
+      "mode": "filter",
+      "min_relevance": 0.2,
+      "shadow": false
+    }
+  },
+  {
+    "id": "optional",
+    "request": {
+      "query": "How do I make a FastAPI query parameter optional without giving it a specific non-null default?",
+      "documents": [
+        {
+          "id": "9ac390d767a9a1c6",
+          "text": "If you don't want to add a specific value but just make it optional, set the default as `None`.",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 52
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "0d64afffda44f9be",
+          "text": "It declares an optional query parameter `q` as a `str`, and then it just returns it.",
+          "metadata": {
+            "source": "dependencies__sub-dependencies.md",
+            "paragraph": 8
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "210de59def8fcf8f",
+          "text": "But when you want to make a query parameter required, you can just not declare any default value:",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 53
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "7940ff108229e50e",
+          "text": "You can make a file optional by using standard type annotations and setting a default value of `None`:",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 60
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "14f954e279eca74a",
+          "text": "When you declare a default value for non-path parameters (for now, we have only seen query parameters), then it is not required.",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 51
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "7f71263bf0d2866d",
+          "text": "Also notice that **FastAPI** is smart enough to notice that the path parameter `item_id` is a path parameter and `q` is not, so, it's a query parameter.",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 29
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "14a3391ca2d09359",
+          "text": "As query parameters are not a fixed part of a path, they can be optional and can have default values.",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 14
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "b962fb1936c900b0",
+          "text": "In this case, the function parameter `q` will be optional, and will be `None` by default.",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 27
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "5f9c6fa313f753db",
+          "text": "It can be an `async def` or normal `def` function, **FastAPI** will know how to handle it correctly.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 13
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "0748fac55afcf744",
+          "text": "The same way, you can declare optional query parameters, by setting their default to `None`:",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 25
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "dda031590c0bef63",
+          "text": "**FastAPI** knows what to do in each case and how to reuse the same object, so that all the background tasks are merged together and are run in the background afterwards:",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 24
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "b879be2f0bafb618",
+          "text": "Here the query parameter `needy` is a required query parameter of type `str`.",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 55
+          },
+          "group_id": null,
+          "pinned": false
+        }
+      ],
+      "mode": "filter",
+      "min_relevance": 0.2,
+      "shadow": false
+    }
+  },
+  {
+    "id": "forms",
+    "request": {
+      "query": "Can I receive Form fields and Body fields as JSON in the same FastAPI request body?",
+      "documents": [
+        {
+          "id": "e6fe52b9f660838a",
+          "text": "You can declare multiple `File` and `Form` parameters in a *path operation*, but you can't also declare `Body` fields that you expect to receive as JSON, as the request will have the body encoded using `multipart/form-data` instead of `application/json`.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 56
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "ecbc4c4ccd5df3a0",
+          "text": "You can declare multiple `Form` parameters in a *path operation*, but you can't also declare `Body` fields that you expect to receive as JSON, as the request will have the body encoded using `application/x-www-form-urlencoded` instead of `application/json`.",
+          "metadata": {
+            "source": "request-forms.md",
+            "paragraph": 32
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "f967fa3626df9353",
+          "text": "When you need to receive form fields instead of JSON, you can use `Form`.",
+          "metadata": {
+            "source": "request-forms.md",
+            "paragraph": 2
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "7b71d50a53003097",
+          "text": "Create file parameters the same way you would for `Body` or `Form`:",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 13
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "6b2708050a545415",
+          "text": "Create form parameters the same way you would for `Body` or `Query`:",
+          "metadata": {
+            "source": "request-forms.md",
+            "paragraph": 12
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "d0defed851a23395",
+          "text": "With `Form` you can declare the same configurations as with `Body` (and `Query`, `Path`, `Cookie`), including validation, examples, an alias (e.g. `user-name` instead of `username`), etc.",
+          "metadata": {
+            "source": "request-forms.md",
+            "paragraph": 16
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "f3bd4d6b069d0e1c",
+          "text": "The <dfn title=\"specification\">spec</dfn> requires the fields to be exactly named `username` and `password`, and to be sent as form fields, not JSON.",
+          "metadata": {
+            "source": "request-forms.md",
+            "paragraph": 15
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "cd6ed80021750406",
+          "text": "To declare form bodies, you need to use `Form` explicitly, because without it the parameters would be interpreted as query parameters or body (JSON) parameters.",
+          "metadata": {
+            "source": "request-forms.md",
+            "paragraph": 21
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "2647521956584a5c",
+          "text": "`Form` is a class that inherits directly from `Body`.",
+          "metadata": {
+            "source": "request-forms.md",
+            "paragraph": 18
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "cb179a6dffeb3273",
+          "text": "FastAPI knows this, and will produce OpenAPI docs that state there is no response body.",
+          "metadata": {
+            "source": "response-status-code.md",
+            "paragraph": 17
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "95260d79e2947a18",
+          "text": "## About \"Form Fields\" { #about-form-fields }",
+          "metadata": {
+            "source": "request-forms.md",
+            "paragraph": 23
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "752d062754b4f741",
+          "text": "But when the form includes files, it is encoded as `multipart/form-data`. If you use `File`, **FastAPI** will know it has to get the files from the correct part of the body.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 52
+          },
+          "group_id": null,
+          "pinned": false
+        }
+      ],
+      "mode": "filter",
+      "min_relevance": 0.2,
+      "shadow": false
+    }
+  },
+  {
+    "id": "dependency",
+    "request": {
+      "query": "When a FastAPI dependency is used multiple times in one request, is it called each time, and how can I disable caching?",
+      "documents": [
+        {
+          "id": "6d0fa0d511cab09b",
+          "text": "For example, in one of the ways the OAuth2 specification can be used (called \"password flow\") it is required to send a `username` and `password` as form fields.",
+          "metadata": {
+            "source": "request-forms.md",
+            "paragraph": 14
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "938cb4ef6153a210",
+          "text": "If one of your dependencies is declared multiple times for the same *path operation*, for example, multiple dependencies have a common sub-dependency, **FastAPI** will know to call that sub-dependency only once per request.",
+          "metadata": {
+            "source": "dependencies__sub-dependencies.md",
+            "paragraph": 27
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "a79a842be17a758f",
+          "text": "## Using the same dependency multiple times { #using-the-same-dependency-multiple-times }",
+          "metadata": {
+            "source": "dependencies__sub-dependencies.md",
+            "paragraph": 26
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "92c7882ac3e6d2fa",
+          "text": "In an advanced scenario where you know you need the dependency to be called at every step (possibly multiple times) in the same request instead of using the \"cached\" value, you can set the parameter `use_cache=False` when using `Depends`:",
+          "metadata": {
+            "source": "dependencies__sub-dependencies.md",
+            "paragraph": 29
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "fa028655d9599c76",
+          "text": "You can declare multiple path parameters and query parameters at the same time, **FastAPI** knows which is which.",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 46
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "43071dc1faba5cd1",
+          "text": "Then you can create another dependency function (a \"dependable\") that at the same time declares a dependency of its own (so it is a \"dependant\" too):",
+          "metadata": {
+            "source": "dependencies__sub-dependencies.md",
+            "paragraph": 11
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "e5f3bad41641880a",
+          "text": "And it will save the returned value in a <dfn title=\"A utility/system to store computed/generated values, to reuse them instead of computing them again.\">\"cache\"</dfn> and pass it to all the \"dependants\" that need it in that specific request, instead of calling the dependency multiple times for the same request.",
+          "metadata": {
+            "source": "dependencies__sub-dependencies.md",
+            "paragraph": 28
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "dda031590c0bef63",
+          "text": "**FastAPI** knows what to do in each case and how to reuse the same object, so that all the background tasks are merged together and are run in the background afterwards:",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 24
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "4275de7cc442478e",
+          "text": "Using `BackgroundTasks` also works with the dependency injection system, you can declare a parameter of type `BackgroundTasks` at multiple levels: in a *path operation function*, in a dependency (dependable), in a sub-dependency, etc.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 23
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "0a4aa2cd3461177a",
+          "text": "But you will see how useful it is in the chapters about **security**.",
+          "metadata": {
+            "source": "dependencies__sub-dependencies.md",
+            "paragraph": 45
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "5f9c6fa313f753db",
+          "text": "It can be an `async def` or normal `def` function, **FastAPI** will know how to handle it correctly.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 13
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "a245806ea0cf24f1",
+          "text": "By only using `BackgroundTasks` (and not `BackgroundTask`), it's then possible to use it as a *path operation function* parameter and have **FastAPI** handle the rest for you, just like when using the `Request` object directly.",
+          "metadata": {
+            "source": "background-tasks.md",
+            "paragraph": 32
+          },
+          "group_id": null,
+          "pinned": false
+        }
+      ],
+      "mode": "filter",
+      "min_relevance": 0.2,
+      "shadow": false
+    }
+  },
+  {
+    "id": "unknown-origin",
+    "request": {
+      "query": "What is the exact production CORS allowed origin configured by the fictional company Northstar Widgets?",
+      "documents": [
+        {
+          "id": "97872f65c66407b6",
+          "text": "# CORS (Cross-Origin Resource Sharing) { #cors-cross-origin-resource-sharing }",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 1
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "1d172ef27d6e17a9",
+          "text": "## What is \"Form Data\" { #what-is-form-data }",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 47
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "c5ab89fd0dba4c85",
+          "text": "For more info about <abbr title=\"Cross-Origin Resource Sharing\">CORS</abbr>, check the [Mozilla CORS documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 35
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "b37729e1d9e9d331",
+          "text": "[CORS or \"Cross-Origin Resource Sharing\"](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) refers to the situations when a frontend running in a browser has JavaScript code that communicates with a backend, and the backend is in a different \"origin\" than the frontend.",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 2
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "f83319f3f252e870",
+          "text": "## Origin { #origin }",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 3
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "afaba22a8ffea19a",
+          "text": "* `allow_origins` - A list of origins that should be permitted to make cross-origin requests. E.g. `['https://example.org', 'https://www.example.org']`. You can use `['*']` to allow any origin.\n* `allow_origin_regex` - A regex string to match against origins that should be permitted to make cross-origin requests. e.g. `'https://.*\\.example\\.org'`.\n* `allow_methods` - A list of HTTP methods that should be allowed for cross-origin requests. Defaults to `['GET']`. You can use `['*']` to allow all standard methods.\n* `allow_headers` - A list of HTTP request headers that should be supported for cross-origin requests. Defaults to `[]`. You can use `['*']` to allow all headers. The `Accept`, `Accept-Language`, `Content-Language` and `Content-Type` headers are always allowed for [simple CORS requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests).\n* `allow_credentials` - Indicate that cookies should be supported for cross-origin requests. Defaults to `False`.",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 25
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "c4f06d48d386f815",
+          "text": "Any request with an `Origin` header. In this case the middleware will pass the request through as normal, but will include appropriate CORS headers on the response.",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 33
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "e1e6f217d19d68da",
+          "text": "### CORS preflight requests { #cors-preflight-requests }",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 29
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "cf35aa79240c0a8d",
+          "text": "The query is the set of key-value pairs that go after the `?` in a URL, separated by `&` characters.",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 4
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "2c8361de8fddbcee",
+          "text": "An origin is the combination of protocol (`http`, `https`), domain (`myapp.com`, `localhost`, `localhost.tiangolo.com`), and port (`80`, `443`, `8080`).",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 4
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "17ea979458336957",
+          "text": "To achieve this, the `:80`-backend must have a list of \"allowed origins\".",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 11
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "284b61761770730e",
+          "text": "So, for everything to work correctly, it's better to specify explicitly the allowed origins.",
+          "metadata": {
+            "source": "cors.md",
+            "paragraph": 16
+          },
+          "group_id": null,
+          "pinned": false
+        }
+      ],
+      "mode": "filter",
+      "min_relevance": 0.2,
+      "shadow": false
+    }
+  },
+  {
+    "id": "unknown-limit",
+    "request": {
+      "query": "What exact upload size limit has the fictional company Northstar Widgets configured for its production API?",
+      "documents": [
+        {
+          "id": "6019be242ae85913",
+          "text": "## Optional File Upload { #optional-file-upload }",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 59
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "68e4886106c18ec6",
+          "text": "`Header` has a little extra functionality on top of what `Path`, `Query` and `Cookie` provide.",
+          "metadata": {
+            "source": "header-params.md",
+            "paragraph": 18
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "1d172ef27d6e17a9",
+          "text": "## What is \"Form Data\" { #what-is-form-data }",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 47
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "830f282fabdc1a45",
+          "text": "It's possible to upload several files at the same time.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 66
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "7198492d5f89ef55",
+          "text": "`UploadFile` has the following attributes:",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 32
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "f7bd1d34fc0a2807",
+          "text": "Using `UploadFile` has several advantages over `bytes`:",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 29
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "8ea45c770f2bed69",
+          "text": "* You don't have to use `File()` in the default value of the parameter.\n* It uses a \"spooled\" file:\n    * A file stored in memory up to a maximum size limit, and after passing this limit it will be stored on disk.\n* This means that it will work well for large files like images, videos, large binaries, etc. without consuming all the memory.\n* You can get metadata from the uploaded file.\n* It has a [file-like](https://docs.python.org/3/glossary.html#term-file-like-object) `async` interface.\n* It exposes an actual Python [`SpooledTemporaryFile`](https://docs.python.org/3/library/tempfile.html#tempfile.SpooledTemporaryFile) object that you can pass directly to other libraries that expect a file-like object.",
+          "metadata": {
+            "source": "request-files.md",
+            "paragraph": 30
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "90d12ea706c84395",
+          "text": "If you already know what HTTP status codes are, skip to the next section.",
+          "metadata": {
+            "source": "response-status-code.md",
+            "paragraph": 21
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "c51e6f7cf8139899",
+          "text": "In the example above they have default values of `skip=0` and `limit=10`.",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 15
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "eec6436777feafea",
+          "text": "```\nhttp://127.0.0.1:8000/items/?skip=0&limit=10\n```",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 6
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "9ef4bfce5cde9f39",
+          "text": "```\nhttp://127.0.0.1:8000/items/?skip=0&limit=10\n```",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 19
+          },
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "f84c9337ed405a61",
+          "text": "* `skip=20`: because you set it in the URL\n* `limit=10`: because that was the default value",
+          "metadata": {
+            "source": "query-params.md",
+            "paragraph": 23
+          },
+          "group_id": null,
+          "pinned": false
+        }
+      ],
+      "mode": "filter",
+      "min_relevance": 0.2,
+      "shadow": false
+    }
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "hotpotqa": {
+    "url": "https://raw.githubusercontent.com/hotpotqa/hotpot/fa3a36370899e1d85822de61e58c85ea19993154/hotpot_evaluate_v1.py",
+    "sha256": "d35fc91a6db21d791dbdda11daf3856e9359f5701d54e3eefba20d88fecc02c0",
+    "local_path": "artifacts/benchmark-research/hotpotqa-official-metrics.py"
+  },
+  "musique": {
+    "url": "https://raw.githubusercontent.com/StonyBrookNLP/musique/8b8d8ce102f97f968b259ea587a4482163eed2ff/metrics/answer.py",
+    "sha256": "10368f619b4d5ef5d83748c05a96c0afd332a14ab5c010740c98d58dfaefe974",
+    "local_path": "artifacts/benchmark-research/musique-official-metrics.py"
+  }
+}

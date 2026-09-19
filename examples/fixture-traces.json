@@ -1,0 +1,80 @@
+[
+  {
+    "case_id": "refund",
+    "input_hash": "139194cd2bfaa0152005d3d71d431fca26da44344cc29e3d36a0e01a513bc560",
+    "prompt_version": "useful-evidence-v1",
+    "relevance_guidance": null,
+    "judgments": [
+      {
+        "relevance": 0.03,
+        "model": "fixture-not-jev",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.98,
+        "model": "fixture-not-jev",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.6,
+        "model": "fixture-not-jev",
+        "input_tokens": 0,
+        "output_tokens": 0
+      }
+    ],
+    "elapsed_ms": 0.0,
+    "source": "hand_authored_fixture_NOT_a_model_benchmark"
+  },
+  {
+    "case_id": "correction",
+    "input_hash": "40a688cff8e2a2636209b7dd9508c5da27804da39240f7cd76e52c806cb4a394",
+    "prompt_version": "useful-evidence-v1",
+    "relevance_guidance": null,
+    "judgments": [
+      {
+        "relevance": 0.97,
+        "model": "fixture-not-jev",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.85,
+        "model": "fixture-not-jev",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.02,
+        "model": "fixture-not-jev",
+        "input_tokens": 0,
+        "output_tokens": 0
+      }
+    ],
+    "elapsed_ms": 0.0,
+    "source": "hand_authored_fixture_NOT_a_model_benchmark"
+  },
+  {
+    "case_id": "no-answer",
+    "input_hash": "d1502a0783b2aad3eb0b4620f604ec510da36ae70e35e8761d41f8deb7e31db1",
+    "prompt_version": "useful-evidence-v1",
+    "relevance_guidance": null,
+    "judgments": [
+      {
+        "relevance": 0.01,
+        "model": "fixture-not-jev",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.08,
+        "model": "fixture-not-jev",
+        "input_tokens": 0,
+        "output_tokens": 0
+      }
+    ],
+    "elapsed_ms": 0.0,
+    "source": "hand_authored_fixture_NOT_a_model_benchmark"
+  }
+]

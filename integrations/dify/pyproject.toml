@@ -1,0 +1,5 @@
+[project]
+name = "rag-jev-dify"
+version = "0.1.0"
+requires-python = ">=3.12,<3.14"
+dependencies = ["dify-plugin>=0.7,<0.8", "httpx>=0.28,<1"]

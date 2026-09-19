@@ -1,0 +1,28 @@
+{
+  "candidate": {
+    "name": "jev_0.2_rank",
+    "kind": "jev",
+    "threshold": 0.2,
+    "order": "rank"
+  },
+  "neural": {
+    "name": "ettin_top8",
+    "kind": "ettin",
+    "top_k": 8
+  },
+  "eligible": true,
+  "protocol_hash": "58b8b51703519f8477b88690cd37b3f6da023c0b62205c1909e9d97c179b8347",
+  "development_report_hash": "7fbe32d28eeecb1b7e24af9006e113a955e42a13f51b88dd1e4567e0f8527635",
+  "power_planning": {
+    "hotpotqa": {
+      "planned_questions": 200,
+      "approx_80pct_power_mde_f1": 0.04403139769689647,
+      "note": "Normal approximation using development paired SD; not a post-hoc power claim."
+    },
+    "musique": {
+      "planned_questions": 200,
+      "approx_80pct_power_mde_f1": 0.06958129924688046,
+      "note": "Normal approximation using development paired SD; not a post-hoc power claim."
+    }
+  }
+}

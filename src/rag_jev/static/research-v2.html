@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>rag-jev · Research round 2</title><link rel="stylesheet" href="/assets/style.css">
+</head><body><header class="masthead"><a href="/" class="wordmark">rag—jev</a>
+<span>RESEARCH / 400 NEW QUESTIONS</span><a href="/benchmarks">Round 1 results ↗</a></header>
+<main><section class="intro"><div><p class="eyebrow">Evidence retention, tested again</p>
+<h1>Keep the links.<br><em>Measure the tradeoff.</em></h1></div>
+<p class="intro-note">A lower cutoff and relevance ordering, chosen on development data
+and evaluated once on fresh questions.</p></section>
+<img src="/assets/research-v2-results.svg" width="1500" height="500"
+style="width:100%;height:auto" alt="Answer F1, total API cost and complete evidence retention">
+<div style='overflow-x:auto'><table style='width:100%;text-align:left;line-height:2'><thead><tr><th>Dataset (200 questions)</th><th>Pipeline</th><th>Answer EM</th><th>Answer F1</th><th>API cost / 100</th><th>Support recall</th><th>All support retained</th></tr></thead><tbody><tr><td>HotpotQA</td><td>All context</td><td>58.00</td><td>75.08</td><td>$0.033994</td><td>100.00%</td><td>100.00%</td></tr><tr><td>HotpotQA</td><td>Old Jev profile</td><td>62.00</td><td>77.57</td><td>$0.025022</td><td>97.75%</td><td>95.50%</td></tr><tr><td>HotpotQA</td><td>Research v2</td><td>59.50</td><td>76.87</td><td>$0.027746</td><td>99.25%</td><td>98.50%</td></tr><tr><td>MuSiQue-Ans</td><td>All context</td><td>55.00</td><td>66.52</td><td>$0.064869</td><td>100.00%</td><td>100.00%</td></tr><tr><td>MuSiQue-Ans</td><td>Old Jev profile</td><td>50.00</td><td>62.24</td><td>$0.047798</td><td>91.79%</td><td>80.00%</td></tr><tr><td>MuSiQue-Ans</td><td>Research v2</td><td>54.00</td><td>63.92</td><td>$0.053823</td><td>96.50%</td><td>91.00%</td></tr></tbody></table></div><p>The predeclared accuracy-and-cost gate versus all context is not met.</p><p>HotpotQA, research v2 versus all context: F1 +1.80 points; 95% paired interval [-1.34, +4.78]. Estimated API cost 18.4% lower.</p><p>HotpotQA, research v2 versus old jev profile: F1 -0.70 points; 95% paired interval [-3.67, +2.29]. Estimated API cost 10.9% higher.</p><p>MuSiQue-Ans, research v2 versus all context: F1 -2.60 points; 95% paired interval [-7.36, +2.42]. Estimated API cost 17.0% lower.</p><p>MuSiQue-Ans, research v2 versus old jev profile: F1 +1.68 points; 95% paired interval [-2.54, +6.08]. Estimated API cost 12.6% higher.</p><p>400 fresh validation questions, 200 per dataset, disjoint from all 240 development questions. Supplied candidate passages; Jev 1.13.0 and GPT-5.6 Luna, low reasoning. At most one generation per branch; 1,200 evaluation branches. Costs include Jev and generation with reported cache discounts; common retrieval, hosting and networking excluded. These are subsets, not full benchmark or leaderboard results.</p><p>0 errors; 0 unknown costs; 0 unknown cache-usage records; 0 truncations</p><p>Answer F1 measures normalized token overlap, so wording changes can affect scores. Supporting-passage retention is a separate diagnostic. Model training overlap is unknown. No query expansion, full-corpus retrieval, or modern neural reranker comparison was tested. MuSiQue uses the pinned community mirror described in the protocol.</p>
+<p><a href="/assets/research-v2-results.json" download>Download measured results</a> ·
+<a href="/assets/research-v2-protocol.json" download>Download frozen protocol</a> ·
+<a href="/">Open workbench</a></p>
+<p>Profile: passages together, filter &amp; rerank, cutoff 0.20, no top-N cap.
+Test on your own retrieval results before adopting it.</p>
+<footer>Reproducible experiments; all wins and regressions retained.
+<span>September 18, 2026</span></footer></main></body></html>

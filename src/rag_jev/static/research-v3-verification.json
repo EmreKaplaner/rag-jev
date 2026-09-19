@@ -1,0 +1,16 @@
+{
+  "answer_records": 9312,
+  "captured_requests": 9312,
+  "empty_branches": 0,
+  "production_policy_parity": 1984,
+  "neural_truncated_pairs": 0,
+  "status": "passed",
+  "protocol_hash": "58b8b51703519f8477b88690cd37b3f6da023c0b62205c1909e9d97c179b8347",
+  "artifact_manifest_hash": "fc7a0ed90cf6f455da1d2c6ff6a17f2529b7968c6bc365b4a590ff57ec4f1a13",
+  "evaluation_report_hash": "4da0d4d0604b41d09eed95188d2756a6518795bb48a5bca77a1397fb89f6f155",
+  "actual_generation_models": [
+    "gpt-5.6-luna"
+  ],
+  "evaluation_questions": 400,
+  "shared_evaluation_isolation_keys": 0
+}

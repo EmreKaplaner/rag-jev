@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>rag-jev · Public benchmark results</title><link rel="stylesheet" href="/assets/style.css">
+</head><body><header class="masthead"><a href="/" class="wordmark">rag—jev</a>
+<span>PUBLIC BENCHMARKS / 200 QUESTIONS</span><a href="/">Open workbench ↗</a></header>
+<main><section class="intro"><div><p class="eyebrow">Measured, with the tradeoffs visible</p>
+<h1>Less context.<br><em>Check the outcome.</em></h1></div><p class="intro-note">
+Compare answer scores, estimated total API costs, and supporting evidence.
+The differences and uncertainty below come from the frozen evaluation records.</p></section>
+<p><a href="/assets/research-v3.html">Controlled study: isolated questions, repeated answers,
+and a neural baseline ↗</a> · <a href="/assets/retrieval-v1.html">SciFact corpus retrieval ↗</a></p>
+<p><a href="/assets/research-v2.html">Research round 2: 400 new questions ↗</a>
+— better evidence retention, mixed answer results, and the measured cost tradeoff.</p>
+<img src="/assets/benchmark-results.svg" width="1200" height="480"
+style="width:100%;height:auto"
+alt="Answer F1 and total API cost comparisons, 100 questions per dataset">
+<div style="overflow-x:auto"><table style="width:100%;text-align:left;line-height:2"><thead><tr><th>Dataset (100 questions)</th><th>Pipeline</th><th>Answer EM</th><th>Answer F1</th><th>API cost / 100</th><th>Support recall</th></tr></thead><tbody><tr><td>HotpotQA</td><td>All context</td><td>65.00</td><td>77.97</td><td>$0.034281</td><td>100.00%</td></tr><tr><td>HotpotQA</td><td>BM25 top 5</td><td>51.00</td><td>59.88</td><td>$0.020512</td><td>78.50%</td></tr><tr><td>HotpotQA</td><td>Jev contextual</td><td>69.00</td><td>80.08</td><td>$0.025130</td><td>97.00%</td></tr><tr><td>MuSiQue-Ans</td><td>All context</td><td>52.00</td><td>64.30</td><td>$0.066016</td><td>100.00%</td></tr><tr><td>MuSiQue-Ans</td><td>BM25 top 5</td><td>26.00</td><td>34.46</td><td>$0.027427</td><td>58.42%</td></tr><tr><td>MuSiQue-Ans</td><td>Jev contextual</td><td>58.00</td><td>64.76</td><td>$0.050748</td><td>87.67%</td></tr></tbody></table></div><p>Fixed validation-set subsets; dataset-provided candidates; Jev 1.13.0;
+GPT-5.6 Luna with low reasoning; one response per branch. Policy selected on 40 separate
+development questions. Not full benchmark or leaderboard results.</p>
+<p>HotpotQA: F1 difference +2.11 points, 95% paired bootstrap interval [-2.08, +6.68]; estimated API cost 26.7% lower.</p><p>MuSiQue-Ans: F1 difference +0.46 points, 95% paired bootstrap interval [-5.52, +6.63]; estimated API cost 23.1% lower.</p><p>Predeclared accuracy-and-cost gate: not met.</p>
+<p>Neither query expansion nor a modern neural reranker was evaluated.</p>
+<details><summary>Method, sources, and what the costs include</summary>
+<p>Official answer normalization and token F1, checked against the authors' metric functions
+on all 760 development/evaluation predictions. Paired bootstrap: 2,000 resamples.
+Errors: 0; missing cost observations: 0; truncated answers: 0.</p>
+<p>Estimated API cost includes Jev and generation with reported cache discounts. Excludes
+common retrieval, hosting and networking. Rates: Luna $0.20 input/$0.02 cached/$1.20 output
+per million tokens; Jev $0.042 input/free output.</p>
+<p><a href="https://github.com/hotpotqa/hotpot">HotpotQA</a> ·
+<a href="https://github.com/StonyBrookNLP/musique">MuSiQue (CC BY 4.0)</a> ·
+<a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">Luna pricing</a> ·
+<a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev">Jev pricing</a></p>
+<p>MuSiQue came from the pinned dgslibisey/MuSiQue mirror. Model training overlap is unknown.
+No modern neural reranker baseline was evaluated. Full protocol, source hashes, per-case
+records and reproduction commands are in benchmarks/public in the project.</p></details>
+<footer>Reproducible evaluation, not a promise for every RAG pipeline.
+<span>September 18, 2026</span></footer>
+</main></body></html>

@@ -1,0 +1,52 @@
+provider: rag_jev
+label:
+  en_US: rag-jev
+description:
+  en_US: Jev relevance scores from a privately operated rag-jev service.
+icon_small:
+  en_US: icon.svg
+icon_large:
+  en_US: icon.svg
+background: '#f6f3ec'
+supported_model_types: [rerank]
+configurate_methods: [predefined-model]
+provider_credential_schema:
+  credential_form_schemas:
+    - variable: base_url
+      type: text-input
+      required: true
+      label:
+        en_US: rag-jev service URL
+      placeholder:
+        en_US: 'http://host.docker.internal:8000'
+    - variable: api_token
+      type: secret-input
+      required: false
+      label:
+        en_US: Service bearer token (not TypeSafe key)
+    - variable: scoring_strategy
+      type: select
+      required: false
+      default: independent
+      label:
+        en_US: How to judge evidence
+      options:
+        - value: independent
+          label:
+            en_US: Each passage independently
+        - value: contextual
+          label:
+            en_US: Passages together (up to 32)
+    - variable: max_context_tokens
+      type: text-input
+      required: false
+      label:
+        en_US: Passage token budget (cl100k_base estimate, optional)
+models:
+  rerank:
+    predefined: [models/rerank/*.yaml]
+    position: models/rerank/_position.yaml
+extra:
+  python:
+    provider_source: provider/rag_jev.py
+    model_sources: [models/rerank/rerank.py]

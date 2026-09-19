@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "implementation": "pytrec-eval-terrier",
+  "version": "0.5.10",
+  "metric_values_checked": 2700,
+  "maximum_absolute_error": 0.0,
+  "note": "MRR is truncated at 10 because exported runs contain only the returned top10.",
+  "sha256": {
+    "qrels.json": "ba8d27a2575f622560f386b1d4c480a53e6f222575f8fcefe320ae3b082e2e2c",
+    "runs.json": "0d11ec3f2f1da0467eb6b37ebea28e28311642bfca9609982ceff226f5259e2e",
+    "per-query.json": "9a1f91d6f4871cef5a56fc29cfdf723f997169223b4ccc9b91adcdd6ec14d0a4",
+    "protocol.json": "00516ed987a0e89b7d6d0c4fe6e326d66c7152ebd5a55dcd2f36d8f634d2921e",
+    "report.json": "b53569f1679035902dc0f328b5871396e6e6900cf3105e1d04e95c43a765fcf6"
+  }
+}

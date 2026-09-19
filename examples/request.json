@@ -1,0 +1,29 @@
+{
+  "query": "How many days do I have to request a refund?",
+  "documents": [
+    {
+      "id": "shipping",
+      "text": "Orders ship within 5 business days.",
+      "metadata": {
+        "source": "shipping.md"
+      }
+    },
+    {
+      "id": "refund",
+      "text": "You may request a refund within 30 days of purchase.",
+      "metadata": {
+        "source": "refunds.md",
+        "page": 2
+      }
+    },
+    {
+      "id": "receipt",
+      "text": "Keep your receipt; it is required for refund requests.",
+      "metadata": {
+        "source": "refunds.md",
+        "page": 3
+      }
+    }
+  ],
+  "min_relevance": 0.2
+}

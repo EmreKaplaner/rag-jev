@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>rag-jev · Context workbench</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+    <script type="module" src="/assets/app.js"></script>
+  </head>
+  <body>
+    <header class="masthead">
+      <a href="/" class="wordmark">rag<span>—</span>jev</a
+      ><span>CONTEXT WORKBENCH / 01</span
+      ><a href="/benchmarks">Public benchmarks ↗</a>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">A clearer view of your retrieval</p>
+          <h1>Make room for<br /><em>useful evidence.</em></h1>
+        </div>
+        <p class="intro-note">
+          Bring the chunks your retriever found. Inspect what Jev keeps, tune
+          the tradeoff, and compare the answers.
+        </p>
+      </section>
+      <p id="replay-notice" class="hint" hidden></p>
+      <label for="recording">Explore recorded benchmark answers</label>
+      <select id="recording" data-lock><option value="">Choose an improvement or regression</option></select>
+      <div class="pipeline" aria-label="Pipeline">
+        <span>01 / Your retrieval</span
+        ><span class="active">02 / Context selection</span
+        ><span>03 / Your answer model</span>
+      </div>
+      <div class="workspace">
+        <aside class="inputs">
+          <div class="section-label">
+            <h2>Input</h2>
+            <span>YOUR CANDIDATES</span>
+          </div>
+          <label for="example">Start with an example</label
+          ><select id="example" data-lock>
+            <option value="refund">Refund policy</option>
+            <option value="correction">A false premise</option>
+            <option value="no-answer">Missing evidence</option>
+          </select>
+          <label for="query">Question for the answer model</label
+          ><textarea id="query" rows="3" data-lock></textarea>
+          <label for="scoring-strategy">How to judge evidence</label>
+          <select id="scoring-strategy" data-lock>
+            <option value="independent">Each passage independently</option>
+            <option value="contextual">Passages together · connected evidence</option>
+          </select>
+          <p class="hint">
+            Together lets Jev see connections between up to 32 passages.
+            Changing this requires new scores. Calibrate the cutoff for your data.
+          </p>
+          <button id="research-profile" class="quiet" data-lock>
+            Try research v2 settings
+          </button>
+          <p class="hint">
+            Keep more evidence, then rerank. Accuracy gains remain unproven.
+            <a href="/assets/research-v2.html">See the 400-question comparison ↗</a>
+            <a href="/assets/research-v3.html">Controlled study with repeated answers ↗</a>
+          </p>
+          <details open>
+            <summary>Retrieved chunks <span id="input-count"></span></summary>
+            <label class="sr-only" for="documents">Documents JSON</label
+            ><textarea
+              id="documents"
+              rows="13"
+              spellcheck="false"
+              data-lock
+            ></textarea>
+            <p class="hint">
+              JSON array with <code>id</code>, <code>text</code>, and optional
+              <code>metadata</code>, <code>group_id</code>, <code>pinned</code>.
+              Groups stay together; pins survive selection.
+            </p>
+          </details>
+          <details>
+            <summary>Evaluation &amp; query context</summary>
+            <label for="retrieval-query"
+              >Standalone retrieval query (optional)</label
+            ><textarea id="retrieval-query" rows="2" data-lock></textarea>
+            <label for="guidance">Relevance guidance (optional)</label
+            ><textarea id="guidance" rows="2" data-lock></textarea>
+            <label for="baseline-ids">Existing pipeline’s selected IDs</label
+            ><input
+              id="baseline-ids"
+              placeholder='["doc-1", "doc-2"]'
+              data-lock
+            />
+            <p class="hint">
+              Leave blank to compare against all candidates. Use [] for an empty
+              baseline.
+            </p>
+            <label for="relevant-ids">Known relevant IDs (labels)</label
+            ><input
+              id="relevant-ids"
+              placeholder="Blank means unlabeled"
+              data-lock
+            />
+            <p class="hint">
+              Labels measure evidence retention. They are never sent to Jev.
+            </p>
+          </details>
+          <details>
+            <summary>Service access</summary>
+            <label for="token">Service bearer token</label
+            ><input
+              type="password"
+              id="token"
+              autocomplete="off"
+              placeholder="Only if the server requires one"
+            />
+            <p class="hint">
+              Kept in this page’s memory. This is not your TypeSafe key.
+            </p>
+            <button id="connect" class="quiet" data-lock>Connect</button>
+          </details>
+          <button id="score" class="primary" data-lock>
+            Score with Jev <span>↗</span>
+          </button>
+          <button id="fixture" class="quiet" data-lock>
+            Explore hand-authored fixture
+          </button>
+          <p class="hint">
+            Live scoring sends the query and chunk text to TypeSafe. Fixtures
+            make no scoring API calls.
+          </p>
+        </aside>
+        <section class="results" aria-label="Selection results">
+          <div class="section-label">
+            <h2>Selection</h2>
+            <span id="provenance">NO RUN YET</span>
+          </div>
+          <div class="policy">
+            <div>
+              <label for="mode">Mode</label
+              ><select id="mode" data-lock>
+                <option value="filter">Filter · preserve order</option>
+                <option value="rerank">Rerank</option>
+                <option value="filter_and_rerank">Filter &amp; rerank</option>
+              </select>
+            </div>
+            <div class="threshold">
+              <label for="threshold"
+                >Minimum relevance
+                <output id="threshold-value">0.20</output></label
+              ><input
+                id="threshold"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.2"
+                data-lock
+              />
+            </div>
+            <div class="cap">
+              <label for="top-n">Top N target</label
+              ><input
+                id="top-n"
+                type="number"
+                min="1"
+                max="256"
+                placeholder="All"
+                data-lock
+              />
+            </div>
+            <label for="token-budget">Context token budget (estimate)</label>
+            <input id="token-budget" type="number" min="1" max="1000000" placeholder="Unlimited" data-lock />
+            <p class="hint">Whole passages only. Pins and groups may exceed this budget. Reserve room for prompts and output separately.</p>
+            <label class="check"
+              ><input id="shadow" type="checkbox" data-lock /> Shadow</label
+            >
+          </div>
+          <p id="status" role="status" aria-live="polite">
+            Choose an example or paste your retrieval results to begin.
+          </p>
+          <div class="metrics" id="metrics" hidden></div>
+          <p class="hint" id="policy-note">
+            Threshold changes reuse saved scores. Editing query, chunks, or
+            guidance requires a new run.
+          </p>
+          <div id="evidence">
+            <div class="empty">
+              <span>↳</span>
+              <h3>Every passage gets a decision.</h3>
+              <p>
+                See retained evidence and discarded distractions together.
+                Labels, when supplied, reveal what selection missed.
+              </p>
+            </div>
+          </div>
+          <div class="answer-header">
+            <div>
+              <h2>Answer comparison</h2>
+              <p class="hint" id="generation-status">
+                Checking answer-model configuration…
+              </p>
+            </div>
+            <button id="compare" class="primary" disabled>
+              Generate both answers
+            </button>
+          </div>
+          <div id="answers" class="answers">
+            <p class="hint">
+              The same question, prompt and model receive each context. A
+              comparison makes two generation calls when both contexts are
+              nonempty.
+            </p>
+          </div>
+          <div class="replay-actions">
+            <button id="export" class="quiet" disabled>Export replay ↓</button
+            ><label class="file-button" for="import">Import replay ↑</label
+            ><input
+              id="import"
+              type="file"
+              accept="application/json,.json"
+              class="sr-only"
+            /><span class="hint"
+              >Replay files contain your documents. Nothing is stored on the
+              server.</span
+            >
+          </div>
+        </section>
+      </div>
+      <footer>
+        Relevance is a model judgment. Evidence retention requires labels;
+        answer quality requires review.<span>Powered by TypeSafe Jev</span>
+      </footer>
+    </main>
+  </body>
+</html>

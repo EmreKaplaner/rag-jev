@@ -1,0 +1,97 @@
+[
+  {
+    "id": "cors",
+    "question": "Can I use wildcard allow_origins with allow_credentials=True for cookies in FastAPI?",
+    "answerable_in_corpus": true,
+    "reference_file": "cors.md",
+    "expected_points": [
+      "Use explicit allowed origins for credentialed requests.",
+      "Wildcards are incompatible with this credentialed configuration."
+    ]
+  },
+  {
+    "id": "background",
+    "question": "Should I use FastAPI BackgroundTasks for heavy computation across multiple servers?",
+    "answerable_in_corpus": true,
+    "reference_file": "background-tasks.md",
+    "expected_points": [
+      "Consider a distributed task tool such as Celery for heavy computation across servers.",
+      "BackgroundTasks is suited to small tasks or sharing the app process."
+    ]
+  },
+  {
+    "id": "upload",
+    "question": "Does FastAPI UploadFile keep an entire large uploaded file in memory?",
+    "answerable_in_corpus": true,
+    "reference_file": "request-files.md",
+    "expected_points": [
+      "UploadFile uses a spooled file, held in memory up to a limit then stored on disk."
+    ]
+  },
+  {
+    "id": "204",
+    "question": "Can an HTTP 204 response include a JSON body in FastAPI?",
+    "answerable_in_corpus": true,
+    "reference_file": "response-status-code.md",
+    "expected_points": [
+      "HTTP 204 must not have a response body."
+    ]
+  },
+  {
+    "id": "headers",
+    "question": "How does FastAPI Header map the Python parameter user_agent to the User-Agent HTTP header?",
+    "answerable_in_corpus": true,
+    "reference_file": "header-params.md",
+    "expected_points": [
+      "Header converts underscores to hyphens by default.",
+      "HTTP header names are case insensitive."
+    ]
+  },
+  {
+    "id": "optional",
+    "question": "How do I make a FastAPI query parameter optional without giving it a specific non-null default?",
+    "answerable_in_corpus": true,
+    "reference_file": "query-params.md",
+    "expected_points": [
+      "Set its default to None."
+    ]
+  },
+  {
+    "id": "forms",
+    "question": "Can I receive Form fields and Body fields as JSON in the same FastAPI request body?",
+    "answerable_in_corpus": true,
+    "reference_file": "request-forms.md",
+    "expected_points": [
+      "Form data and a JSON request body use different encodings.",
+      "The described Form declaration cannot also receive Body fields as JSON."
+    ]
+  },
+  {
+    "id": "dependency",
+    "question": "When a FastAPI dependency is used multiple times in one request, is it called each time, and how can I disable caching?",
+    "answerable_in_corpus": true,
+    "reference_file": "dependencies__sub-dependencies.md",
+    "expected_points": [
+      "Its returned value is cached and reused within that request.",
+      "Use Depends with use_cache=False to disable that reuse."
+    ]
+  },
+  {
+    "id": "unknown-origin",
+    "question": "What is the exact production CORS allowed origin configured by the fictional company Northstar Widgets?",
+    "answerable_in_corpus": false,
+    "reference_file": null,
+    "expected_points": [
+      "The provided documentation does not specify that company configuration."
+    ]
+  },
+  {
+    "id": "unknown-limit",
+    "question": "What exact upload size limit has the fictional company Northstar Widgets configured for its production API?",
+    "answerable_in_corpus": false,
+    "reference_file": null,
+    "expected_points": [
+      "The provided documentation does not specify that company configuration."
+    ]
+  }
+]

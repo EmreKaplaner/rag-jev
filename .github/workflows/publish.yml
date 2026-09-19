@@ -1,0 +1,65 @@
+name: Publish packages
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tested release tag (for example v0.2.0)
+        required: true
+        default: v0.2.0
+      registry:
+        type: choice
+        options: [pypi, npm, both]
+        default: pypi
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  pypi:
+    if: inputs.registry == 'pypi' || inputs.registry == 'both'
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+      - name: Verify tag and version
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          uv run --no-project python -c 'import os,tomllib; assert os.environ["RELEASE_TAG"] == "v" + tomllib.load(open("pyproject.toml","rb"))["project"]["version"]'
+      - run: uv build
+      - run: uv publish --trusted-publishing always dist/*.whl dist/*.tar.gz
+  npm:
+    if: inputs.registry == 'npm' || inputs.registry == 'both'
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org
+      - run: npm install --global npm@11
+      - name: Verify tag and version
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: node -e 'if(process.env.RELEASE_TAG !== "v"+require("./clients/typescript/package.json").version) process.exit(1)'
+      - run: npm ci
+        working-directory: clients/typescript
+      - run: npm test
+        working-directory: clients/typescript
+      - run: npm publish --access public --provenance
+        working-directory: clients/typescript

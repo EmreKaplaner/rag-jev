@@ -1,0 +1,29 @@
+{
+  "purpose": "Ten-case wiring and economics pilot; not a representative benchmark",
+  "label_status": "Agent-authored expected answer points; independent human review pending",
+  "retrieval": "examples.local_rag.retrieve: SQLite FTS5/BM25, top 12, paragraph chunks up to 2000 characters",
+  "policy": {
+    "mode": "filter",
+    "min_relevance": 0.2,
+    "calibrated": false
+  },
+  "generation": {
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "low",
+    "max_completion_tokens": 2000
+  },
+  "comparison": "All retrieved candidates versus Jev-filtered candidates; same generator and system prompt; no-context branch is an application fallback, not a model answer",
+  "limitations": [
+    "Small single-domain convenience sample",
+    "Source-file references are not passage relevance labels",
+    "No correctness score without answer review",
+    "Retrieval failures are distinct from selection failures",
+    "No threshold tuning on these answers",
+    "Raw Markdown includes unresolved documentation directives"
+  ],
+  "file_sha256": {
+    "sources.json": "8947169ed419861e3e237a4a4dcf25c38d5607bf8441c74d2d57bed184d654c2",
+    "cases.json": "b5aea161f424f3d8903681567c1ac7c09d09dd1e7f97958664fb5aa9bf198f20",
+    "candidates.json": "0a982fa30f2f55e07ef878072cf1288c46308ae227677e519996fe583efa389a"
+  }
+}

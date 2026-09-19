@@ -1,0 +1,46 @@
+{
+  "protocol_hash": "88a3fbfa0ae536ebbb29cb7bafb994435274df2be643fd2701ab49b87f4499a4",
+  "summary": {
+    "bm25": {
+      "ndcg10": 0.6646598637127541,
+      "recall10": 0.7849444444444444,
+      "mrr10": 0.6327804232804233
+    },
+    "jev": {
+      "ndcg10": 0.7512523224601801,
+      "recall10": 0.8242222222222222,
+      "mrr10": 0.7364206349206349
+    },
+    "ettin": {
+      "ndcg10": 0.7211291271393242,
+      "recall10": 0.8025555555555555,
+      "mrr10": 0.7064179894179894
+    }
+  },
+  "ndcg10_comparisons_descriptive": {
+    "jev_vs_bm25": {
+      "delta": 0.08659245874742598,
+      "ci95": [
+        0.05848065348734181,
+        0.11586769633090274
+      ],
+      "query_clusters": 247,
+      "queries": 300
+    },
+    "jev_vs_ettin": {
+      "delta": 0.03012319532085592,
+      "ci95": [
+        0.006147383167240289,
+        0.05406120429663152
+      ],
+      "query_clusters": 247,
+      "queries": 300
+    }
+  },
+  "first_stage_recall20": 0.8258888888888888,
+  "jev_total_api_usd": 0.13187811000000005,
+  "ettin_total_cpu_seconds": 780.114738,
+  "scope": "Full BEIR/SciFact test split; custom BM25 top20 then rerank top10. No answer generation.",
+  "queries": 300,
+  "corpus_documents": 5183
+}

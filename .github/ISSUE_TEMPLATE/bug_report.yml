@@ -1,0 +1,20 @@
+name: Bug report
+description: Report reproducible unexpected behavior
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Use synthetic or public text. Do not include keys or private replay files.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version, Python/Node version and integration

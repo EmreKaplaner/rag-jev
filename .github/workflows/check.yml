@@ -1,0 +1,25 @@
+name: Check
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: astral-sh/setup-uv@v6
+      - run: make setup
+      - run: uv run playwright install --with-deps chromium
+      - run: make check-all
+      - run: make schema && git diff --exit-code -- openapi.json clients/typescript/src/schema.ts
+      - run: uv build

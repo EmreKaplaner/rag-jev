@@ -1,0 +1,5 @@
+{
+  "model": "cross-encoder/ettin-reranker-32m-v1",
+  "revision": "b33e5ceb5110773ea9cf5e00c9bedc83a8c2afdd",
+  "card_url": "https://huggingface.co/cross-encoder/ettin-reranker-32m-v1"
+}

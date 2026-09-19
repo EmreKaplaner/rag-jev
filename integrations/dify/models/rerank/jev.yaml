@@ -1,0 +1,5 @@
+model: jev
+label:
+  en_US: Jev (service-configured model)
+model_type: rerank
+model_properties: {}

@@ -1,0 +1,206 @@
+{
+  "protocol_hash": "474720230815e5debd3d160748c60e0875444447281bf0220e0db4a28bdc8e8d",
+  "split": "evaluation",
+  "datasets": {
+    "hotpotqa": {
+      "summary": {
+        "all_context": {
+          "cases": 200,
+          "answer_f1": 0.7507540874158521,
+          "answer_em": 0.58,
+          "support_recall": 1.0,
+          "all_support_retained": 1,
+          "api_cost_usd": 0.067988,
+          "scoring_cost_usd": 0,
+          "prompt_tokens": 310336,
+          "output_tokens": 4934,
+          "errors": 0,
+          "unknown_costs": 0,
+          "unknown_cache_usage": 0,
+          "truncated_answers": 0,
+          "median_stage_ms": 1031.7359999999999
+        },
+        "contextual_filter_0.35": {
+          "cases": 200,
+          "answer_f1": 0.7756614357864358,
+          "answer_em": 0.62,
+          "support_recall": 0.9775,
+          "all_support_retained": 0.955,
+          "api_cost_usd": 0.05004431,
+          "scoring_cost_usd": 0.02615823,
+          "prompt_tokens": 103783,
+          "output_tokens": 3546,
+          "errors": 0,
+          "unknown_costs": 0,
+          "unknown_cache_usage": 0,
+          "truncated_answers": 0,
+          "median_stage_ms": 1337.2470839995676
+        },
+        "contextual_filter_0.2_reranked": {
+          "cases": 200,
+          "answer_f1": 0.7687042246968717,
+          "answer_em": 0.595,
+          "support_recall": 0.9925,
+          "all_support_retained": 0.985,
+          "api_cost_usd": 0.055491030000000004,
+          "scoring_cost_usd": 0.02615823,
+          "prompt_tokens": 124008,
+          "output_tokens": 3776,
+          "errors": 0,
+          "unknown_costs": 0,
+          "unknown_cache_usage": 0,
+          "truncated_answers": 0,
+          "median_stage_ms": 1387.4733955069607
+        }
+      },
+      "comparisons": {
+        "contextual_filter_0.2_reranked_vs_all_context": {
+          "delta": 0.017950137281019633,
+          "ci95": [
+            -0.013393602312719959,
+            0.04781236247412718
+          ],
+          "support_recall": {
+            "delta": -0.0075,
+            "ci95": [
+              -0.0175,
+              0.0
+            ]
+          },
+          "all_support_retained": {
+            "delta": -0.015,
+            "ci95": [
+              -0.035,
+              0.0
+            ]
+          },
+          "cost_savings_fraction": 0.18381140789551098,
+          "accuracy_and_cost_gate": false
+        },
+        "contextual_filter_0.2_reranked_vs_contextual_filter_0.35": {
+          "delta": -0.00695721108956403,
+          "ci95": [
+            -0.03667857142857143,
+            0.02288777562306974
+          ],
+          "support_recall": {
+            "delta": 0.015,
+            "ci95": [
+              0.005,
+              0.03
+            ]
+          },
+          "all_support_retained": {
+            "delta": 0.03,
+            "ci95": [
+              0.01,
+              0.06
+            ]
+          },
+          "cost_savings_fraction": -0.10883794781065026,
+          "accuracy_and_cost_gate": false
+        }
+      }
+    },
+    "musique": {
+      "summary": {
+        "all_context": {
+          "cases": 200,
+          "answer_f1": 0.665151006887849,
+          "answer_em": 0.55,
+          "support_recall": 1.0,
+          "all_support_retained": 1,
+          "api_cost_usd": 0.12973780000000001,
+          "scoring_cost_usd": 0,
+          "prompt_tokens": 548633,
+          "output_tokens": 16676,
+          "errors": 0,
+          "unknown_costs": 0,
+          "unknown_cache_usage": 0,
+          "truncated_answers": 0,
+          "median_stage_ms": 1431.755
+        },
+        "contextual_filter_0.35": {
+          "cases": 200,
+          "answer_f1": 0.6223616764212739,
+          "answer_em": 0.5,
+          "support_recall": 0.9179166666666667,
+          "all_support_retained": 0.8,
+          "api_cost_usd": 0.095595444,
+          "scoring_cost_usd": 0.047828844,
+          "prompt_tokens": 153729,
+          "output_tokens": 14184,
+          "errors": 0,
+          "unknown_costs": 0,
+          "unknown_cache_usage": 0,
+          "truncated_answers": 0,
+          "median_stage_ms": 1737.2166669977164
+        },
+        "contextual_filter_0.2_reranked": {
+          "cases": 200,
+          "answer_f1": 0.6391888623072833,
+          "answer_em": 0.54,
+          "support_recall": 0.965,
+          "all_support_retained": 0.91,
+          "api_cost_usd": 0.107646844,
+          "scoring_cost_usd": 0.047828844,
+          "prompt_tokens": 202016,
+          "output_tokens": 16179,
+          "errors": 0,
+          "unknown_costs": 0,
+          "unknown_cache_usage": 0,
+          "truncated_answers": 0,
+          "median_stage_ms": 1784.1358339954052
+        }
+      },
+      "comparisons": {
+        "contextual_filter_0.2_reranked_vs_all_context": {
+          "delta": -0.02596214458056563,
+          "ci95": [
+            -0.0736100945837788,
+            0.0242000222000222
+          ],
+          "support_recall": {
+            "delta": -0.035,
+            "ci95": [
+              -0.05375,
+              -0.01875
+            ]
+          },
+          "all_support_retained": {
+            "delta": -0.09,
+            "ci95": [
+              -0.13,
+              -0.05
+            ]
+          },
+          "cost_savings_fraction": 0.17027386004695633,
+          "accuracy_and_cost_gate": false
+        },
+        "contextual_filter_0.2_reranked_vs_contextual_filter_0.35": {
+          "delta": 0.016827185886009413,
+          "ci95": [
+            -0.02537118437118437,
+            0.060755063563887095
+          ],
+          "support_recall": {
+            "delta": 0.04708333333333333,
+            "ci95": [
+              0.029166666666666664,
+              0.06541666666666666
+            ]
+          },
+          "all_support_retained": {
+            "delta": 0.11,
+            "ci95": [
+              0.07,
+              0.155
+            ]
+          },
+          "cost_savings_fraction": -0.12606667740358013,
+          "accuracy_and_cost_gate": false
+        }
+      }
+    }
+  }
+}

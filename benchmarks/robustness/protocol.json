@@ -1,0 +1,38 @@
+{
+  "prepared_at": "2026-09-19T06:58:26.293590+00:00",
+  "cases_hash": "465a0379fd252e6133ac732ff96f017c7223152b2c407aabbec322f78009328f",
+  "model": "jev-1.13.0",
+  "strategies": [
+    "independent",
+    "contextual"
+  ],
+  "client_concurrency": [
+    1,
+    4,
+    8
+  ],
+  "selector_concurrency": 8,
+  "timeout_ms": 10000,
+  "retries": 0,
+  "threshold": 0.2,
+  "mode": "filter_and_rerank",
+  "input_usd_per_million": 0.042,
+  "scope": "18 synthetic, hand-labeled stress cases; no answer generation. Quality is diagnostic, not representative accuracy. No tuning from these results.",
+  "latency": "Per-call selection duration includes the selector semaphore queue; client queue+stage includes waiting for the workload concurrency slot. Cold first call included. p95 is nearest rank on 18 cases per condition; not a production SLA or hardware-neutral comparison.",
+  "code": {
+    "benchmarks/robustness/run.py": "e1fc1e3c08d1a3b0bce2c73375d8986bcec28e91874a6312d21c337bd05a4eb2",
+    "src/rag_jev/server.py": "9eb1b0fa801c9a69eeb294dc68691f0d15179d4a89f8e4d1c2ba24c2c2221e0e",
+    "src/rag_jev/generation.py": "543f2db3643a0d72c3e6eeeafed90a8d3b3ed3fe6e773c070177257b8929e5da",
+    "src/rag_jev/models.py": "c737ac23da8c3f6ecf948e3d5e6ab341d324d2ed19f14c23ae35c485c2507b26",
+    "src/rag_jev/provider.py": "3c8e6ba6f152260f0d9f193acc00e915500f9aebec46ac424f7af617c2861db4",
+    "src/rag_jev/evaluation.py": "63e37bca04e578db05c6788a0aa98c411ccdea18e6a593509be73f43f60fed87",
+    "src/rag_jev/selector.py": "efbd194d243ecdec3415f2d81a12b6be5737a1a7e20c9afecd1fc7c8b243033d",
+    "src/rag_jev/__init__.py": "e244bad37925e131259213dfa9b7913e05897646dc58a52f469c154c1f8c2dba",
+    "src/rag_jev/tokens.py": "77b2ac9c9d7b133ecd1fcaa6a8d8689cb893f8c8d0ea11b6554113b33e229300",
+    "src/rag_jev/review.py": "b1e143cd63b72fe51ec1cfc44f8f9d8152d68c99d4523357c9ef2aecaa4c3fb3",
+    "src/rag_jev/workbench.py": "3bcaddab9b0df2d894945dda3228c8f2f1a0e5a1d02da785cb4981b4f95571cb",
+    "src/rag_jev/cli.py": "af766481e66f1ed0a859c449eb374458eedda2979fa3ef11eb192cecff16d124",
+    "src/rag_jev/demo.py": "c1390d184904a090809e576e3b7d2239f2f22d15d500cddb80e60d79ac3a33c3",
+    "src/rag_jev/calibration.py": "42a139926c2f748aa11de02e8c7aa374109b0c5f23d4d1a6401bb4ea95d39fea"
+  }
+}

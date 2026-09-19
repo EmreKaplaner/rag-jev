@@ -1,0 +1,35 @@
+{
+  "name": "rag-jev-client",
+  "version": "0.2.0",
+  "description": "Typed HTTP client for the rag-jev context selection service",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "generate": "openapi-typescript ../../openapi.json -o src/schema.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "openapi-typescript": "^7.6.1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmreKaplaner/rag-jev.git",
+    "directory": "clients/typescript"
+  }
+}

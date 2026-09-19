@@ -1,0 +1,407 @@
+{
+  "record": {
+    "request": {
+      "mode": "filter",
+      "min_relevance": 0.35,
+      "top_n": null,
+      "shadow": false,
+      "relevance_guidance": null,
+      "scoring_strategy": "contextual",
+      "query": "Who burned down the city where Keeping Up with the Joneses is set, during the war marking the first time that the number of black people living in NYC declined?",
+      "retrieval_query": null,
+      "documents": [
+        {
+          "id": "0",
+          "text": "Black people\nBy that time, the majority of black people in the United States were native-born, so the use of the term \"African\" became problematic. Though initially a source of pride, many blacks feared that the use of African as an identity would be a hindrance to their fight for full citizenship in the US. They also felt that it would give ammunition to those who were advocating repatriating black people back to Africa. In 1835, black leaders called upon Black Americans to remove the title of \"African\" from their institutions and replace it with \"Negro\" or \"Colored American\". A few institutions chose to keep their historic names, such as the African Methodist Episcopal Church. African Americans popularly used the terms \"Negro\" or \"colored\" for themselves until the late 1960s.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "1",
+          "text": "Burn It Black\nBurn It Black is the first full-length studio album of the American rock band Injected. It was produced by Butch Walker and released on February 26, 2002 on Island Records.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "2",
+          "text": "Atlanta in the American Civil War\nIn 1864, as feared by Jeremy F. Gilmer, Atlanta did indeed become the target of a major Union invasion. The area now covered by metropolitan Atlanta was the scene of several fiercely contested battles, including the Battle of Peachtree Creek, the Battle of Atlanta, Battle of Ezra Church and the Battle of Jonesboro. On September 1, 1864, Confederate Gen. John Bell Hood evacuated Atlanta, after a five - week siege mounted by Union Gen. William Sherman, and ordered all public buildings and possible Confederate assets destroyed.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "3",
+          "text": "The Last of the Mohicans (soundtrack)\nDirector Michael Mann initially asked Trevor Jones to provide an electronic score for the film, but late in the game, it was decided an orchestral score would be more appropriate for this historic epic. Jones hurried to re-fashion the score for orchestra in the limited time left, while the constant re-cutting of the film meant music cues sometimes had to be rewritten several times to keep up with the new timings.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "4",
+          "text": "Infant mortality\nThe vast majority of research conducted in the late twentieth and early twenty - first century indicates that African - American infants are more than twice as likely to die in their first year of life than white infants. Although following a decline from 13.63 to 11.46 deaths per 1000 live births from 2005 to 2010, non-Hispanic black mothers continued to report a rate 2.2 times as high as that for non-Hispanic white mothers.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "5",
+          "text": "Election 2\nElection 2 (literal title: \"Black Society: Harmony is a Virtue\"), also known as Triad Election in the United States, is a 2006 Category III Hong Kong crime film directed by Johnnie To with a large ensemble cast that includes Louis Koo, Simon Yam and Nick Cheung. A sequel to the 2005 film \"Election\", the film concludes the events of the first film centring on Lok (Yam), who this time struggles to keep his title as triad boss as a triad re-election draws near, while Jimmy (Koo) attempts to retire as a triad to become a legitimate businessman.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "6",
+          "text": "The Last Sleep of Arthur in Avalon\nThe Last Sleep of Arthur in Avalon is a painting by Edward Burne-Jones, started in 1881. The massive painting measures 279 cm × 650 cm, and is widely considered to be Burne-Jones's \"magnum opus\".",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "7",
+          "text": "24: Legacy\nConsisting of 12 episodes, the show follows the life of war hero Eric Carter (Corey Hawkins) using real time method of narration. Miranda Otto plays Rebecca Ingram, the former head of the now revived Counter Terrorist Unit in Washington, D.C. Set three years after the events of 24: Live Another Day, it adheres to the real time concept of covering the events of a 24 - hour period and begins and ends at 12: 00 p.m. However, like Live Another Day, there is a 12 - hour time jump within the final episode.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "8",
+          "text": "Black Cobain\nBlack Cobain attended Virginia State University, graduated magna cum laude, and obtained employment at the Boys & Girls Club, uncertain he could make a viable living and income from his ambitions as an emcee. During this time, he linked with long-time friend and mentor, Le'Greg O. Harrison, and under his direction began to professionalize his sound and actively exploit his talent through local performances, collaborations, sets, and freestyles. In 2009, Black signed to The Board Administration as their first official signee and shortly thereafter left full-time employment to fully pursue emceeing as a career.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "9",
+          "text": "64th Venice International Film Festival\nThe 64th annual Venice International Film Festival, held in Venice, Italy, opened on 29 August 2007, with Joe Wright's \"Atonement\" and closed 8 September 2007. Host of the event was Italian actress Ambra Angiolini. The Golden Lion for Lifetime Achievement Award was presented to American director Tim Burton. Once again all the films running the contest were shown for the first time as world premieres in keeping with the festival tradition since the Second World War.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "10",
+          "text": "Pub\nThe number of pubs in the UK has declined year on year, at least since 1982. Various reasons are put forward for this, such as the failure of some establishments to keep up with customer requirements. Others claim the smoking ban of 2007, intense competition from gastro-pubs, the availability of cheap alcohol in supermarkets or the general economic climate are either to blame, or are factors in the decline. Changes in demographics may be an additional factor.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "11",
+          "text": "Concluding\nConcluding is a novel by British writer Henry Green first published in 1948. It is set entirely on the expansive and idyllic premises of a state-run institution for girls somewhere in rural England and chronicles the events of one summer's day—a Wednesday, and \"Founder's Day\"—in the lives of the staff, the students, and several other people living on the grounds. During that day, two girls go missing.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "12",
+          "text": "Burning Man\nBurning Man is organized by the Burning Man Project, a non-profit organization that, in 2014, succeeded a for - profit limited liability company (Black Rock City, LLC) that was formed in 1997 to represent the event's organizers, and is now considered a subsidiary of the non-profit organization. In 2010, 51,515 people attended Burning Man. Attendance in 2011 was capped at 50,000 participants and the event sold out on July 24; the attendance rose to 70,000 in 2015. Smaller regional events inspired by the principles of Burning Man have been held internationally; some of these events are also officially endorsed by the Burning Man Project as regional branches of the event.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "13",
+          "text": "New York City\nThe city's population in 2010 was 44% white (33.3% non-Hispanic white), 25.5% black (23% non-Hispanic black), 0.7% Native American, and 12.7% Asian. Hispanics of any race represented 28.6% of the population, while Asians constituted the fastest-growing segment of the city's population between 2000 and 2010; the non-Hispanic white population declined 3 percent, the smallest recorded decline in decades; and for the first time since the Civil War, the number of blacks declined over a decade.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "14",
+          "text": "The Keep Aways\nThe Keep Aways is an American punk band from Duluth, Minnesota. Since releasing their début album in 2004, the band has toured the US with Black Eyed Snakes and Low. The Keep Aways music has been compared to Babes in Toyland and The Gossip by the College Music Journal.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "15",
+          "text": "Downton Abbey\nThe series, set in the fictional Yorkshire country estate of Downton Abbey between 1912 and 1926, depicts the lives of the aristocratic Crawley family and their domestic servants in the post-Edwardian era -- with the great events in history having an effect on their lives and on the British social hierarchy. Events depicted throughout the series include news of the sinking of the RMS Titanic in the first series; the outbreak of the First World War, the Spanish influenza pandemic, and the Marconi scandal in the second series; the Irish War of Independence leading to the formation of the Irish Free State in the third series; the Teapot Dome scandal in the fourth series; and the British general election of 1923, the Jallianwala Bagh massacre, and the Beer Hall Putsch in the fifth series. The sixth and final series introduces the rise of the working class during the interwar period and hints towards the eventual decline of the British aristocracy.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "16",
+          "text": "Madi Kalyanpur\nMadi Kalyanpur is a village development committee in Chitwan District in the Narayani Zone of southern Nepal. At the time of the 1991 Nepal census it had a population of 6598 people living in 1238 individual households.gopalnagar is a mostpopular village in madi is also kalyan pur vdc there ia a lot of tharu people setting manymany years ago.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "17",
+          "text": "World Snooker Championship\nThe World Snooker Championship is the leading snooker tournament both in terms of prestige and prize money. The first championship was held in 1927 and was won by Joe Davis. Davis won the first 15 championships before retiring from the event, undefeated, after his 1946 success. In the 1950s snooker went into a period of decline and the championship was not held after 1952, although an unofficial championship was held until 1957. In 1964 the championship was revived on a challenge basis and in 1969 the championship became a knock - out event again. Since 1977 it has been played at the Crucible Theatre in Sheffield, England. The tournament is currently played over 17 days and ends on the first Monday in May. In the modern era (since 1969), the best record is that of Stephen Hendry, who won the title seven times. Steve Davis and Ray Reardon both won six times while Ronnie O'Sullivan has won five titles. The current champion is Mark Selby, who has won the tournament three times.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "18",
+          "text": "Keeping Up with the Joneses (film)\nJeff Gaffney (Zach Galifianakis) works as a Human Resources professional at a Defense contractor company called MBI, based in Atlanta. He and his wife Karen (Isla Fisher) live in a nice cul - de-sac with their two children, who are away at summer camp. They make the acquaintance of their two new neighbors, Tim (Jon Hamm) and Natalie Jones (Gal Gadot). Tim is a travel writer whose hobbies include glassblowing, and Natalie is a social media consultant, cooking blogger and philanthropist. They are both impossibly good - looking, accomplished and stylish, yet overly friendly with the Gaffneys.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "19",
+          "text": "Thuringia\nDuring the Middle Ages, Thuringia was situated at the border between Germanic and Slavic territories, marked by the Saale river. The Ostsiedlung movement led to the assimilation of Slavic people between the 11th and the 13th century under German rule. The population growth increased during the 18th century and stayed high until World War I, before it slowed within the 20th century and changed to a decline since 1990. Since the beginning of Urbanisation around 1840, the Thuringian cities have higher growth rates resp. smaller rates of decline than rural areas (many villages lost half of their population since 1950, whereas the biggest cities (Erfurt and Jena) keep growing).",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        }
+      ]
+    },
+    "relevant_ids": [
+      "2",
+      "13",
+      "18"
+    ],
+    "baseline_ids": null,
+    "schema_version": 1,
+    "created_at": "2026-09-18T16:37:54.195168Z",
+    "source": "live",
+    "prompt_version": "contextual-evidence-v1",
+    "input_hash": "31a0e137e72a5924e69a5e6d624e908dfc2a0bb82b301db880fe74f09b21bb9b",
+    "judgments": [
+      {
+        "relevance": 0.06,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.02,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.86,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.06,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.05,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.02,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.03,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.03,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.03,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.04,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.05,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.04,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.06,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.74,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.07,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.09,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.11,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.18,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.77,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.87,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      }
+    ],
+    "scoring_elapsed_ms": 419.70124999352265,
+    "scoring_usage": {
+      "input_tokens": 5778,
+      "output_tokens": 334,
+      "completed_documents": 20,
+      "complete": true
+    }
+  },
+  "policy": {
+    "mode": "filter",
+    "min_relevance": 0.35,
+    "top_n": null,
+    "shadow": false,
+    "relevance_guidance": null
+  },
+  "comparison": {
+    "input_hash": "31a0e137e72a5924e69a5e6d624e908dfc2a0bb82b301db880fe74f09b21bb9b",
+    "policy_version": "d464383bbfd56614",
+    "baseline": {
+      "text": "John Bell Hood",
+      "status": "generated",
+      "model": "gpt-5.6-luna",
+      "elapsed_ms": 3103.85,
+      "input_tokens": 2795,
+      "output_tokens": 190,
+      "cached_input_tokens": 0,
+      "citations": [],
+      "unknown_citations": [],
+      "source_map": {
+        "S1": "0",
+        "S2": "1",
+        "S3": "2",
+        "S4": "3",
+        "S5": "4",
+        "S6": "5",
+        "S7": "6",
+        "S8": "7",
+        "S9": "8",
+        "S10": "9",
+        "S11": "10",
+        "S12": "11",
+        "S13": "12",
+        "S14": "13",
+        "S15": "14",
+        "S16": "15",
+        "S17": "16",
+        "S18": "17",
+        "S19": "18",
+        "S20": "19"
+      },
+      "error_code": null,
+      "finish_reason": "stop",
+      "settings": {
+        "max_completion_tokens": 2000,
+        "reasoning_effort": "low"
+      }
+    },
+    "selected": {
+      "text": "William Sherman",
+      "status": "generated",
+      "model": "gpt-5.6-luna",
+      "elapsed_ms": 1625.406,
+      "input_tokens": 710,
+      "output_tokens": 68,
+      "cached_input_tokens": 0,
+      "citations": [],
+      "unknown_citations": [],
+      "source_map": {
+        "S1": "2",
+        "S2": "13",
+        "S3": "18",
+        "S4": "19"
+      },
+      "error_code": null,
+      "finish_reason": "stop",
+      "settings": {
+        "max_completion_tokens": 2000,
+        "reasoning_effort": "low"
+      }
+    },
+    "baseline_ids": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19"
+    ],
+    "selected_ids": [
+      "2",
+      "13",
+      "18",
+      "19"
+    ],
+    "selection_source": "live",
+    "baseline_stage_ms": 3103.85,
+    "selected_stage_ms": 2045.1072499935226,
+    "selection_original_ms": 419.70124999352265,
+    "baseline_cost_usd": 0.000787,
+    "selected_cost_usd": 0.000466276,
+    "selection_cost_usd": 0.00024267600000000002,
+    "cost_basis": "Published-rate estimate including Jev and reported cached-input discounts; retrieval excluded",
+    "timing_basis": "Generation measured now; selected stage adds original scoring time. Retrieval excluded.",
+    "citation_check": "Benchmark short-answer prompt; citations not requested. See benchmarks/public/protocol.json"
+  }
+}

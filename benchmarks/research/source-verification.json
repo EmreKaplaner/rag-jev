@@ -1,0 +1,9 @@
+{
+  "author_download_url": "https://drive.google.com/file/d/1tGdADlNjWFaHLeZZGShh2IRcpO6Lv24h/view",
+  "archive_sha256": "98f839bf2fd5319f5c688aed77901a6d5c30b3b9f9f691ab9a8ecafb045ee0cd",
+  "member": "data/musique_ans_v1.0_dev.jsonl",
+  "author_file_sha256": "15fa63794d18a94ce12411aca6e2327e65b6e83b0b1490efab3f1962e48abf3b",
+  "mirror_sha256": "15fa63794d18a94ce12411aca6e2327e65b6e83b0b1490efab3f1962e48abf3b",
+  "byte_identical": true,
+  "rows_equivalent": true
+}

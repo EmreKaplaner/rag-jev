@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rag-jev"
+version = "0.2.0"
+description = "Inspectable context selection for existing RAG pipelines, powered by Jev."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+requires-python = ">=3.11"
+dependencies = [
+  "typesafe-sdk>=0.7,<0.8",
+  "pydantic>=2.10,<3",
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.34,<1",
+  "python-dotenv>=1,<2",
+  "httpx>=0.28,<1",
+  "tiktoken>=0.9,<1",
+]
+
+[project.optional-dependencies]
+langchain = ["langchain-core>=1,<2"]
+
+[project.scripts]
+rag-jev = "rag_jev.cli:main"
+
+[project.urls]
+Repository = "https://github.com/EmreKaplaner/rag-jev"
+Issues = "https://github.com/EmreKaplaner/rag-jev/issues"
+
+[dependency-groups]
+benchmark = [
+    "matplotlib>=3.11.2",
+    "numpy<2.4",
+    "pyarrow>=25.0.1",
+]
+dev = ["pytest>=8", "pytest-asyncio>=0.25", "httpx>=0.28", "ruff>=0.11", "mypy>=1.15", "langchain-core>=1,<2", "playwright>=1.50,<2"]
+research = [
+    "scipy>=1.14,<2",
+    "sentence-transformers>=5.4,<6",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rag_jev"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/src/rag_jev", "/examples", "/docs", "/benchmarks/public", "/benchmarks/research", "/benchmarks/robustness", "/MVP_SCOPE.md", "/integrations/dify", "/pyproject.toml", "/README.md", "/uv.lock", "/LICENSE", "/THIRD_PARTY_NOTICES.md", "/CONTRIBUTING.md", "/SECURITY.md", "/CHANGELOG.md"]
+exclude = ["**/.venv/**", "**/__pycache__/**", "**/.env", "**/.env.*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = ["live: calls the real TypeSafe API (explicit opt-in)"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true

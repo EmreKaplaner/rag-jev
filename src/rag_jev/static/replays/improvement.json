@@ -1,0 +1,406 @@
+{
+  "record": {
+    "request": {
+      "mode": "filter",
+      "min_relevance": 0.35,
+      "top_n": null,
+      "shadow": false,
+      "relevance_guidance": null,
+      "scoring_strategy": "contextual",
+      "query": "Whom is the birth place of Ravil Aryapov named after?",
+      "retrieval_query": null,
+      "documents": [
+        {
+          "id": "0",
+          "text": "Gerd Ludwig\nGerd Ludwig (birth name Gerhard Erich Ludwig, born March 17, 1947 in Alsfeld, Hesse, Germany) is a German-American documentary photographer and photojournalist.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "1",
+          "text": "The Adventures of Milo and Otis\nThe film opens in 1986 on Nippon Farm with a mother cat named Moth Ari who has given birth to kittens. One of the kittens is named Milo (``Chatran ''(チャトラン, Chatoran) in the Japanese version), and has a habit of being too curious and getting himself into trouble. He finds a pug - nosed pug puppy named Otis (`` Poosky'' (プー助, Pūsuke) in the Japanese version), and they soon become friends. When Milo is playing inside a box floating in the river, he accidentally drifts downstream. Otis runs after Milo. Milo goes on many adventures, escaping one incident after another.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "2",
+          "text": "Mechtilde of the Blessed Sacrament\nMechtilde of the Blessed Sacrament (birth name Catherine de Bar, 31 December 1614 – 6 April 1698), was born at Saint-Dié, Lorraine in northeastern France.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "3",
+          "text": "Li Kening\nIt is not known where or when Li Kening was born, but it is known that he was Li Keyong's youngest brother and therefore would have been born after 856, when Li Keyong was born. Their father was the ethnic Shatuo general Li Guochang, whose name was originally Zhuye Chixin but was later bestowed the Tang Dynasty imperial clan name of Li and a new name of Guochang, but because Li Kening's birth year is unknown, it is not known whether he would have been born with the name of Li or Zhuye. He was said to be kind and filially pious, and (despite his eventual fate) described to be the most virtuous among Li Keyong's brothers and cousins.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "4",
+          "text": "Queen Dong\nQueen Dong (17 October 1623 – 30 July 1681), birth name Dong You, posthumous name Chaowu Wangfei, was the princess consort of Koxinga and mother of Zheng Jing.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "5",
+          "text": "Aklia\nAklia is a small village in the Mansa district of Punjab, India. The village is 24 kilometers from the cities of Mansa and Barnala. There are three gurdwaras situated in the village, as well as a temple and a small mosque. There is an estimated population of 5000 people living in the residence/village of aklia. The birth of the village is usually referenced to as a man whose name was Aklia, he fought to keep the village alive even after the villagers gave up hope.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "6",
+          "text": "Buddhism\nAccording to this narrative, shortly after the birth of young prince Gautama, an astrologer named Asita visited the young prince's father, Suddhodana, and prophesied that Siddhartha would either become a great king or renounce the material world to become a holy man, depending on whether he saw what life was like outside the palace walls.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "7",
+          "text": "Priscilla Chan\nChan married Zuckerberg on May 19, 2012, the day after Facebook's stock market launch.On July 31, 2015, Zuckerberg announced that he and Chan were expecting a baby girl. He said he felt confident that the risk of miscarrying was low so far into the pregnancy, after Chan had already had three miscarriages. Chan and Zuckerberg announced the birth of their daughter Maxima Chan Zuckerberg on December 1, 2015. On August 28, 2017, Chan gave birth to their second daughter, whom they named August.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "8",
+          "text": "Athanasius of Alexandria\nHowever Cornelius Clifford places his birth no earlier than 296 and no later than 298, based on the fact that Athanasius indicates no first hand recollection of the Maximian persecution of 303, which he suggests Athanasius would have remembered if he had been ten years old at the time. Secondly, the Festal Epistles state that the Arians had accused Athanasius, among other charges, of not having yet attained the canonical age (30) and thus could not have been properly ordained as Patriarch of Alexandria in 328. The accusation must have seemed plausible. The Orthodox Church places his year of birth around 297.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "9",
+          "text": "Bizet metro station\nBizet is a station on the Brussels Metro, served by the western branch of line 5. It opened on 10 January 1992 and is named after Place Bizet, under which it is located in the municipality of Anderlecht.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "10",
+          "text": "Crucifixion of Jesus\nCalvary as an English name for the place is derived from the Latin word for skull (calvaria), which is used in the Vulgate translation of \"place of a skull\", the explanation given in all four Gospels of the Aramaic word Gûlgaltâ which was the name of the place where Jesus was crucified. The text does not indicate why it was so designated, but several theories have been put forward. One is that as a place of public execution, Calvary may have been strewn with the skulls of abandoned victims (which would be contrary to Jewish burial traditions, but not Roman). Another is that Calvary is named after a nearby cemetery (which is consistent with both of the proposed modern sites). A third is that the name was derived from the physical contour, which would be more consistent with the singular use of the word, i.e., the place of \"a skull\". While often referred to as \"Mount Calvary\", it was more likely a small hill or rocky knoll.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "11",
+          "text": "Holmes Summit\nHolmes Summit is a peak rising to , the highest elevation in the Read Mountains of the Shackleton Range in Antarctica. It was photographed from the air by the U.S. Navy in 1967 and was surveyed by the British Antarctic Survey in the period 1968–71. In association with the names of geologists grouped in this area, it was named by the UK Antarctic Place-Names Committee in 1971 after Professor Arthur Holmes, after whom the Holmes Hills in Palmer Land were also named.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "12",
+          "text": "Tolyatti\nThe construction of the Kuybyshev Dam and Hydroelectric Station on the Volga River in the 1950s created the Kuybyshev Reservoir, which covered the existing location of the city, and it was completely rebuilt on a new site. In 1964, the city was renamed Tolyatti (after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party).",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "13",
+          "text": "Michael Gerald Ford\nMichael Gerald Ford (born March 14, 1950) is the oldest of four children of U.S. President Gerald R. Ford and Betty Ford. Prior to his birth, Ford's mother wanted to name him after his father. However, Ford's father had always disliked being called \"Junior\" and he refused to \"inflict the nickname on any son.\" The Fords settled on his name as a compromise.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "14",
+          "text": "Yang Meng\nYang Meng was the third son of Yang Xingmi, a major warlord at the end of Tang Dynasty as the military governor (\"Jiedushi\") of Huainan Circuit (淮南, headquartered in modern Yangzhou, Jiangsu). It is not known when he was born, although his immediately older brother Yang Longyan was born in 897 and his immediately younger brother Yang Pu was born in 900, placing a timeframe on his birth date. His mother's name was not recorded in history.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "15",
+          "text": "Mary, mother of Jesus\nOrthodox Christianity includes a large number of traditions regarding the Ever Virgin Mary, the Theotokos. The Orthodox believe that she was and remained a virgin before and after Christ's birth. The Theotokia (i.e., hymns to the Theotokos) are an essential part of the Divine Services in the Eastern Church and their positioning within the liturgical sequence effectively places the Theotokos in the most prominent place after Christ. Within the Orthodox tradition, the order of the saints begins with: The Theotokos, Angels, Prophets, Apostles, Fathers, Martyrs, etc. giving the Virgin Mary precedence over the angels. She is also proclaimed as the \"Lady of the Angels\".",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "16",
+          "text": "Hackleman Historic District\nThe Hackleman Historic District in Albany Oregon, was placed on the list of National Register of Historic Places (NRHP) in 1982. The district contains 228 historic properties within about a 28 city blocks area. The district was named after Abner Hackleman who came to Albany in 1845.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "17",
+          "text": "Ravil Aryapov\nRavil Velimukhamedovich Aryapov (; born February 1, 1948 in Stavropol, now Tolyatti) is a Russian professional football coach and a former player. As of July 2009, he is an assistant coach with the reserve team of FC Krylia Sovetov Samara.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "18",
+          "text": "Julia the Younger\nJulia the Younger was not a member of the Julian gens by birth: being the daughter of Marcus Vipsanius Agrippa made her a \"Vipsania Agrippina\" by birth, although there are no contemporary sources that show that that name was ever used for her. She came to belong to the household of the Julio-Claudian dynasty as she was raised and instructed by her maternal grandfather Augustus. Further, Augustus adopted Tiberius as his son (and heir), while Tiberius was remarried to Julia the Elder. Augustus became something of a \"paternal\" grandfather to Julia the Elder's children, too, including Julia the Younger. A \"formal\" adoption \"in the family of the Caesars\" among the offspring of Agrippa and Julia the Elder is however only recorded regarding Vipsania Julia's brothers Gaius Vipsanius Agrippa—hence Gaius Julius Caesar—and Lucius Vipsanius Agrippa—hence Lucius Julius Caesar. Her younger sister Agrippina the Elder and youngest full brother, Marcus Vipsanius Agrippa Postumus, were named after their natural father only until Agrippa Postumus was adopted by Augustus as \"Marcus Julius Caesar Agrippa Postumus\". Likewise, her eldest half-sisters, Vipsania Agrippina and Vipsania Marcella, were named after their father. Her younger half-brother, unnamed in contemporary sources, was later sometimes dubbed \"Tiberillus,\" after his father Tiberius, and died young.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        },
+        {
+          "id": "19",
+          "text": "Steven Gerrard\nSteven Gerrard MBE Gerrard lining up for England at UEFA Euro 2012 Full name Steven George Gerrard Date of birth (1980 - 05 - 30) 30 May 1980 (age 37) Place of birth Whiston, England Height 6 ft 0 in (1.83 m) Playing position Midfielder Youth career 1989 -- 1998 Liverpool Senior career * Years Team Apps (Gls) 1998 -- 2015 Liverpool 504 (120) 2015 -- 2016 LA Galaxy 34 (5) Total 538 (125) National team 1999 -- 2000 England U21 (1) 2000 -- 2014 England 114 (21) Teams managed 2017 -- Liverpool U18s * Senior club appearances and goals counted for the domestic league only.",
+          "metadata": {},
+          "group_id": null,
+          "pinned": false
+        }
+      ]
+    },
+    "relevant_ids": [
+      "12",
+      "17"
+    ],
+    "baseline_ids": null,
+    "schema_version": 1,
+    "created_at": "2026-09-18T16:37:54.196321Z",
+    "source": "live",
+    "prompt_version": "contextual-evidence-v1",
+    "input_hash": "d85ecae64a4b8fc3c6738fe2ef073f6c31d71be75f059239f28d2b63efea48f3",
+    "judgments": [
+      {
+        "relevance": 0.03,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.02,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.04,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.04,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.04,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.06,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.03,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.05,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.05,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.14,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.1,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.09,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.9,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.17,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.11,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.06,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.13,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.75,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.67,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      {
+        "relevance": 0.49,
+        "model": "jev-1.13.0",
+        "input_tokens": 0,
+        "output_tokens": 0
+      }
+    ],
+    "scoring_elapsed_ms": 398.891332995845,
+    "scoring_usage": {
+      "input_tokens": 5672,
+      "output_tokens": 334,
+      "completed_documents": 20,
+      "complete": true
+    }
+  },
+  "policy": {
+    "mode": "filter",
+    "min_relevance": 0.35,
+    "top_n": null,
+    "shadow": false,
+    "relevance_guidance": null
+  },
+  "comparison": {
+    "input_hash": "d85ecae64a4b8fc3c6738fe2ef073f6c31d71be75f059239f28d2b63efea48f3",
+    "policy_version": "d464383bbfd56614",
+    "baseline": {
+      "text": "Tolyatti",
+      "status": "generated",
+      "model": "gpt-5.6-luna",
+      "elapsed_ms": 1044.765,
+      "input_tokens": 2732,
+      "output_tokens": 6,
+      "cached_input_tokens": 0,
+      "citations": [],
+      "unknown_citations": [],
+      "source_map": {
+        "S1": "0",
+        "S2": "1",
+        "S3": "2",
+        "S4": "3",
+        "S5": "4",
+        "S6": "5",
+        "S7": "6",
+        "S8": "7",
+        "S9": "8",
+        "S10": "9",
+        "S11": "10",
+        "S12": "11",
+        "S13": "12",
+        "S14": "13",
+        "S15": "14",
+        "S16": "15",
+        "S17": "16",
+        "S18": "17",
+        "S19": "18",
+        "S20": "19"
+      },
+      "error_code": null,
+      "finish_reason": "stop",
+      "settings": {
+        "max_completion_tokens": 2000,
+        "reasoning_effort": "low"
+      }
+    },
+    "selected": {
+      "text": "Palmiro Togliatti",
+      "status": "generated",
+      "model": "gpt-5.6-luna",
+      "elapsed_ms": 1667.78,
+      "input_tokens": 804,
+      "output_tokens": 69,
+      "cached_input_tokens": 0,
+      "citations": [],
+      "unknown_citations": [],
+      "source_map": {
+        "S1": "12",
+        "S2": "17",
+        "S3": "18",
+        "S4": "19"
+      },
+      "error_code": null,
+      "finish_reason": "stop",
+      "settings": {
+        "max_completion_tokens": 2000,
+        "reasoning_effort": "low"
+      }
+    },
+    "baseline_ids": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19"
+    ],
+    "selected_ids": [
+      "12",
+      "17",
+      "18",
+      "19"
+    ],
+    "selection_source": "live",
+    "baseline_stage_ms": 1044.765,
+    "selected_stage_ms": 2066.6713329958448,
+    "selection_original_ms": 398.891332995845,
+    "baseline_cost_usd": 0.0005536,
+    "selected_cost_usd": 0.00048182400000000005,
+    "selection_cost_usd": 0.00023822400000000001,
+    "cost_basis": "Published-rate estimate including Jev and reported cached-input discounts; retrieval excluded",
+    "timing_basis": "Generation measured now; selected stage adds original scoring time. Retrieval excluded.",
+    "citation_check": "Benchmark short-answer prompt; citations not requested. See benchmarks/public/protocol.json"
+  }
+}

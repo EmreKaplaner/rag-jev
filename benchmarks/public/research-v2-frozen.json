@@ -1,0 +1,10 @@
+{
+  "policy": {
+    "name": "contextual_filter_0.2_reranked",
+    "scorer": "contextual",
+    "threshold": 0.2,
+    "order": "relevance"
+  },
+  "protocol_hash": "474720230815e5debd3d160748c60e0875444447281bf0220e0db4a28bdc8e8d",
+  "development_report_hash": "fee02c6ec816ae0be3879822c59c1975fd58895433f28cb42dba0049c36b5807"
+}
