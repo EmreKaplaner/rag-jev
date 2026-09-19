@@ -293,6 +293,8 @@ The [ecosystem benchmark harness](benchmarks/ecosystem/README.md) adds a budgete
 BEIR/CRAG pilot, native FlashRAG execution, BERGEN rerank verification, and
 RAGChecker diagnostics. Its frozen protocol distinguishes full-corpus retrieval
 from supplied-page evaluation and records the remaining full-Wikipedia work.
+See the [pilot results and spend](benchmarks/ecosystem/RESULTS.md) for all comparisons,
+including filtering regressions and the limits of the accuracy/cost evidence.
 
 ```sh
 make setup

@@ -1,0 +1,145 @@
+{
+  "protocol": {
+    "base_protocol_hash": "7437d9a654207c9157ba84e3ab94e233c4b650d062ff8aebf12908b37551f553",
+    "case_ids": [
+      "crag-00435a43-6e56-4f2d-8e46-796ab2acf9b8",
+      "crag-1cd2723b-8eb5-4d20-8aed-adba56e120bf",
+      "crag-20cc4c72-2cdf-4cb8-a64b-6fbb1bad49de",
+      "crag-24695d99-530d-4096-a1ea-2d9295dc06d3",
+      "crag-2529b8a1-be22-404b-9d22-1a43b60687a4",
+      "crag-30e99455-a308-444f-87dc-0d2bc7fe5024",
+      "crag-3d8ca113-a180-43c5-9974-f5898d0d69b8",
+      "crag-3db5e36c-cadc-4fdd-b997-e43b547c0143",
+      "crag-44d12a85-1221-4783-acab-c6a4a2989bb0",
+      "crag-5527fce8-f9e0-4309-a09c-b21081e017e5",
+      "crag-609d645f-5fbc-421a-b766-05964b894051",
+      "crag-62426f2f-088c-4995-a9e4-e2955f0599a3",
+      "crag-6bc9486b-26af-4531-aeef-20045526f400",
+      "crag-76129ef6-369c-481e-ac73-f37d6848fda8",
+      "crag-77d2b2f4-8bd6-46c8-ae18-5fdd5f480737",
+      "crag-7e54d1e6-c907-4d16-b746-85baf3eb3908",
+      "crag-8aa8579b-8fb8-4b4a-bc17-8f7f07e7fb22",
+      "crag-8b5b18ec-269d-4be9-8fcb-6eebacd3ddd2",
+      "crag-8b76f483-f446-4652-a936-a76c1e492655",
+      "crag-8f44d279-42b0-490f-ab04-24dd1a7a47f5",
+      "crag-91bbb020-bcb6-4568-86e5-d8b2bb5593ba",
+      "crag-950d7584-0b10-40d5-942a-1f23dc41e8b2",
+      "crag-97709277-bc5d-4235-9cc7-f0e162ce4791",
+      "crag-98a1c1a0-4dda-43aa-8f87-3d58a7775623",
+      "crag-9c1b2634-b981-4751-b4db-080d4089c25b",
+      "crag-a18b7683-0d6e-4e47-92cc-4784eec03d0b",
+      "crag-a3dbc646-1464-4909-9cc5-dc24a0dccb0c",
+      "crag-a56ee77b-bf51-4b70-961a-9d2c6d985c84",
+      "crag-ad9c05bc-937e-4c57-9c32-6a44c1fca2e3",
+      "crag-b1d92994-e3fb-48f7-a77e-4bd01bef236e",
+      "crag-be1cb85d-d2d8-43ed-b240-7210dfe1fc40",
+      "crag-c0e5df4d-f443-4dae-8a94-271190c5b041",
+      "crag-c5f5fb20-60c3-464d-add6-cbde920f6d95",
+      "crag-cfefcdf0-161f-4878-832d-995e3693ea9a",
+      "crag-d09d1ffb-e077-4cef-9b66-4f612851ed88",
+      "crag-de9783c8-3cc3-480c-9ed6-11c4ca090a4b",
+      "crag-e7701f8b-e9f0-4067-896c-610cd2c00838",
+      "crag-e9495171-bf77-445b-985c-e6d000a9c53f",
+      "crag-ed3072aa-a17e-46a0-96c7-0e5e55448998",
+      "crag-f430d472-d5f6-4210-80ca-4aaddb29efe1"
+    ],
+    "arms": [
+      "baseline",
+      "bge",
+      "jev_rerank",
+      "jev_filter",
+      "bge_jev_filter"
+    ],
+    "code_sha256": "c0f0edc861c2118914b45af3f801dc050df20c9cafc9a85cbb13c007db561fd1",
+    "upstream_sha": "ad1518887dd4d9ebcd7de95388c7a62751e7705c",
+    "judge": "gpt-5.6-luna",
+    "scope": "Exploratory CRAG-style semantic accuracy, hallucination, missing and utility. Not official leaderboard scores; same-model judge bias. Upstream prompts, response parser and 75-token Llama trimming retained. Corrected upstream undefined prediction_lowercase and string/list ground-truth loop. Map exact 'unanswerable' to missing, like 'I don't know'. Alternative gold answers accepted. Arm names never enter judge prompts. Identical prompts reuse their paid judge result."
+  },
+  "summary": {
+    "baseline": {
+      "correct": 12,
+      "incorrect": 8,
+      "missing": 20,
+      "failed": 0,
+      "n": 40,
+      "accuracy": 0.3,
+      "hallucination": 0.2,
+      "missing_rate": 0.5,
+      "utility_failures_minus_one": 0.10000000000000009
+    },
+    "bge": {
+      "correct": 16,
+      "incorrect": 8,
+      "missing": 16,
+      "failed": 0,
+      "n": 40,
+      "accuracy": 0.4,
+      "hallucination": 0.2,
+      "missing_rate": 0.4,
+      "utility_failures_minus_one": 0.19999999999999996
+    },
+    "jev_rerank": {
+      "correct": 17,
+      "incorrect": 8,
+      "missing": 15,
+      "failed": 0,
+      "n": 40,
+      "accuracy": 0.425,
+      "hallucination": 0.2,
+      "missing_rate": 0.375,
+      "utility_failures_minus_one": 0.2250000000000001
+    },
+    "jev_filter": {
+      "correct": 16,
+      "incorrect": 11,
+      "missing": 13,
+      "failed": 0,
+      "n": 40,
+      "accuracy": 0.4,
+      "hallucination": 0.275,
+      "missing_rate": 0.325,
+      "utility_failures_minus_one": 0.125
+    },
+    "bge_jev_filter": {
+      "correct": 16,
+      "incorrect": 10,
+      "missing": 14,
+      "failed": 0,
+      "n": 40,
+      "accuracy": 0.4,
+      "hallucination": 0.25,
+      "missing_rate": 0.35,
+      "utility_failures_minus_one": 0.1499999999999999
+    }
+  },
+  "accuracy_delta_vs_baseline_descriptive": {
+    "bge": {
+      "delta": 0.1,
+      "ci95": [
+        0.025,
+        0.2
+      ]
+    },
+    "jev_rerank": {
+      "delta": 0.125,
+      "ci95": [
+        0.025,
+        0.225
+      ]
+    },
+    "jev_filter": {
+      "delta": 0.1,
+      "ci95": [
+        0.025,
+        0.2
+      ]
+    },
+    "bge_jev_filter": {
+      "delta": 0.1,
+      "ci95": [
+        0.025,
+        0.2
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "base_protocol_hash": "7437d9a654207c9157ba84e3ab94e233c4b650d062ff8aebf12908b37551f553",
+  "code_sha256": "25b703929a8a31459030bfac9bef1ab74a336b05447be3eb3a205f87bd515af5",
+  "trigger": "First extraction of an 'unanswerable' response completed with HTTP200/stop and empty content. Native RefChecker parses this as zero triples, while the generic audited bridge rejected it.",
+  "action": "Keep all raw traces and costs. Feed completed empty extraction responses into the native parser. No retry, answer regeneration, sampling change, or invented claims. Empty entailment/checker results still fail."
+}

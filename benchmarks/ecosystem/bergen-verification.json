@@ -1,0 +1,8 @@
+{
+  "upstream_sha": "eb8ec046eb6cf08be95b035b2d3bcc4b241ff212",
+  "protocol_hash": "7437d9a654207c9157ba84e3ab94e233c4b650d062ff8aebf12908b37551f553",
+  "queries": 752,
+  "pairs": 15040,
+  "all_rankings_match": true,
+  "scope": "Actual native BERGEN Rerank.eval with context-preserving paid Jev scores. No new API inference; not full BERGEN generation pipeline."
+}

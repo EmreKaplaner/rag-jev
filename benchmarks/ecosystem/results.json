@@ -1,0 +1,1454 @@
+{
+  "protocol_hash": "7437d9a654207c9157ba84e3ab94e233c4b650d062ff8aebf12908b37551f553",
+  "budget": {
+    "ceiling_usd": 25.0,
+    "known_usage_cost_usd": 0.654599402,
+    "unreconciled_requests": 0,
+    "reserved_unknown_usd": 0,
+    "remaining_after_reservations_usd": 24.345400598,
+    "requests": 1989
+  },
+  "groups": {
+    "fiqa/bm25/development": {
+      "queries": 16,
+      "summary": {
+        "baseline": {
+          "ndcg10": 0.30432712563243164,
+          "recall10": 0.35416666666666663,
+          "mrr10": 0.3489583333333333,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "bge": {
+          "ndcg10": 0.3616669025345113,
+          "recall10": 0.36979166666666663,
+          "mrr10": 0.4375,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "jev_rerank": {
+          "ndcg10": 0.3847337929362952,
+          "recall10": 0.36979166666666663,
+          "mrr10": 0.46875,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.00033761962500000004
+        },
+        "jev_filter": {
+          "ndcg10": 0.3847337929362952,
+          "recall10": 0.36979166666666663,
+          "mrr10": 0.46875,
+          "selected_documents": 7.375,
+          "selector_api_usd": 0.00033761962500000004
+        },
+        "bge_jev_filter": {
+          "ndcg10": 0.3616669025345113,
+          "recall10": 0.36979166666666663,
+          "mrr10": 0.4375,
+          "selected_documents": 6.0,
+          "selector_api_usd": 0.000191722125
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": 0.08040666730386359,
+          "ci95": [
+            -0.010824800941055701,
+            0.1871637916914735
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "jev_filter_vs_baseline": {
+          "delta": 0.08040666730386359,
+          "ci95": [
+            -0.010824800941055701,
+            0.1871637916914735
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": 0.057339776902079684,
+          "ci95": [
+            -0.013466492283895307,
+            0.15051397007986783
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "jev_rerank_vs_bge": {
+          "delta": 0.023066890401783904,
+          "ci95": [
+            0.0,
+            0.06920067120535171
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "jev_filter_vs_bge": {
+          "delta": 0.023066890401783904,
+          "ci95": [
+            0.0,
+            0.06920067120535171
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        }
+      },
+      "candidate_recall20": 0.36979166666666663,
+      "corpus_documents": 57638
+    },
+    "fiqa/bm25/evaluation": {
+      "queries": 100,
+      "summary": {
+        "baseline": {
+          "ndcg10": 0.19844336168316162,
+          "recall10": 0.24654578754578751,
+          "mrr10": 0.27031349206349203,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "bge": {
+          "ndcg10": 0.27936826000945386,
+          "recall10": 0.29031501831501827,
+          "mrr10": 0.4008452380952381,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "jev_rerank": {
+          "ndcg10": 0.28227903834772805,
+          "recall10": 0.2870457875457875,
+          "mrr10": 0.4108333333333334,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0003305148
+        },
+        "jev_filter": {
+          "ndcg10": 0.28227903834772805,
+          "recall10": 0.2870457875457875,
+          "mrr10": 0.4108333333333334,
+          "selected_documents": 8.72,
+          "selector_api_usd": 0.0003305148
+        },
+        "bge_jev_filter": {
+          "ndcg10": 0.2817986917642835,
+          "recall10": 0.29031501831501827,
+          "mrr10": 0.4034285714285714,
+          "selected_documents": 7.21,
+          "selector_api_usd": 0.00018924695999999997
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": 0.08383567666456647,
+          "ci95": [
+            0.0529919505141377,
+            0.11763747304531903
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "jev_filter_vs_baseline": {
+          "delta": 0.08383567666456647,
+          "ci95": [
+            0.0529919505141377,
+            0.11763747304531903
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": 0.08335533008112189,
+          "ci95": [
+            0.047232308151699647,
+            0.12176547010693585
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "jev_rerank_vs_bge": {
+          "delta": 0.0029107783382741727,
+          "ci95": [
+            -0.023728810736424463,
+            0.029774159245756257
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "jev_filter_vs_bge": {
+          "delta": 0.0029107783382741727,
+          "ci95": [
+            -0.023728810736424463,
+            0.029774159245756257
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": 0.002430431754829602,
+          "ci95": [
+            0.000357211166409972,
+            0.005644501435127165
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        }
+      },
+      "candidate_recall20": 0.2978150183150183,
+      "corpus_documents": 57638
+    },
+    "fiqa/dense/development": {
+      "queries": 16,
+      "summary": {
+        "baseline": {
+          "ndcg10": 0.4045240451143603,
+          "recall10": 0.46354166666666663,
+          "mrr10": 0.4708333333333333,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "bge": {
+          "ndcg10": 0.4019940232716765,
+          "recall10": 0.46354166666666663,
+          "mrr10": 0.4386160714285714,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "jev_rerank": {
+          "ndcg10": 0.41897495020782766,
+          "recall10": 0.46354166666666663,
+          "mrr10": 0.4625,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0003348975
+        },
+        "jev_filter": {
+          "ndcg10": 0.41897495020782766,
+          "recall10": 0.46354166666666663,
+          "mrr10": 0.4625,
+          "selected_documents": 8.5,
+          "selector_api_usd": 0.0003348975
+        },
+        "bge_jev_filter": {
+          "ndcg10": 0.4025181036794673,
+          "recall10": 0.46354166666666663,
+          "mrr10": 0.43973214285714285,
+          "selected_documents": 6.75,
+          "selector_api_usd": 0.0001930005
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": 0.014450905093467399,
+          "ci95": [
+            -0.03624104482630389,
+            0.07546990739239927
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "jev_filter_vs_baseline": {
+          "delta": 0.014450905093467399,
+          "ci95": [
+            -0.03624104482630389,
+            0.07546990739239927
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": -0.002005941434892978,
+          "ci95": [
+            -0.053236427200103756,
+            0.06221854882671342
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "jev_rerank_vs_bge": {
+          "delta": 0.01698092693615118,
+          "ci95": [
+            -0.007071452870044669,
+            0.05789313111054954
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "jev_filter_vs_bge": {
+          "delta": 0.01698092693615118,
+          "ci95": [
+            -0.007071452870044669,
+            0.05789313111054954
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": 0.0005240804077908043,
+          "ci95": [
+            0.0,
+            0.0015722412233724128
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        }
+      },
+      "candidate_recall20": 0.48437499999999994,
+      "corpus_documents": 57638
+    },
+    "fiqa/dense/evaluation": {
+      "queries": 100,
+      "summary": {
+        "baseline": {
+          "ndcg10": 0.35234439450191457,
+          "recall10": 0.43508150183150185,
+          "mrr10": 0.43511507936507937,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "bge": {
+          "ndcg10": 0.4290143708988227,
+          "recall10": 0.47910531135531137,
+          "mrr10": 0.5538452380952382,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "jev_rerank": {
+          "ndcg10": 0.4360916026397598,
+          "recall10": 0.4863360805860807,
+          "mrr10": 0.5650119047619048,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.00031092432
+        },
+        "jev_filter": {
+          "ndcg10": 0.4360916026397598,
+          "recall10": 0.4863360805860807,
+          "mrr10": 0.5650119047619048,
+          "selected_documents": 8.97,
+          "selector_api_usd": 0.00031092432
+        },
+        "bge_jev_filter": {
+          "ndcg10": 0.4301095492203259,
+          "recall10": 0.47767673992674,
+          "mrr10": 0.5574166666666667,
+          "selected_documents": 7.73,
+          "selector_api_usd": 0.00017724
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": 0.08374720813784528,
+          "ci95": [
+            0.05050161086384605,
+            0.1181585485665244
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "jev_filter_vs_baseline": {
+          "delta": 0.08374720813784528,
+          "ci95": [
+            0.05050161086384605,
+            0.1181585485665244
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": 0.07776515471841136,
+          "ci95": [
+            0.040574006734870854,
+            0.11597256227053054
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "jev_rerank_vs_bge": {
+          "delta": 0.007077231740937038,
+          "ci95": [
+            -0.03139002429526417,
+            0.044952767453383266
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "jev_filter_vs_bge": {
+          "delta": 0.007077231740937038,
+          "ci95": [
+            -0.03139002429526417,
+            0.044952767453383266
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": 0.0010951783215031427,
+          "ci95": [
+            -0.0021267336206045994,
+            0.004368620454457961
+          ],
+          "query_clusters": 100,
+          "queries": 100
+        }
+      },
+      "candidate_recall20": 0.503271978021978,
+      "corpus_documents": 57638
+    },
+    "nfcorpus/bm25/development": {
+      "queries": 16,
+      "summary": {
+        "baseline": {
+          "ndcg10": 0.27847290795017454,
+          "recall10": 0.07310029977447655,
+          "mrr10": 0.4427083333333333,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "bge": {
+          "ndcg10": 0.329201498379941,
+          "recall10": 0.08044310230807372,
+          "mrr10": 0.5401785714285714,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "jev_rerank": {
+          "ndcg10": 0.32161020818649577,
+          "recall10": 0.07804651485949138,
+          "mrr10": 0.528125,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.000427919625
+        },
+        "jev_filter": {
+          "ndcg10": 0.32161020818649577,
+          "recall10": 0.07804651485949138,
+          "mrr10": 0.528125,
+          "selected_documents": 7.6875,
+          "selector_api_usd": 0.000427919625
+        },
+        "bge_jev_filter": {
+          "ndcg10": 0.32945758783352236,
+          "recall10": 0.07715362862386319,
+          "mrr10": 0.5401785714285714,
+          "selected_documents": 7.1875,
+          "selector_api_usd": 0.000234402
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": 0.043137300236321244,
+          "ci95": [
+            -0.006370917272369436,
+            0.05857821986048988
+          ],
+          "query_clusters": 6,
+          "queries": 16
+        },
+        "jev_filter_vs_baseline": {
+          "delta": 0.043137300236321244,
+          "ci95": [
+            -0.006370917272369436,
+            0.05857821986048988
+          ],
+          "query_clusters": 6,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": 0.050984679883347844,
+          "ci95": [
+            -0.0026158713044764914,
+            0.0684155517285432
+          ],
+          "query_clusters": 6,
+          "queries": 16
+        },
+        "jev_rerank_vs_bge": {
+          "delta": -0.007591290193445243,
+          "ci95": [
+            -0.009704492928161107,
+            0.0
+          ],
+          "query_clusters": 6,
+          "queries": 16
+        },
+        "jev_filter_vs_bge": {
+          "delta": -0.007591290193445243,
+          "ci95": [
+            -0.009704492928161107,
+            0.0
+          ],
+          "query_clusters": 6,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": 0.00025608945358135404,
+          "ci95": [
+            0.0,
+            0.0003414526047751387
+          ],
+          "query_clusters": 6,
+          "queries": 16
+        }
+      },
+      "candidate_recall20": 0.0957535675880512,
+      "corpus_documents": 3633
+    },
+    "nfcorpus/bm25/evaluation": {
+      "queries": 100,
+      "summary": {
+        "baseline": {
+          "ndcg10": 0.33205980786176315,
+          "recall10": 0.15605156712777218,
+          "mrr10": 0.5010555555555556,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "bge": {
+          "ndcg10": 0.35268538514941583,
+          "recall10": 0.16764215674046215,
+          "mrr10": 0.5256507936507937,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "jev_rerank": {
+          "ndcg10": 0.37527911846902,
+          "recall10": 0.16999374656356112,
+          "mrr10": 0.5704285714285714,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0004479006
+        },
+        "jev_filter": {
+          "ndcg10": 0.36688813362844724,
+          "recall10": 0.1638210174838553,
+          "mrr10": 0.5554285714285715,
+          "selected_documents": 7.35,
+          "selector_api_usd": 0.0004479006
+        },
+        "bge_jev_filter": {
+          "ndcg10": 0.34403176042043176,
+          "recall10": 0.1589303035428651,
+          "mrr10": 0.5160396825396826,
+          "selected_documents": 6.63,
+          "selector_api_usd": 0.00024379866000000003
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": 0.04321931060725684,
+          "ci95": [
+            0.03308709397255741,
+            0.23414104677726816
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "jev_filter_vs_baseline": {
+          "delta": 0.0348283257666841,
+          "ci95": [
+            0.024750352713748806,
+            0.23414104677726816
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": 0.011971952558668598,
+          "ci95": [
+            0.0014535134030738003,
+            0.23595331120799648
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "jev_rerank_vs_bge": {
+          "delta": 0.022593733319604188,
+          "ci95": [
+            -0.009177963820980994,
+            0.03127506199173918
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "jev_filter_vs_bge": {
+          "delta": 0.014202748479031446,
+          "ci95": [
+            -0.009177963820980994,
+            0.03127506199173918
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": -0.00865362472898406,
+          "ci95": [
+            -0.009271740781054348,
+            0.0
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        }
+      },
+      "candidate_recall20": 0.19761623569836012,
+      "corpus_documents": 3633
+    },
+    "nfcorpus/dense/development": {
+      "queries": 16,
+      "summary": {
+        "baseline": {
+          "ndcg10": 0.3784952930483734,
+          "recall10": 0.11418789786108875,
+          "mrr10": 0.65625,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "bge": {
+          "ndcg10": 0.3780143474528865,
+          "recall10": 0.17364563973162134,
+          "mrr10": 0.6401785714285715,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "jev_rerank": {
+          "ndcg10": 0.3953206624371275,
+          "recall10": 0.1745233956965866,
+          "mrr10": 0.6339285714285714,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.00043369200000000006
+        },
+        "jev_filter": {
+          "ndcg10": 0.36733313084874153,
+          "recall10": 0.10544444832816555,
+          "mrr10": 0.625,
+          "selected_documents": 8.6875,
+          "selector_api_usd": 0.00043369200000000006
+        },
+        "bge_jev_filter": {
+          "ndcg10": 0.3792351560873954,
+          "recall10": 0.16706669236320026,
+          "mrr10": 0.646875,
+          "selected_documents": 8.1875,
+          "selector_api_usd": 0.00023178750000000002
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": 0.01682536938875411,
+          "ci95": [
+            -0.02947760807558884,
+            0.15037135706948337
+          ],
+          "query_clusters": 6,
+          "queries": 16
+        },
+        "jev_filter_vs_baseline": {
+          "delta": -0.011162162199631858,
+          "ci95": [
+            -0.04577291767277212,
+            0.006226022237555455
+          ],
+          "query_clusters": 6,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": 0.0007398630390219665,
+          "ci95": [
+            -0.03668945009410239,
+            0.2013222413653135
+          ],
+          "query_clusters": 6,
+          "queries": 16
+        },
+        "jev_rerank_vs_bge": {
+          "delta": 0.017306314984241046,
+          "ci95": [
+            -0.03371402470714502,
+            0.03647448120945132
+          ],
+          "query_clusters": 6,
+          "queries": 16
+        },
+        "jev_filter_vs_bge": {
+          "delta": -0.010681216604144918,
+          "ci95": [
+            -0.1616821481718286,
+            0.029320282954398685
+          ],
+          "query_clusters": 6,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": 0.0012208086345089006,
+          "ci95": [
+            -0.006484190548993111,
+            0.04867161237002987
+          ],
+          "query_clusters": 6,
+          "queries": 16
+        }
+      },
+      "candidate_recall20": 0.18992967624399618,
+      "corpus_documents": 3633
+    },
+    "nfcorpus/dense/evaluation": {
+      "queries": 100,
+      "summary": {
+        "baseline": {
+          "ndcg10": 0.3596491951572734,
+          "recall10": 0.17467981928812645,
+          "mrr10": 0.5237341269841269,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "bge": {
+          "ndcg10": 0.36313717747822066,
+          "recall10": 0.16930560666294597,
+          "mrr10": 0.5411944444444444,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "jev_rerank": {
+          "ndcg10": 0.38419493840463675,
+          "recall10": 0.17823165790657253,
+          "mrr10": 0.5685119047619048,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.00043058736
+        },
+        "jev_filter": {
+          "ndcg10": 0.38029291396349263,
+          "recall10": 0.17554983972475433,
+          "mrr10": 0.5651785714285714,
+          "selected_documents": 7.82,
+          "selector_api_usd": 0.00043058736
+        },
+        "bge_jev_filter": {
+          "ndcg10": 0.3573620600393818,
+          "recall10": 0.1618586369659763,
+          "mrr10": 0.5366111111111111,
+          "selected_documents": 6.85,
+          "selector_api_usd": 0.00023360189999999998
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": 0.024545743247363278,
+          "ci95": [
+            -0.08976442779093888,
+            0.03411008297957143
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "jev_filter_vs_baseline": {
+          "delta": 0.0206437188062193,
+          "ci95": [
+            -0.08976442779093888,
+            0.03082704425180433
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": -0.0022871351178915577,
+          "ci95": [
+            -0.0181189838209886,
+            0.026211859211780254
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "jev_rerank_vs_bge": {
+          "delta": 0.021057760926416015,
+          "ci95": [
+            -0.08260574183399723,
+            0.026600711291055998
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "jev_filter_vs_bge": {
+          "delta": 0.017155736485272043,
+          "ci95": [
+            -0.08260574183399723,
+            0.02322563866500568
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": -0.005775117438838816,
+          "ci95": [
+            -0.006263801169951991,
+            0.0021329095934912888
+          ],
+          "query_clusters": 10,
+          "queries": 100
+        }
+      },
+      "candidate_recall20": 0.20671642535070475,
+      "corpus_documents": 3633
+    },
+    "scifact/bm25/development": {
+      "queries": 16,
+      "summary": {
+        "baseline": {
+          "ndcg10": 0.6785920639031193,
+          "recall10": 0.84375,
+          "mrr10": 0.6427083333333333,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "bge": {
+          "ndcg10": 0.7648409895603783,
+          "recall10": 0.90625,
+          "mrr10": 0.7177083333333334,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "jev_rerank": {
+          "ndcg10": 0.7562088345848219,
+          "recall10": 0.875,
+          "mrr10": 0.7416666666666667,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.00046141462500000005
+        },
+        "jev_filter": {
+          "ndcg10": 0.6937088345848219,
+          "recall10": 0.8125,
+          "mrr10": 0.6791666666666667,
+          "selected_documents": 4.375,
+          "selector_api_usd": 0.00046141462500000005
+        },
+        "bge_jev_filter": {
+          "ndcg10": 0.7379932420882152,
+          "recall10": 0.8125,
+          "mrr10": 0.7395833333333333,
+          "selected_documents": 3.4375,
+          "selector_api_usd": 0.00025403700000000003
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": 0.0776167706817025,
+          "ci95": [
+            -0.02404514688254448,
+            0.19158272430443243
+          ],
+          "query_clusters": 15,
+          "queries": 16
+        },
+        "jev_filter_vs_baseline": {
+          "delta": 0.015116770681702509,
+          "ci95": [
+            -0.09647301012182044,
+            0.13215098290996258
+          ],
+          "query_clusters": 15,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": 0.05940117818509581,
+          "ci95": [
+            -0.07987720935904899,
+            0.2266311322138351
+          ],
+          "query_clusters": 15,
+          "queries": 16
+        },
+        "jev_rerank_vs_bge": {
+          "delta": -0.008632154975556316,
+          "ci95": [
+            -0.09929915636124413,
+            0.07650724484256727
+          ],
+          "query_clusters": 15,
+          "queries": 16
+        },
+        "jev_filter_vs_bge": {
+          "delta": -0.07113215497555632,
+          "ci95": [
+            -0.18425968125181214,
+            0.022171166051072083
+          ],
+          "query_clusters": 15,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": -0.026847747472163,
+          "ci95": [
+            -0.11829932879464829,
+            0.03037940472781444
+          ],
+          "query_clusters": 15,
+          "queries": 16
+        }
+      },
+      "candidate_recall20": 0.90625,
+      "corpus_documents": 5183
+    },
+    "scifact/bm25/evaluation": {
+      "queries": 100,
+      "summary": {
+        "baseline": {
+          "ndcg10": 0.7034783291356008,
+          "recall10": 0.8240000000000001,
+          "mrr10": 0.6727857142857144,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "bge": {
+          "ndcg10": 0.7307150028965266,
+          "recall10": 0.8345,
+          "mrr10": 0.704595238095238,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "jev_rerank": {
+          "ndcg10": 0.7657218395385529,
+          "recall10": 0.8315,
+          "mrr10": 0.7528333333333334,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.00044271024000000015
+        },
+        "jev_filter": {
+          "ndcg10": 0.7332912395951273,
+          "recall10": 0.7815000000000001,
+          "mrr10": 0.7258333333333334,
+          "selected_documents": 3.63,
+          "selector_api_usd": 0.00044271024000000015
+        },
+        "bge_jev_filter": {
+          "ndcg10": 0.7042525952652682,
+          "recall10": 0.7745000000000001,
+          "mrr10": 0.6884285714285714,
+          "selected_documents": 2.99,
+          "selector_api_usd": 0.00024098046
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": 0.06224351040295207,
+          "ci95": [
+            0.024943174228128293,
+            0.10322520302234309
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "jev_filter_vs_baseline": {
+          "delta": 0.029812910459526436,
+          "ci95": [
+            -0.023222721593322615,
+            0.08147562770442988
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": 0.0007742661296671358,
+          "ci95": [
+            -0.052974870417233345,
+            0.05094528064093925
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "jev_rerank_vs_bge": {
+          "delta": 0.03500683664202648,
+          "ci95": [
+            0.0008099514252295348,
+            0.06956653724671986
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "jev_filter_vs_bge": {
+          "delta": 0.0025762366986008416,
+          "ci95": [
+            -0.04828938093065116,
+            0.049370262596729955
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": -0.02646240763125845,
+          "ci95": [
+            -0.06927905725432511,
+            0.009315992668794426
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        }
+      },
+      "candidate_recall20": 0.8365,
+      "corpus_documents": 5183
+    },
+    "scifact/dense/development": {
+      "queries": 16,
+      "summary": {
+        "baseline": {
+          "ndcg10": 0.7672061192053102,
+          "recall10": 0.90625,
+          "mrr10": 0.7302083333333333,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "bge": {
+          "ndcg10": 0.782453031889049,
+          "recall10": 0.9375,
+          "mrr10": 0.7245535714285714,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "jev_rerank": {
+          "ndcg10": 0.7355911399741168,
+          "recall10": 0.90625,
+          "mrr10": 0.7026785714285715,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.00046253025
+        },
+        "jev_filter": {
+          "ndcg10": 0.6747386072805258,
+          "recall10": 0.75,
+          "mrr10": 0.6755952380952381,
+          "selected_documents": 3.625,
+          "selector_api_usd": 0.00046253025
+        },
+        "bge_jev_filter": {
+          "ndcg10": 0.7945329666561245,
+          "recall10": 0.84375,
+          "mrr10": 0.796875,
+          "selected_documents": 3.1875,
+          "selector_api_usd": 0.00024840637499999997
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": -0.03161497923119341,
+          "ci95": [
+            -0.1292158012585027,
+            0.05903926109869274
+          ],
+          "query_clusters": 15,
+          "queries": 16
+        },
+        "jev_filter_vs_baseline": {
+          "delta": -0.09246751192478442,
+          "ci95": [
+            -0.24549543169517518,
+            0.025805888894587736
+          ],
+          "query_clusters": 15,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": 0.027326847450814304,
+          "ci95": [
+            -0.03505591708200577,
+            0.09419294815422694
+          ],
+          "query_clusters": 15,
+          "queries": 16
+        },
+        "jev_rerank_vs_bge": {
+          "delta": -0.04686189191493226,
+          "ci95": [
+            -0.1249613411505111,
+            0.029947717046467186
+          ],
+          "query_clusters": 15,
+          "queries": 16
+        },
+        "jev_filter_vs_bge": {
+          "delta": -0.10771442460852326,
+          "ci95": [
+            -0.21745730047619435,
+            -0.018599776264882763
+          ],
+          "query_clusters": 15,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": 0.012079934767075449,
+          "ci95": [
+            -0.05042530949004164,
+            0.07619651015872245
+          ],
+          "query_clusters": 15,
+          "queries": 16
+        }
+      },
+      "candidate_recall20": 0.9375,
+      "corpus_documents": 5183
+    },
+    "scifact/dense/evaluation": {
+      "queries": 100,
+      "summary": {
+        "baseline": {
+          "ndcg10": 0.6911619170752975,
+          "recall10": 0.8079999999999999,
+          "mrr10": 0.6617063492063493,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "bge": {
+          "ndcg10": 0.7387435767535977,
+          "recall10": 0.843,
+          "mrr10": 0.7123333333333334,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0
+        },
+        "jev_rerank": {
+          "ndcg10": 0.7946181571716067,
+          "recall10": 0.8616666666666667,
+          "mrr10": 0.775611111111111,
+          "selected_documents": 10.0,
+          "selector_api_usd": 0.0004428475800000001
+        },
+        "jev_filter": {
+          "ndcg10": 0.7603113915908726,
+          "recall10": 0.8216666666666668,
+          "mrr10": 0.7431111111111111,
+          "selected_documents": 4.05,
+          "selector_api_usd": 0.0004428475800000001
+        },
+        "bge_jev_filter": {
+          "ndcg10": 0.69856372764331,
+          "recall10": 0.763,
+          "mrr10": 0.6834285714285714,
+          "selected_documents": 3.16,
+          "selector_api_usd": 0.00023998422
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": 0.10345624009630916,
+          "ci95": [
+            0.055769469482151605,
+            0.1553785000849463
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "jev_filter_vs_baseline": {
+          "delta": 0.06914947451557522,
+          "ci95": [
+            0.011300589903219126,
+            0.1256096214318471
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": 0.007401810568012661,
+          "ci95": [
+            -0.06057284698097358,
+            0.07226471402043809
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "jev_rerank_vs_bge": {
+          "delta": 0.05587458041800878,
+          "ci95": [
+            0.01421549927723938,
+            0.10393035672923294
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "jev_filter_vs_bge": {
+          "delta": 0.02156781483727485,
+          "ci95": [
+            -0.02931651882621921,
+            0.0752693023898544
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": -0.040179849110287706,
+          "ci95": [
+            -0.08187310146936776,
+            -0.00423181750164372
+          ],
+          "query_clusters": 96,
+          "queries": 100
+        }
+      },
+      "candidate_recall20": 0.87,
+      "corpus_documents": 5183
+    },
+    "crag/bm25/evaluation": {
+      "queries": 40,
+      "summary": {
+        "baseline": {
+          "em": 0.05,
+          "f1": 0.1465085095206799,
+          "selected_documents": 10.0,
+          "api_cost_usd": 0.000744895,
+          "normalized_api_cost_usd": 0.000744895,
+          "generation_elapsed_ms": 1666.83825,
+          "input_tokens": 3470.225
+        },
+        "bge": {
+          "em": 0.075,
+          "f1": 0.2008645701267405,
+          "selected_documents": 10.0,
+          "api_cost_usd": 0.000605945,
+          "normalized_api_cost_usd": 0.000729785,
+          "generation_elapsed_ms": 1626.8767,
+          "input_tokens": 3402.775
+        },
+        "jev_rerank": {
+          "em": 0.125,
+          "f1": 0.22677366103583144,
+          "selected_documents": 10.0,
+          "api_cost_usd": 0.00104235305,
+          "normalized_api_cost_usd": 0.00116793455,
+          "generation_elapsed_ms": 1723.1613499999999,
+          "input_tokens": 3457.15
+        },
+        "jev_filter": {
+          "em": 0.075,
+          "f1": 0.20025850952067986,
+          "selected_documents": 7.5,
+          "api_cost_usd": 0.0007664550500000001,
+          "normalized_api_cost_usd": 0.0009957795500000002,
+          "generation_elapsed_ms": 1489.270275,
+          "input_tokens": 2643.625
+        },
+        "bge_jev_filter": {
+          "em": 0.1,
+          "f1": 0.21961457012674052,
+          "selected_documents": 6.4,
+          "api_cost_usd": 0.0006224919500000001,
+          "normalized_api_cost_usd": 0.0007107189499999999,
+          "generation_elapsed_ms": 1420.7717499999999,
+          "input_tokens": 2242.075
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": 0.08026515151515153,
+          "ci95": [
+            0.009541666666666672,
+            0.16875
+          ],
+          "query_clusters": 40,
+          "queries": 40
+        },
+        "jev_filter_vs_baseline": {
+          "delta": 0.05375,
+          "ci95": [
+            0.0,
+            0.125
+          ],
+          "query_clusters": 40,
+          "queries": 40
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": 0.0731060606060606,
+          "ci95": [
+            0.010606060606060607,
+            0.15303030303030302
+          ],
+          "query_clusters": 40,
+          "queries": 40
+        },
+        "jev_rerank_vs_bge": {
+          "delta": 0.025909090909090916,
+          "ci95": [
+            -0.016666666666666663,
+            0.08515151515151516
+          ],
+          "query_clusters": 40,
+          "queries": 40
+        },
+        "jev_filter_vs_bge": {
+          "delta": -0.0006060606060606058,
+          "ci95": [
+            -0.004545454545454545,
+            0.0027272727272727284
+          ],
+          "query_clusters": 40,
+          "queries": 40
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": 0.01875,
+          "ci95": [
+            -0.01875,
+            0.075
+          ],
+          "query_clusters": 40,
+          "queries": 40
+        }
+      },
+      "generation_errors": 0,
+      "output_limit_branches": 0
+    },
+    "crag/bm25/development": {
+      "queries": 16,
+      "summary": {
+        "baseline": {
+          "em": 0.25,
+          "f1": 0.33187134502923976,
+          "selected_documents": 10.0,
+          "api_cost_usd": 0.000766025,
+          "normalized_api_cost_usd": 0.000766025,
+          "generation_elapsed_ms": 1532.3266875,
+          "input_tokens": 3634.375
+        },
+        "bge": {
+          "em": 0.25,
+          "f1": 0.3368055555555556,
+          "selected_documents": 10.0,
+          "api_cost_usd": 0.0006216825000000001,
+          "normalized_api_cost_usd": 0.0007358250000000001,
+          "generation_elapsed_ms": 1567.9738125000001,
+          "input_tokens": 3489.75
+        },
+        "jev_rerank": {
+          "em": 0.1875,
+          "f1": 0.3110380116959064,
+          "selected_documents": 10.0,
+          "api_cost_usd": 0.00084833,
+          "normalized_api_cost_usd": 0.0011748275,
+          "generation_elapsed_ms": 1561.8611250000001,
+          "input_tokens": 3540.625
+        },
+        "jev_filter": {
+          "em": 0.25,
+          "f1": 0.33728070175438596,
+          "selected_documents": 9.25,
+          "api_cost_usd": 0.0009763125,
+          "normalized_api_cost_usd": 0.0011287275000000001,
+          "generation_elapsed_ms": 1509.3613125,
+          "input_tokens": 3280.875
+        },
+        "bge_jev_filter": {
+          "em": 0.1875,
+          "f1": 0.21875,
+          "selected_documents": 7.125,
+          "api_cost_usd": 0.000649209125,
+          "normalized_api_cost_usd": 0.0007729478750000001,
+          "generation_elapsed_ms": 1562.1280625,
+          "input_tokens": 2555.875
+        }
+      },
+      "unknown_metrics": [],
+      "comparisons_descriptive": {
+        "jev_rerank_vs_baseline": {
+          "delta": -0.020833333333333336,
+          "ci95": [
+            -0.1875,
+            0.125
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "jev_filter_vs_baseline": {
+          "delta": 0.005409356725146199,
+          "ci95": [
+            -0.17916666666666667,
+            0.18998538011695906
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_baseline": {
+          "delta": -0.11312134502923976,
+          "ci95": [
+            -0.35416666666666663,
+            0.1299342105263158
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "jev_rerank_vs_bge": {
+          "delta": -0.025767543859649127,
+          "ci95": [
+            -0.07236842105263158,
+            0.0
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "jev_filter_vs_bge": {
+          "delta": 0.00047514619883040794,
+          "ci95": [
+            -0.017726608187134507,
+            0.022076023391812867
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        },
+        "bge_jev_filter_vs_bge": {
+          "delta": -0.11805555555555555,
+          "ci95": [
+            -0.2986111111111111,
+            0.0
+          ],
+          "query_clusters": 16,
+          "queries": 16
+        }
+      },
+      "generation_errors": 0,
+      "output_limit_branches": 0
+    }
+  },
+  "analysis_code": {
+    "/Users/emre/.superset/projects/rag-jev/benchmarks/ecosystem/report.py": "0d423730c455392d000d9ef3144f43669a15326f7b3098a88cd6bf227bfb9172"
+  },
+  "local_compute": {
+    "bge_cpu_seconds": 97.479845,
+    "bge_elapsed_seconds": 5233.0703390353,
+    "bge_truncated_pairs": 91,
+    "dense_truncation": {
+      "fiqa": {
+        "truncated_corpus_documents": 2446,
+        "max_corpus_tokens": 3601,
+        "truncated_queries": 0
+      },
+      "nfcorpus": {
+        "truncated_corpus_documents": 342,
+        "max_corpus_tokens": 2379,
+        "truncated_queries": 0
+      },
+      "scifact": {
+        "truncated_corpus_documents": 466,
+        "max_corpus_tokens": 1941,
+        "truncated_queries": 0
+      }
+    },
+    "monetary_cost_usd": null,
+    "note": "MPS accelerator wall time plus host CPU seconds; not an invoice. Retrieval shared across arms, local compute is not free."
+  },
+  "limitations": [
+    "Exploratory small query subsets, single generation replicate; descriptive intervals, no superiority claim.",
+    "Complete BEIR corpora, but shallow20-candidate retrieval and custom BM25 baseline.",
+    "SciFact is previously exposed replication; unknown model pretraining contamination on all datasets.",
+    "CRAG uses official supplied pages, not independent web search. Short-answer EM/F1 are NOT official CRAG semantic judge scores.",
+    "FlashRAG executes the actual SequentialPipeline with frozen paid selector traces. BERGEN check is a rerank-stage replication, not the entire BERGEN pipeline.",
+    "Canonical full-Wikipedia NQ/TriviaQA/HotpotQA and independent human adjudication remain pending."
+  ]
+}

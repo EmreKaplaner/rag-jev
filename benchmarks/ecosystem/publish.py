@@ -1,6 +1,7 @@
 """Build an evidence-linked pilot report and figure from audited, complete artifacts."""
 
 import shutil
+from collections import defaultdict
 from pathlib import Path
 
 from benchmarks.ecosystem.common import ARMS, ROOT, Ledger
@@ -27,6 +28,16 @@ def main():
     assert live["complete"]
     budget = Ledger().summary()
     destination = Path("benchmarks/ecosystem")
+    categories = defaultdict(lambda: {"requests": 0, "known_usage_cost_usd": 0.0})
+    for key, request in read_json(ROOT / "ledger.json").items():
+        category = categories[key.split("/", 1)[0]]
+        category["requests"] += 1
+        assert request.get("cost_usd") is not None, "Cannot publish unresolved spend"
+        category["known_usage_cost_usd"] += request["cost_usd"]
+    write_json(
+        destination / "spend-summary.json",
+        {"budget": budget, "categories": dict(categories), "basis": "Returned API token usage"},
+    )
     write_json(destination / "results.json", report)
     write_json(
         destination / "live-integration-summary.json",
@@ -46,6 +57,7 @@ def main():
         "crag-semantic-report.json",
         "wiki-resource-probe.json",
         "ragchecker-empty-extraction-amendment.json",
+        "report-reference-amendment.json",
     ]:
         shutil.copyfile(ROOT / name, destination / name)
     # Standalone source-data table: no HTML/corpus redistribution and no API credentials.
@@ -60,6 +72,8 @@ def main():
         f"**${budget['remaining_after_reservations_usd']:.4f} remains**; "
         f"{budget['unreconciled_requests']} unreconciled requests. "
         "This is usage-based accounting, not a vendor invoice. Local compute cost is unknown.",
+        "[Spend breakdown](spend-summary.json) separates selection, generation, evaluation "
+        "and live integration checks. The $25 limit is a ceiling, not a spending target.",
         "",
         "## Full-corpus BEIR retrieval",
         "",
@@ -78,7 +92,21 @@ def main():
     for name, group in retrieval_groups:
         scores = [f"{group['summary'][arm]['ndcg10'] * 100:.2f}" for arm in ARMS]
         lines.append("| " + name.removesuffix("/evaluation") + " | " + " | ".join(scores) + " |")
+    wins = sum(
+        g["summary"]["jev_rerank"]["ndcg10"] > g["summary"]["bge"]["ndcg10"]
+        for _, g in retrieval_groups
+    )
+    crosses_zero = sum(
+        g["comparisons_descriptive"]["jev_rerank_vs_bge"]["ci95"][0]
+        <= 0
+        <= g["comparisons_descriptive"]["jev_rerank_vs_bge"]["ci95"][1]
+        for _, g in retrieval_groups
+    )
     lines += [
+        "",
+        f"Jev reranking had a higher point estimate than BGE in {wins}/{len(retrieval_groups)} "
+        f"settings, but {crosses_zero} of the paired intervals include zero. The two retrievers "
+        "share the same test questions, so these are not six independent dataset wins.",
         "",
         "Paired, descriptive cluster-bootstrap intervals are in [results.json](results.json). "
         "NFCorpus has only ten query clusters, including one containing 91 of the 100 "
@@ -93,25 +121,39 @@ def main():
         "with a Luna judge and corrected evaluation loop; it is **not an official CRAG "
         "leaderboard result**. Generator/judge model overlap introduces bias.",
         "",
-        "| Pipeline | Answer F1 | Semantic accuracy | Utility | Mean passages | "
-        "Normalized API $/query |",
-        "|---|---:|---:|---:|---:|---:|",
+        "| Pipeline | Answer F1 | Semantic accuracy | Wrong / abstained | Utility | "
+        "Mean passages | Normalized API $/query |",
+        "|---|---:|---:|---:|---:|---:|---:|",
     ]
     qa = report["groups"]["crag/bm25/evaluation"]["summary"]
     for arm in ARMS:
         row, grade = qa[arm], semantic["summary"][arm]
         lines.append(
             f"| {LABELS[arm]} | {row['f1'] * 100:.2f} | {grade['accuracy'] * 100:.1f} | "
+            f"{grade['incorrect']} / {grade['missing']} | "
             f"{grade['utility_failures_minus_one']:.3f} | {row['selected_documents']:.2f} | "
             f"{row['normalized_api_cost_usd']:.6f} |"
         )
+    rerank_cost_change = (
+        qa["jev_rerank"]["normalized_api_cost_usd"] / qa["baseline"]["normalized_api_cost_usd"] - 1
+    ) * 100
     lines += [
+        "",
+        f"Jev reranking's API cost was {rerank_cost_change:+.1f}% versus original retrieval. "
+        "Filtering reduced the context but increased incorrect-answer counts in this sample. "
+        "The pilot supports testing reranking further; it does not support a universal "
+        "'better and cheaper' claim or a universal filtering threshold.",
         "",
         "API costs include the selector and generation, normalized to uncached input "
         "prices. BGE's local computation is not free and is excluded from this monetary "
         "comparison. CRAG utility scores correct/abstained/incorrect responses as +1/0/−1. "
         "Short-answer F1 can undercount valid aliases; the two metrics should not be "
         "interchanged. No multiple-comparison-corrected superiority claim is made.",
+        "",
+        "[Semantic grading and paired descriptive intervals](crag-semantic-report.json) "
+        "retain all outcomes. Fewer abstentions can increase both correct and incorrect "
+        "answers: evaluate utility and errors alongside accuracy. These are automated "
+        "judgments, pending independent human review.",
         "",
         "![Pilot overview](pilot.png)",
         "",
@@ -134,6 +176,9 @@ def main():
         "The adapter amendment and empty-extraction coverage are published explicitly.",
         "- Model revisions, input checksums, truncation counts, local runtime and all "
         "development results are retained in the protocol and JSON reports.",
+        "- Two development questions contain numeric alternative references. A "
+        "[reporting amendment](report-reference-amendment.json) converts those numbers "
+        "to literal strings for EM/F1 only; test results and raw data are unchanged.",
         "- A blinded 40-question/five-arm human review packet is available locally as "
         "`artifacts/ecosystem-v1/human-review-blinded.json`. No human adjudication has "
         "been completed or claimed.",

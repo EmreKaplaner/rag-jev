@@ -1,0 +1,25 @@
+{
+  "reason": "The frozen string normalizer rejects numeric CRAG alternative answers.",
+  "action": "Convert finite numeric CRAG references to their literal string only for diagnostic EM/F1. Preserve raw inputs, predictions, every arm and all cases. No semantic-judge, retrieval, cost or selection changes; no new API calls.",
+  "affected_cases": [
+    {
+      "id": "crag-1971dc12-ec22-4e16-a6a2-ce45c482d72f",
+      "split": "development",
+      "references": [
+        "invalid question",
+        0
+      ]
+    },
+    {
+      "id": "crag-4aaae29d-1ea7-431c-948b-01ce9b7255ef",
+      "split": "development",
+      "references": [
+        "invalid question",
+        0
+      ]
+    }
+  ],
+  "analysis_code": {
+    "/Users/emre/.superset/projects/rag-jev/benchmarks/ecosystem/report_resume.py": "12ad01ff3a4b38af83a62a7f5044105f8dedf9b3f08596f28109d38dcbb4ab90"
+  }
+}

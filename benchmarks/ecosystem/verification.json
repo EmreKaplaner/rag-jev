@@ -1,0 +1,16 @@
+{
+  "protocol_hash": "7437d9a654207c9157ba84e3ab94e233c4b650d062ff8aebf12908b37551f553",
+  "checks": 4997,
+  "missing_artifacts": [],
+  "failed_stages": [],
+  "known_cost_reconciles": true,
+  "budget": {
+    "ceiling_usd": 25.0,
+    "known_usage_cost_usd": 0.654599402,
+    "unreconciled_requests": 0,
+    "reserved_unknown_usd": 0,
+    "remaining_after_reservations_usd": 24.345400598,
+    "requests": 1989
+  },
+  "complete": true
+}

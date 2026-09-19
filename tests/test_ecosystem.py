@@ -122,6 +122,21 @@ def test_empty_extraction_bridge_never_accepts_empty_checker_or_incomplete_respo
     assert not completed_empty_extraction("Extract claims: q", record, "Extract claims:")
 
 
+def test_crag_numeric_reference_amendment_is_narrow_and_preserves_aliases():
+    from benchmarks.ecosystem.report_resume import scalar_reference_metrics
+
+    assert scalar_reference_metrics("0", ["invalid question", 0], "crag") == {"em": 1, "f1": 1}
+    assert scalar_reference_metrics("invalid question", ["invalid question", 0], "crag") == {
+        "em": 1,
+        "f1": 1,
+    }
+    for invalid in [None, True, float("nan"), {}, []]:
+        with pytest.raises(TypeError):
+            scalar_reference_metrics("0", [invalid], "crag")
+    with pytest.raises(TypeError):
+        scalar_reference_metrics("0", [0], "hotpotqa")
+
+
 class Retriever:
     def batch_search(self, queries):
         return [

@@ -1,0 +1,137 @@
+{
+  "protocol": {
+    "base_protocol_hash": "7437d9a654207c9157ba84e3ab94e233c4b650d062ff8aebf12908b37551f553",
+    "case_ids": [
+      "crag-be1cb85d-d2d8-43ed-b240-7210dfe1fc40",
+      "crag-c0e5df4d-f443-4dae-8a94-271190c5b041",
+      "crag-91bbb020-bcb6-4568-86e5-d8b2bb5593ba",
+      "crag-76129ef6-369c-481e-ac73-f37d6848fda8",
+      "crag-98a1c1a0-4dda-43aa-8f87-3d58a7775623",
+      "crag-de9783c8-3cc3-480c-9ed6-11c4ca090a4b",
+      "crag-7e54d1e6-c907-4d16-b746-85baf3eb3908",
+      "crag-8b76f483-f446-4652-a936-a76c1e492655"
+    ],
+    "arms": [
+      "baseline",
+      "bge",
+      "jev_rerank",
+      "jev_filter",
+      "bge_jev_filter"
+    ],
+    "model": "gpt-5.6-luna",
+    "max_completion_tokens": 2000,
+    "reasoning_effort": "low",
+    "scope": "8 hash-selected paired CRAG test questions. All five arms. Native RAGChecker diagnostics; same-model generation/judging bias; not independent human adjudication or official CRAG scores.",
+    "code_sha256": "b990c10f7c02231639a6cf7d22f863d36355e2d32b7d437068d1cf5523612810"
+  },
+  "per_arm": {
+    "baseline": {
+      "overall_metrics": {
+        "precision": 50.0,
+        "recall": 28.1,
+        "f1": 30.0
+      },
+      "retriever_metrics": {
+        "claim_recall": 57.5,
+        "context_precision": 35.0
+      },
+      "generator_metrics": {
+        "context_utilization": 28.1,
+        "noise_sensitivity_in_relevant": 0.0,
+        "noise_sensitivity_in_irrelevant": 0.0,
+        "hallucination": 0.0,
+        "self_knowledge": 0.0,
+        "faithfulness": 50.0
+      }
+    },
+    "bge": {
+      "overall_metrics": {
+        "precision": 58.3,
+        "recall": 33.1,
+        "f1": 36.2
+      },
+      "retriever_metrics": {
+        "claim_recall": 60.0,
+        "context_precision": 48.8
+      },
+      "generator_metrics": {
+        "context_utilization": 34.4,
+        "noise_sensitivity_in_relevant": 4.2,
+        "noise_sensitivity_in_irrelevant": 0.0,
+        "hallucination": 0.0,
+        "self_knowledge": 0.0,
+        "faithfulness": 62.5
+      }
+    },
+    "jev_rerank": {
+      "overall_metrics": {
+        "precision": 58.3,
+        "recall": 33.1,
+        "f1": 36.2
+      },
+      "retriever_metrics": {
+        "claim_recall": 60.0,
+        "context_precision": 56.2
+      },
+      "generator_metrics": {
+        "context_utilization": 34.4,
+        "noise_sensitivity_in_relevant": 4.2,
+        "noise_sensitivity_in_irrelevant": 0.0,
+        "hallucination": 0.0,
+        "self_knowledge": 0.0,
+        "faithfulness": 62.5
+      }
+    },
+    "jev_filter": {
+      "overall_metrics": {
+        "precision": 58.3,
+        "recall": 33.1,
+        "f1": 36.2
+      },
+      "retriever_metrics": {
+        "claim_recall": 60.0,
+        "context_precision": 56.2
+      },
+      "generator_metrics": {
+        "context_utilization": 34.4,
+        "noise_sensitivity_in_relevant": 4.2,
+        "noise_sensitivity_in_irrelevant": 0.0,
+        "hallucination": 0.0,
+        "self_knowledge": 0.0,
+        "faithfulness": 62.5
+      }
+    },
+    "bge_jev_filter": {
+      "overall_metrics": {
+        "precision": 58.3,
+        "recall": 33.1,
+        "f1": 36.2
+      },
+      "retriever_metrics": {
+        "claim_recall": 60.0,
+        "context_precision": 50.4
+      },
+      "generator_metrics": {
+        "context_utilization": 34.4,
+        "noise_sensitivity_in_relevant": 4.2,
+        "noise_sensitivity_in_irrelevant": 0.0,
+        "hallucination": 0.0,
+        "self_knowledge": 0.0,
+        "faithfulness": 62.5
+      }
+    }
+  },
+  "coverage": {
+    "cases": 40,
+    "empty_response_claims": 16,
+    "empty_reference_claims": 5
+  },
+  "budget": {
+    "ceiling_usd": 25.0,
+    "known_usage_cost_usd": 0.218468926,
+    "unreconciled_requests": 0,
+    "reserved_unknown_usd": 0,
+    "remaining_after_reservations_usd": 24.781531074,
+    "requests": 595
+  }
+}

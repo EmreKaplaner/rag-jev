@@ -1,0 +1,29 @@
+{
+  "budget": {
+    "ceiling_usd": 25.0,
+    "known_usage_cost_usd": 0.654599402,
+    "unreconciled_requests": 0,
+    "reserved_unknown_usd": 0,
+    "remaining_after_reservations_usd": 24.345400598,
+    "requests": 1989
+  },
+  "categories": {
+    "score": {
+      "requests": 1504,
+      "known_usage_cost_usd": 0.4699565219999997
+    },
+    "answer": {
+      "requests": 280,
+      "known_usage_cost_usd": 0.15330438000000005
+    },
+    "judge": {
+      "requests": 203,
+      "known_usage_cost_usd": 0.0292246
+    },
+    "integration": {
+      "requests": 2,
+      "known_usage_cost_usd": 0.0021139
+    }
+  },
+  "basis": "Returned API token usage"
+}

@@ -4,6 +4,9 @@ This is a separate, exploratory campaign with a **$25 API ceiling**. The previou
 research-v3 and retrieval-v1 experiments remain unchanged. Read the committed
 [protocol](protocol.json) before interpreting any results.
 
+[Results, costs and limitations](RESULTS.md) · [Per-query measurements](per-query.json)
+· [Spend breakdown](spend-summary.json)
+
 ## What is being tested
 
 | Component | Pilot scope |
@@ -80,7 +83,7 @@ artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.crag_grade
 # Offline verification and reporting.
 artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.bergen
 artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.verify
-artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.report
+artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.report_resume
 uv run --group benchmark python -m benchmarks.ecosystem.publish
 ```
 
@@ -88,6 +91,11 @@ RAGChecker's claim extractor can return a completed empty response for an
 abstention. The claim-aware bridge preserves that paid response and feeds it into
 the native zero-claim parser, with an explicit amendment and coverage record.
 It never retries the request, invents claims, or accepts an empty entailment check.
+
+The reporting bridge also handles two CRAG development questions whose alternative
+answers include numeric `0`. It converts finite numbers to their literal string for
+diagnostic EM/F1, retaining every reference and case. Raw inputs, predictions and
+the frozen analysis file remain unchanged; the amendment is published with results.
 
 `ledger.json` reserves an upper bound before each paid request under a process
 lock. Returned usage replaces that reservation; unknown charges stay reserved.
