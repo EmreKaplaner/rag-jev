@@ -6,6 +6,40 @@ from rag_jev.models import Judgment
 from rag_jev.selector import ContextSelector
 
 
+def test_managed_flashrag_reuses_loop_under_semaphore_contention_and_closes_provider():
+    import asyncio
+
+    from benchmarks.ecosystem.managed_flashrag import ManagedJevFlashRAGRetriever
+
+    class SlowScorer:
+        closed = False
+        loops = set()
+
+        async def score(self, query, document, guidance):
+            self.loops.add(asyncio.get_running_loop())
+            await asyncio.sleep(0.001)
+            return Judgment(relevance=1, model="fixture")
+
+        async def aclose(self):
+            assert asyncio.get_running_loop() in self.loops
+            self.closed = True
+
+    class ManyDocuments:
+        def batch_search(self, queries):
+            return [[{"id": str(i), "contents": "evidence"} for i in range(12)] for _ in queries]
+
+    provider = SlowScorer()
+    selector = ContextSelector(provider, max_concurrency=2, on_error="raise")
+    with ManagedJevFlashRAGRetriever(
+        ManyDocuments(), selector, close_provider=True, min_relevance=0.2
+    ) as retriever:
+        assert len(retriever.batch_search(["q"])[0]) == 12
+        assert len(retriever.batch_search(["q2"])[0]) == 12
+    assert provider.closed and len(provider.loops) == 1
+    with pytest.raises(RuntimeError, match="closed"):
+        retriever.batch_search(["q"])
+
+
 def test_ledger_reserves_across_instances_and_never_retries_unknown(tmp_path):
     first, second = Ledger(tmp_path, 1), Ledger(tmp_path, 1)
     first.reserve("a", "fp", 0.8)
@@ -69,6 +103,23 @@ def test_graded_retrieval_and_empty_run():
     assert retrieval_metrics(["low", "high"], qrels)["ndcg10"] < 1
     assert retrieval_metrics([], qrels) == {"ndcg10": 0, "recall10": 0, "mrr10": 0}
     assert retrieval_metrics(["high"], qrels)["recall10"] == 0.5
+
+
+def test_empty_extraction_bridge_never_accepts_empty_checker_or_incomplete_response():
+    from benchmarks.ecosystem.ragchecker_resume import completed_empty_extraction
+
+    record = {
+        "http_status": 200,
+        "cost_usd": 0.0001,
+        "choice": {"finish_reason": "stop", "message": {"content": ""}},
+    }
+    assert completed_empty_extraction("Extract claims: unanswerable", record, "Extract claims:")
+    assert not completed_empty_extraction("Check entailment", record, "Extract claims:")
+    record["choice"]["finish_reason"] = "length"
+    assert not completed_empty_extraction("Extract claims: q", record, "Extract claims:")
+    record["choice"]["finish_reason"] = "stop"
+    record["cost_usd"] = None
+    assert not completed_empty_extraction("Extract claims: q", record, "Extract claims:")
 
 
 class Retriever:

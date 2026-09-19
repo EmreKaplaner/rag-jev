@@ -1,6 +1,7 @@
 """Fetch the exact public sources and reconstruct the committed pilot protocol inputs."""
 
 import hashlib
+import os
 import shutil
 import subprocess
 import urllib.request
@@ -26,11 +27,14 @@ def main():
     for name, sha in p["upstream"].items():
         path = ROOT / "upstream" / name
         if not path.exists():
+            # Fetch only the explicitly budgeted data below, even if git-lfs is installed.
+            git_env = {**os.environ, "GIT_LFS_SKIP_SMUDGE": "1"}
             subprocess.run(
                 ["git", "clone", "--no-checkout", "--filter=blob:none", REPOS[name], str(path)],
                 check=True,
+                env=git_env,
             )
-            subprocess.run(["git", "-C", str(path), "checkout", sha], check=True)
+            subprocess.run(["git", "-C", str(path), "checkout", sha], check=True, env=git_env)
         actual = subprocess.check_output(
             ["git", "-C", str(path), "rev-parse", "HEAD"], text=True
         ).strip()

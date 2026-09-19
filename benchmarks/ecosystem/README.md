@@ -72,14 +72,22 @@ artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.score jev --limit
 artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.score jev
 artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.answer --limit 1
 artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.answer
-artifacts/ecosystem-v1/judge-venv/bin/python -m benchmarks.ecosystem.judge
+# Optional separate integration smoke: real Jev + Luna, two runs on one adapter.
+artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.live_integration
+artifacts/ecosystem-v1/judge-venv/bin/python -m benchmarks.ecosystem.ragchecker_resume
 artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.crag_grade
 
 # Offline verification and reporting.
 artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.bergen
 artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.verify
 artifacts/ecosystem-v1/venv/bin/python -m benchmarks.ecosystem.report
+uv run --group benchmark python -m benchmarks.ecosystem.publish
 ```
+
+RAGChecker's claim extractor can return a completed empty response for an
+abstention. The claim-aware bridge preserves that paid response and feeds it into
+the native zero-claim parser, with an explicit amendment and coverage record.
+It never retries the request, invents claims, or accepts an empty entailment check.
 
 `ledger.json` reserves an upper bound before each paid request under a process
 lock. Returned usage replaces that reservation; unknown charges stay reserved.
@@ -94,25 +102,29 @@ experiment reuses its scores across arms.
 ## Use the adapter in an existing FlashRAG pipeline
 
 ```python
-from benchmarks.ecosystem.flashrag import JevFlashRAGRetriever
+from benchmarks.ecosystem.managed_flashrag import ManagedJevFlashRAGRetriever
 from rag_jev import ContextSelector, Jev
 
 # `pipeline` is an already-configured native FlashRAG SequentialPipeline.
-pipeline.retriever = JevFlashRAGRetriever(
+with ManagedJevFlashRAGRetriever(
     pipeline.retriever,
     ContextSelector(Jev(model="jev-1.13.0"), timeout_ms=30_000),
+    close_provider=True,
     scoring_strategy="contextual",
     mode="filter_and_rerank",
     min_relevance=0.20,
     top_n=10,
-)
-result = pipeline.run(dataset)
+) as retriever:
+    pipeline.retriever = retriever
+    result = pipeline.run(dataset)
 ```
 
 This adapter lives in the research harness, not the installed wheel API. The
 retriever's `contents` field is scored, source records and metadata are preserved,
-and duplicate upstream IDs are handled by position. Use `abatch_search` when
-already inside an async event loop. Calibrate on your own development data before
+and duplicate upstream IDs are handled by position. The managed synchronous adapter
+keeps one event loop across batches and closes its owned provider on exit. For
+async applications, use the base adapter's `abatch_search` on the caller's event
+loop and manage provider lifetime there. Calibrate on your own development data before
 production use; .20 is a benchmark policy, not a recommended universal threshold.
 
 ## Larger follow-up work

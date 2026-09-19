@@ -106,6 +106,16 @@ def main(partial=False):
             assert math.isclose(row["cost_usd"], cost, abs_tol=1e-12)
             costs += cost
         checks += 1
+    integration_path = ROOT / "live-flashrag-integration.json"
+    if integration_path.exists():
+        integration = read_json(integration_path)
+        assert integration["complete"]
+        for row in integration["rows"]:
+            expected = row["selector"]["usage"]["input_tokens"] * 0.042 / 1e6
+            expected += generation_cost(Answer.model_validate(row["answer"]), p)
+            assert math.isclose(row["api_cost_usd"], expected, abs_tol=1e-12)
+            costs += expected
+            checks += 1
     budget = Ledger().summary()
     assert math.isclose(costs, budget["known_usage_cost_usd"], abs_tol=1e-9)
     assert budget["remaining_after_reservations_usd"] >= 0
