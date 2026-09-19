@@ -1,8 +1,10 @@
 # Releases and package publishing
 
 The canonical repository is `EmreKaplaner/rag-jev`. Code is MIT licensed. Public registry
-publishing requires the package owner's configured account/trusted publisher; a GitHub
-release and downloadable build artifacts do not imply a PyPI/npm publication succeeded.
+publishing requires the package owner's configured account/trusted publisher. Version
+0.2.0 is published on both PyPI and npm, with clean registry installations verified.
+The PyPI trusted publisher is configured. npm 0.2.0 used authenticated CLI publishing;
+its future trusted-publisher setup still needs account confirmation.
 
 1. Update versions in `pyproject.toml`, the HTTP schema, the TypeScript package and Dify
    manifest; regenerate locks, OpenAPI and TypeScript types. Update the changelog.

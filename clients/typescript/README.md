@@ -28,9 +28,9 @@ const result = await client.select({
 });
 ```
 
-The package is not published. To install it in another project, build it and run
-`npm pack` from this directory, then `npm install /path/to/rag-jev-client-0.1.0.tgz`.
-The import above applies after installing that tarball.
+Install the published package with `npm install rag-jev-client`.
+For a local development build, run `npm pack` from this directory, then
+`npm install /path/to/rag-jev-client-0.2.0.tgz`.
 
 Service `status` can be `applied`, `shadow`, or `bypassed`. A bypass is a successful
 HTTP response containing unchanged input documents and a visible `error_code`.

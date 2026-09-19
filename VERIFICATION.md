@@ -29,8 +29,16 @@ tests passed**, plus Ruff, formatting, strict mypy, and package build. See
   paid calls. Historical round-3 archive remains immutable.
 - Independent human review remains **0/80 answers**, explicitly incomplete. The review
   interface and validation command are ready; automated tests are not human labels.
-- Registry publishing remains pending account authentication. Downloadable packages
-  are intended for the GitHub release. Remote CI status is recorded below once run.
+- Public v0.2.0 [GitHub release](https://github.com/EmreKaplaner/rag-jev/releases/tag/v0.2.0):
+  all ten downloaded attachment checksums verified against the published SHA256SUMS.
+- [Remote CI](https://github.com/EmreKaplaner/rag-jev/actions/runs/35428454400)
+  passed on Python 3.11 and 3.13 for release commit `fa73e74`.
+- `rag-jev==0.2.0` published to PyPI through the configured GitHub OIDC trusted publisher:
+  [successful publish job](https://github.com/EmreKaplaner/rag-jev/actions/runs/35430023422).
+  Fresh registry install passed replay-only catalog, both recordings, and review-page checks.
+- `rag-jev-client@0.2.0` published to npm after browser security-key authentication.
+  A fresh npm registry installation passed all six client tests. Future npm trusted-publisher
+  setup still requires account confirmation; this release used authenticated CLI publishing.
 
 ## Controlled research round 3
 

@@ -18,10 +18,8 @@ model endpoint. See [data handling](SECURITY.md).
 ## Try it without an API key
 
 ```sh
-git clone https://github.com/EmreKaplaner/rag-jev.git
-cd rag-jev
-uv sync --locked
-uv run rag-jev serve --replay-only
+python -m pip install rag-jev
+rag-jev serve --replay-only
 ```
 
 Open **http://127.0.0.1:8000**. Explore a recorded improvement and a recorded regression,
@@ -29,18 +27,22 @@ inspect dropped passages, and change selection settings without scoring again. R
 answers are clearly labeled. Live inference is disabled in replay mode, even with keys
 in the environment. The separate hand-authored fixtures are labeled as fixtures.
 
-Python 3.11+ and [uv](https://docs.astral.sh/uv/) are required. Node 20+ is needed only for
-TypeScript development. Release wheels and npm tarballs are available from
+Python 3.11+ is required. For source development, clone this repository and run
+`uv sync --locked` using [uv](https://docs.astral.sh/uv/). Node 20+ is required for the
+TypeScript client. Release wheels and npm tarballs are also available from
 [GitHub Releases](https://github.com/EmreKaplaner/rag-jev/releases).
 
 ## Use live scoring
 
-Copy `.env.example` to `.env`, set `TYPESAFE_API_KEY` from [TypeSafe](https://console.typesafe.ai/),
-and restart without `--replay-only`. An answer-model key is optional.
+Get a key from [TypeSafe](https://console.typesafe.ai/) and export it as
+`TYPESAFE_API_KEY`. From a source checkout, you can instead copy `.env.example`
+to `.env` and set the key there. Restart without `--replay-only`. An answer-model
+key is optional.
 
 ```sh
-uv run rag-jev serve
-uv run rag-jev select examples/request.json
+rag-jev serve
+# From the source checkout:
+rag-jev select examples/request.json
 ```
 
 For your application:
@@ -87,9 +89,9 @@ should be checked inside that bundle; the current product has evolved since the 
 
 ## Python
 
-Install this checkout with `pip install .` or use `uv sync`. The distribution is
-`rag-jev`, the import is `rag_jev`. PyPI/npm registry publication is pending; downloadable
-packages are provided in the GitHub release.
+Install with `pip install rag-jev`. The distribution is
+[`rag-jev` on PyPI](https://pypi.org/project/rag-jev/), and the import is `rag_jev`.
+For source development, install this checkout with `pip install .` or use `uv sync`.
 
 ```python
 import asyncio
@@ -126,6 +128,9 @@ Include relevant titles/headings in `text`: metadata is preserved but **not sent
 to Jev**. The query, passage text, and explicit relevance guidance are sent to TypeSafe.
 
 ## TypeScript
+
+Install the published client with `npm install rag-jev-client`.
+For development from this checkout:
 
 ```sh
 npm --prefix clients/typescript ci
