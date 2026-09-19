@@ -37,7 +37,9 @@ def charts():
     def save(fig, name):
         target = ASSETS / name
         fig.savefig(target, metadata={"Date": None}, bbox_inches="tight")
-        target.write_text("\n".join(line.rstrip() for line in target.read_text().splitlines()) + "\n")
+        target.write_text(
+            "\n".join(line.rstrip() for line in target.read_text().splitlines()) + "\n"
+        )
         plt.close(fig)
 
     retrieval = json.loads((ASSETS / "retrieval-v1-results.json").read_text())
