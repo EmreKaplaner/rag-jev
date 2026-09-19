@@ -46,7 +46,7 @@ research = [
 packages = ["src/rag_jev"]
 
 [tool.hatch.build.targets.sdist]
-include = ["/src/rag_jev", "/examples", "/docs", "/benchmarks/public", "/benchmarks/research", "/benchmarks/robustness", "/MVP_SCOPE.md", "/integrations/dify", "/pyproject.toml", "/README.md", "/uv.lock", "/LICENSE", "/THIRD_PARTY_NOTICES.md", "/CONTRIBUTING.md", "/SECURITY.md", "/CHANGELOG.md"]
+include = ["/src/rag_jev", "/examples", "/docs", "/benchmarks/public", "/benchmarks/research", "/benchmarks/robustness", "/benchmarks/ecosystem", "/MVP_SCOPE.md", "/integrations/dify", "/pyproject.toml", "/README.md", "/uv.lock", "/LICENSE", "/THIRD_PARTY_NOTICES.md", "/CONTRIBUTING.md", "/SECURITY.md", "/CHANGELOG.md"]
 exclude = ["**/.venv/**", "**/__pycache__/**", "**/.env", "**/.env.*"]
 
 [tool.pytest.ini_options]

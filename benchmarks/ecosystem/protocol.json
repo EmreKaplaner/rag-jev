@@ -1,0 +1,142 @@
+{
+  "schema": "rag-jev-ecosystem-pilot-v1",
+  "prepared_at": "2026-09-19T08:12:03.657292+00:00",
+  "seed": "rag-jev-ecosystem-pilot-2026-09-19",
+  "budget_usd": 25,
+  "sources": {
+    "fiqa": {
+      "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/fiqa.zip",
+      "bytes": 17948027,
+      "sha256": "32c7df99ed21252fdfb2cf3f5673502a8d245ee0c44c4a133570d92ce2b3ad02",
+      "md5": "17918ed23cd04fb15047f73e6c3bd9d9"
+    },
+    "nfcorpus": {
+      "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/nfcorpus.zip",
+      "bytes": 2448432,
+      "sha256": "efe5be03f8c5b86a5870102d0599d227c8c6e2484328e68c6522560385671b0b",
+      "md5": "a89dba18a62ef92f7d323ec890a0d38d"
+    },
+    "scifact": {
+      "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/scifact.zip",
+      "bytes": 2816079,
+      "sha256": "536e14446a0ba56ed1398ab1055f39fe852686ecad24a6306c80c490fa8e0165",
+      "md5": "5f7d1de60b170fc8027bb7898e2efca1"
+    },
+    "crag": {
+      "url": "https://media.githubusercontent.com/media/facebookresearch/CRAG/ad1518887dd4d9ebcd7de95388c7a62751e7705c/data/crag_task_1_and_2_dev_v4.jsonl.bz2",
+      "bytes": 739384484,
+      "sha256": "afa29f2b3facfb5d15aa9cded00d5ec90ff76f3e67279e7b99cfe86659a641ca",
+      "md5": "6181828d0bdf974dadef6f0764426e05"
+    }
+  },
+  "datasets": {
+    "fiqa": {
+      "documents": 57638,
+      "cases_hash": "67eb47a01ca62863ab95b94a1a8c2c473f0a3d7dd9faf76040b429d1cffba5b9",
+      "corpus_hash": "0321afcc2bcc8c95d43ad8a149501300542ff128c8ceaf0a4cb1cf34c68101d8",
+      "development": 16,
+      "evaluation": 100
+    },
+    "nfcorpus": {
+      "documents": 3633,
+      "cases_hash": "d8fccca9242380ca78e8238e72c7e24888a7aa8ecda7f52b6b56df9f2b85fe39",
+      "corpus_hash": "2c6da786174309d586b7c12f2bd1268914ca414a09775d6ccb49a281891a34d9",
+      "development": 16,
+      "evaluation": 100
+    },
+    "scifact": {
+      "documents": 5183,
+      "cases_hash": "5daedd675c7e502b46159d1511c8592be28d38544e8af8dd25ed2fa82986cac8",
+      "corpus_hash": "d0e72da59c722722b4dce8d64c392966471088c917c5b31a9d1ac08e233c1c88",
+      "development": 16,
+      "evaluation": 100
+    },
+    "crag": {
+      "cases_hash": "679954d77707be225d4bf627839f813964bd02d70fbb7386e38266d0aab1340c",
+      "development": 16,
+      "evaluation": 40,
+      "available_splits": {
+        "0": 1371,
+        "1": 1335
+      },
+      "scope": "Task 1 official supplied five search pages; no external web search. All page text chunked into 220-word windows, stride 180. BM25 top20 chunks. Query time is included. No gold passage insertion."
+    }
+  },
+  "upstream": {
+    "crag": "ad1518887dd4d9ebcd7de95388c7a62751e7705c",
+    "bergen": "eb8ec046eb6cf08be95b035b2d3bcc4b241ff212",
+    "flashrag": "26913314e496c4dda0c0575f5f6fc0b15722e867",
+    "ragchecker": "6091f08c00e676e87a970f2aeb4a23a484746348"
+  },
+  "arms": [
+    "baseline",
+    "bge",
+    "jev_rerank",
+    "jev_filter",
+    "bge_jev_filter"
+  ],
+  "candidate_depth": 20,
+  "output_depth": 10,
+  "threshold": 0.2,
+  "policy": "Fixed a priori .20 cutoff, no pilot winner selection/tuning. Jev ranks full20; post-BGE filters freshly rescored BGE top10 in BGE order. All errors retained, never selective retry.",
+  "splits": "Hash sample official dev/test separately. SciFact train supplies development. Evaluation labels used only for reporting. SciFact test previously exposed: replication, not pristine holdout. Other model training exposure unknown.",
+  "dense": {
+    "model": "intfloat/e5-small-v2",
+    "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+    "max_length": 512,
+    "device": "mps",
+    "batch_size": 32,
+    "prefixes": [
+      "query: ",
+      "passage: "
+    ],
+    "similarity": "normalized dot product, exact full corpus"
+  },
+  "bge": {
+    "model": "BAAI/bge-reranker-v2-m3",
+    "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "max_length": 1024,
+    "device": "mps",
+    "batch_size": 4,
+    "dtype": "float16"
+  },
+  "bm25": "Existing audited Okapi Unicode-word index; k1=1.5 b=.75, no stemming. Custom baseline, not Anserini/Pyserini.",
+  "truncation": "Dense encoder truncates at512 model tokens; BGE at1024. Count and report affected documents/pairs; Jev receives full candidate text subject to explicit provider limit.",
+  "jev": "jev-1.13.0",
+  "generator": "gpt-5.6-luna",
+  "generation_max_tokens": 2000,
+  "reasoning_effort": "low",
+  "repetitions": 1,
+  "pricing_usd_per_million": {
+    "jev_input": 0.042,
+    "generator_input": 0.2,
+    "generator_cached_input": 0.02,
+    "generator_output": 1.2
+  },
+  "cost": "Returned API usage at frozen public rates, including selector. Also normalize cache. Local embedding/reranking compute reported separately, monetary cost unknown; no total-cost superiority claim. No invoice access.",
+  "statistics": "Exploratory paired95% cluster bootstrap, 10000 draws. BEIR cluster queries sharing relevant docs; CRAG question units. No multiplicity-corrected superiority/SOTA claim from pilot. Graded nDCG@10/Recall@10 and candidate Recall@20 via pytrec_eval.",
+  "qa_metrics": "CRAG short-answer EM/F1 diagnostics, explicitly not official CRAG semantic judge scores. Native FlashRAG pipeline execution. RAGChecker optional hash-selected paired diagnosis; same-model judge bias disclosed. Human blinded review remains independent and pending.",
+  "code": {
+    "benchmarks/ecosystem/__init__.py": "c51656579cd83ac4306edbb3f1a453a519bd978c9fd7022f005d3fccbc9ea0fc",
+    "benchmarks/ecosystem/answer.py": "53622055e7f98e00784f5dab880befc0dafd129a8781c448b9d85902c0dfc2ab",
+    "benchmarks/ecosystem/bergen.py": "5a6647f3dbe4a5e1409f77050075082a017ac28dcb8676805978caa9aa4f208c",
+    "benchmarks/ecosystem/common.py": "e88611294e3048f8e6280dec61b23bfea2a13cd92a2f27306323e6f03c73e133",
+    "benchmarks/ecosystem/flashrag.py": "bea6d2ae44de0c959eec4288bd0d4b188754a2f73a45f7e22da7299e7ba30583",
+    "benchmarks/ecosystem/judge.py": "b990c10f7c02231639a6cf7d22f863d36355e2d32b7d437068d1cf5523612810",
+    "benchmarks/ecosystem/prepare.py": "f1de026994bcda0f201c9afb83e544117a44d0dbefa4b2234547fbd401f28a0e",
+    "benchmarks/ecosystem/report.py": "0d423730c455392d000d9ef3144f43669a15326f7b3098a88cd6bf227bfb9172",
+    "benchmarks/ecosystem/retrieve.py": "314f50902d418c15272166f18152e9193d541b1c202d7ba65179f3eaa58cbca7",
+    "benchmarks/ecosystem/score.py": "3408979ecbfa27e60093b2168025a453bb4049d3b5abd8722406782b3546d4bf",
+    "benchmarks/public/common.py": "24485feb048dc4b66ad88ce198b2ec9b6f7211b9ac7fff3b4c7689afad67b949",
+    "benchmarks/research/retrieval.py": "4b446ecb54d2921bf3ffce9c0bc55e47fa106f86c4ded3262014ff27789af0aa",
+    "src/rag_jev/generation.py": "543f2db3643a0d72c3e6eeeafed90a8d3b3ed3fe6e773c070177257b8929e5da",
+    "src/rag_jev/models.py": "c737ac23da8c3f6ecf948e3d5e6ab341d324d2ed19f14c23ae35c485c2507b26",
+    "src/rag_jev/provider.py": "3c8e6ba6f152260f0d9f193acc00e915500f9aebec46ac424f7af617c2861db4"
+  },
+  "amendment": {
+    "at": "2026-09-19T08:19:11.726056+00:00",
+    "prior_protocol_hash": "d34014f57de8f584180f3b634ea38b23acd82a9815c9341e38bf5391c9480bf9",
+    "paid_calls_before_amendment": 0,
+    "reason": "Hardware preflight, no benchmark outcomes inspected: pin BGE float16; allow complete per-dataset scheduling before all retrieval jobs finish; wrap judge scope literal for lint. Cases, arms, thresholds, models, metrics unchanged."
+  }
+}

@@ -289,6 +289,11 @@ a prompt-injection security boundary.
 
 ## Development and verification
 
+The [ecosystem benchmark harness](benchmarks/ecosystem/README.md) adds a budgeted
+BEIR/CRAG pilot, native FlashRAG execution, BERGEN rerank verification, and
+RAGChecker diagnostics. Its frozen protocol distinguishes full-corpus retrieval
+from supplied-page evaluation and records the remaining full-Wikipedia work.
+
 ```sh
 make setup
 make check

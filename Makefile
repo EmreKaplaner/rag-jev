@@ -11,8 +11,8 @@ setup-integrations:
 check-all: setup-integrations check
 
 check:
-	uv run ruff check src tests examples scripts integrations/dify benchmarks/public benchmarks/research benchmarks/robustness
-	uv run ruff format --check src tests examples scripts integrations/dify benchmarks/public benchmarks/research benchmarks/robustness
+	uv run ruff check src tests examples scripts integrations/dify benchmarks/public benchmarks/research benchmarks/robustness benchmarks/ecosystem
+	uv run ruff format --check src tests examples scripts integrations/dify benchmarks/public benchmarks/research benchmarks/robustness benchmarks/ecosystem
 	uv run mypy src/rag_jev
 	npm --prefix clients/typescript test
 	uv run --group benchmark pytest -q
